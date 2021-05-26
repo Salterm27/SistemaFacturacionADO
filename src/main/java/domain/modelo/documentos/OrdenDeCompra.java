@@ -1,6 +1,6 @@
 package domain.modelo.documentos;
 
-public class OrdenDeCompra {
+public class OrdenDeCompra extends Documento{
 
     private Integer ordenDeCompraID;
 

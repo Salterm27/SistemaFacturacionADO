@@ -26,8 +26,8 @@ public class ProductoSeleccionable {
         this.tipoDeUnidad = tipoDeUnidad;
     }
 
-    public agregarProducto(){
-        return 0;
+    public void agregarProducto(){
+
     }
 
 }
