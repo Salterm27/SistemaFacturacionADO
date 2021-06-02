@@ -10,6 +10,7 @@ public class Factura extends Documento{
         NroFactura = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;
+
     }
 
     public Integer getNroFactura() {
