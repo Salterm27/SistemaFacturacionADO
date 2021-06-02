@@ -5,3 +5,4 @@ import javax.swing.*;
 public class FormAltaOP {
     private JButton button1;
 }
+
