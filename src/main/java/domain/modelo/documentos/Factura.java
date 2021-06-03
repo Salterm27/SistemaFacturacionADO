@@ -1,16 +1,23 @@
 package domain.modelo.documentos;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Factura extends Documento{
 
-    private Integer NroFactura;
+    private int NroFactura;
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
 
-    public Factura(Integer nroFactura, OrdenDeCompra ordenDeCompra, Boolean aprobacion) {
+    public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompra){
         NroFactura = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;
+        setMonto(0.0);
+        this.setFecha(LocalDate.now());
+        this.setProductosSeleccionables(new ArrayList<>());
     }
+
 
     public Integer getNroFactura() {
         return NroFactura;
