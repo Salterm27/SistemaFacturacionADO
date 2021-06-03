@@ -9,5 +9,8 @@
         <module name="TP_Grupo6" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="TP_Grupo6" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>
