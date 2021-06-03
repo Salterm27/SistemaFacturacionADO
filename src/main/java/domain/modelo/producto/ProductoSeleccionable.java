@@ -12,6 +12,7 @@ public class ProductoSeleccionable {
     public ProductoSeleccionable(  float precioPorUnidad, int tipoDeUnidad, Producto producto ) {
         this.precioPorUnidad = precioPorUnidad;
         this.tipoDeUnidad = tipoDeUnidad;
+        this.producto = producto;
     }
 
     public Float getPrecioPorUnidad() {
