@@ -1,5 +1,8 @@
 package domain.modelo.documentos;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 public class Factura extends Documento{
 
     private Integer NroFactura;

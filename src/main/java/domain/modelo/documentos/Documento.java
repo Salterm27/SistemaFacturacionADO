@@ -13,10 +13,27 @@ public abstract class Documento {
     private List<ProductoSeleccionable> productosSeleccionables;
     //private Boolean propio; ????????
 
-    public Documento() {
-        monto = 0.0;
-        fecha = LocalDate.now();
-        productosSeleccionables = new ArrayList<>();
+    public void addProductosSeleccionable(ProductoSeleccionable ps) {
+          productosSeleccionables.add(ps);
     }
 
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setProductosSeleccionables(List<ProductoSeleccionable> productosSeleccionables) {
+        this.productosSeleccionables = productosSeleccionables;
+    }
 }
