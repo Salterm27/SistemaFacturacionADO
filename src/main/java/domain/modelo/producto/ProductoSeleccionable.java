@@ -9,10 +9,11 @@ public class ProductoSeleccionable {
     private Producto producto;
     private Proveedor proveedor;
 
-    public ProductoSeleccionable(  float precioPorUnidad, int tipoDeUnidad, Producto producto ) {
+    public ProductoSeleccionable(  float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor) {
         this.precioPorUnidad = precioPorUnidad;
         this.tipoDeUnidad = tipoDeUnidad;
         this.producto = producto;
+        this.proveedor = proveedor;
     }
 
     public Float getPrecioPorUnidad() {
@@ -31,6 +32,27 @@ public class ProductoSeleccionable {
         this.tipoDeUnidad = tipoDeUnidad;
     }
 
+    public void setPrecioPorUnidad(float precioPorUnidad) {
+        this.precioPorUnidad = precioPorUnidad;
+    }
 
+    public void setTipoDeUnidad(int tipoDeUnidad) {
+        this.tipoDeUnidad = tipoDeUnidad;
+    }
 
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
 }

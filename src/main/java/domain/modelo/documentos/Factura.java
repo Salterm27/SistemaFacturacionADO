@@ -1,13 +1,20 @@
 package domain.modelo.documentos;
 
+import domain.modelo.impuestos.ImpuestoAplicable;
+import domain.modelo.producto.Producto;
+import domain.modelo.producto.ProductoSeleccionable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Factura extends Documento{
 
     private int NroFactura;
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
+    private ImpuestoAplicable impuestoAplicable;
+    private List<ProductoSeleccionable> detalle;
 
     public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompra){
         NroFactura = nroFactura;

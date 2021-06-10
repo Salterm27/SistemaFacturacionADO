@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif ControllerProducto.java" />
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif ControllerProducto.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/ImpuestoAplicable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/ProductoSeleccionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/ProductoSeleccionable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Rubro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Rubro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDePago.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDePago.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Producto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/producto/ProductoSeleccionable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/producto/ProductoSeleccionable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Rubro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Rubro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/FormAltaOP.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/vista/FormAltaOP.class" afterDir="false" />
+    </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +65,42 @@
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="settings.editor.selected.configurable" value="xpath.settings" />
   </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="domain.modelo.impuestos" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="domain.modelo.main" />
+      <module name="TP_Grupo6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.modelo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -59,7 +114,10 @@
       <workItem from="1622159398516" duration="1441000" />
       <workItem from="1622587448827" duration="90000" />
       <workItem from="1622674709014" duration="809000" />
-      <workItem from="1622675581433" duration="1912000" />
+      <workItem from="1622675581433" duration="1990000" />
+      <workItem from="1622679384816" duration="134000" />
+      <workItem from="1623074122828" duration="4000" />
+      <workItem from="1623281397063" duration="3997000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -75,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622679255682</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="modif ControllerProducto.java">
+      <created>1622679278215</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622679278215</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

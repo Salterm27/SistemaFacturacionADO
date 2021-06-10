@@ -33,6 +33,11 @@ public class Proveedor {
 
     }
 
+    public void addFactura(Factura f){
+        this.facturas.add(f);
+    }
+
+
     public int getCuit() {
         return cuit;
     }
@@ -102,8 +107,12 @@ public class Proveedor {
 
     }
 
-    public List<Factura> getFacturas(LocalDate dia){
+    public List<Factura> getFacturasXdia(LocalDate dia){
         return facturas;
+    }
+
+    public List getFacturas() {
+        return this.facturas;
     }
 
     /*public ProductoSeleccionable getProductoSeleccionable(){
