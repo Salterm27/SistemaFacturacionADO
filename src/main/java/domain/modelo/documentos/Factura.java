@@ -1,12 +1,6 @@
 package domain.modelo.documentos;
 
 import domain.modelo.impuestos.ImpuestoAplicable;
-import domain.modelo.producto.Producto;
-import domain.modelo.producto.ProductoSeleccionable;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Factura extends Documento{
 
@@ -20,8 +14,7 @@ public class Factura extends Documento{
         NroFactura = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;
-        setMonto(0.0);
-        this.setFecha(LocalDate.now());
+        super.inicializarFecha();
     }
 
 

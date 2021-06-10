@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif ControllerProducto.java">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_06_2021_21_04_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_06_2021_21_04__Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif a controllers, documentos y proveedores.&#10;añadidas estructuras de detalle de documentos tipo hash">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Producto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/producto/Producto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeCredito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeDebito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeDebito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDePago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDePago.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622679278215</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modif a controllers, documentos y proveedores.&#10;añadidas estructuras de detalle de documentos tipo hash">
+      <created>1623348404931</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623348404931</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,7 +167,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modif ControllerProducto.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif ControllerProducto.java" />
+    <MESSAGE value="modif a controllers, documentos y proveedores.&#10;añadidas estructuras de detalle de documentos tipo hash" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif a controllers, documentos y proveedores.&#10;añadidas estructuras de detalle de documentos tipo hash" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

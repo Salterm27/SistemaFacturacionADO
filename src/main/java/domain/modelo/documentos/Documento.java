@@ -14,6 +14,9 @@ public abstract class Documento {
     protected LocalDate fecha;
     protected Map <ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
 
+    public void inicializarFecha(){
+        this.fecha = (LocalDate.now());
+    }
     public Map<ProductoSeleccionable, Integer> getDetalle() {
         return detalle;
     }
@@ -37,8 +40,5 @@ public abstract class Documento {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
-    }
 
 }
