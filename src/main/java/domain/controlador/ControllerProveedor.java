@@ -38,6 +38,7 @@ public class ControllerProveedor {
                              int retencionImpuestos){
         Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial, nombreFantasia,  direccion,  telefono, correoElectronico,  nroIIBB,  inicioActividad,  retencionImpuestos);
         proveedores.add (p);
+        mostrarProveedores();
     }
     public void imprimirfacturas( int cuit ){
         Proveedor p = getProveedorXcuit(cuit);

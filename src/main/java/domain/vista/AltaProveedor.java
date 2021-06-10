@@ -1,9 +1,14 @@
 package domain.vista;
 
+import domain.controlador.ControllerProveedor;
+
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.time.LocalDate;
 
 public class AltaProveedor {
-    private JPanel panel;
+    private JPanel PanelDeProveedor;
     private JTextField textRazonSocial;
     private JTextField textNombreFantasia;
     private JTextField textCuit;
@@ -29,24 +34,35 @@ public class AltaProveedor {
     private JLabel telefono;
     private JLabel correoElectronico;
 
-    public AltaProveedor(){
+    private ControllerProveedor cldrProveedor;
 
+    public AltaProveedor(ControllerProveedor cldrProveedor){
+        this.cldrProveedor = new ControllerProveedor(); // por ahora se crea desp se recibe como param
+        aceptarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                altaProveedor();
+            }
+        });
     }
 
     public static void main(String[] args) {
-
         JFrame frame = new JFrame("Alta Proveedor");
-        frame.setContentPane( new AltaProveedor().panel);
+        frame.setContentPane( new AltaProveedor(null).PanelDeProveedor);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
     }
 
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+    private int StringtoNum(String x){
+        return Integer.valueOf(x);
     }
 
+    private void altaProveedor(){
+        cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getText(),textRazonSocial.getText(),
+                textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
+                textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.now(), 1);
 
+    }
 }
