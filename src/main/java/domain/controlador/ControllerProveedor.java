@@ -2,13 +2,16 @@ package domain.controlador;
 
 import domain.modelo.documentos.Factura;
 import domain.modelo.documentos.OrdenDeCompra;
+import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerProveedor {
     List <Proveedor> proveedores ;
+
 
     public ControllerProveedor() {
         proveedores = new ArrayList<>();
@@ -29,8 +32,11 @@ public class ControllerProveedor {
         p.addFactura(a);
     }
 
-    public void addProveedor(int cuit, String razonSocial){
-        Proveedor p = new Proveedor(cuit, razonSocial);
+    public void addProveedor(int cuit, String responsabilidadIVA, String razonSocial,
+                             String nombreFantasia, String direccion, int telefono,
+                             String correoElectronico, int nroIIBB, LocalDate inicioActividad,
+                             int retencionImpuestos){
+        Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial, nombreFantasia,  direccion,  telefono, correoElectronico,  nroIIBB,  inicioActividad,  retencionImpuestos);
         proveedores.add (p);
     }
     public void imprimirfacturas( int cuit ){
@@ -44,5 +50,9 @@ public class ControllerProveedor {
         for (Proveedor p: proveedores) {
             System.out.println(p.getCuit() + " " + p.getRazonSocial());
         }
+    }
+
+    public void asociarProductoSeleccionable(int cuitProveedor, ProductoSeleccionable ps){
+        getProveedorXcuit(cuitProveedor).asociarProductoSeleccionable(ps);
     }
 }

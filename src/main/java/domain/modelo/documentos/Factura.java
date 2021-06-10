@@ -14,7 +14,7 @@ public class Factura extends Documento{
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
     private ImpuestoAplicable impuestoAplicable;
-    private List<ProductoSeleccionable> detalle;
+
 
     public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompra){
         NroFactura = nroFactura;
@@ -22,7 +22,6 @@ public class Factura extends Documento{
         this.aprobacion = aprobacion;
         setMonto(0.0);
         this.setFecha(LocalDate.now());
-        this.setProductosSeleccionables(new ArrayList<>());
     }
 
 

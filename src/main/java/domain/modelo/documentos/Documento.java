@@ -4,26 +4,34 @@ import domain.modelo.producto.ProductoSeleccionable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Documento {
 
-    private Double monto;
-    private LocalDate fecha;
-    private List<ProductoSeleccionable> productosSeleccionables;
-    //private Boolean propio; ????????
+    protected Double monto;
+    protected LocalDate fecha;
+    protected Map <ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
 
-    public void addProductosSeleccionable(ProductoSeleccionable ps) {
-          productosSeleccionables.add(ps);
+    public Map<ProductoSeleccionable, Integer> getDetalle() {
+        return detalle;
+    }
+    public void addProductoSeleccionable(ProductoSeleccionable ps, int cantidad){
+        detalle.put(ps,cantidad);
+        this.monto = this.monto + (ps.getPrecioPorUnidad()*cantidad);
     }
 
     public Double getMonto() {
         return monto;
     }
 
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
+    /*public void calcularMonto(){
+        monto = 0.0;
+        for (Map.Entry<ProductoSeleccionable, Integer > entry : detalle.entrySet()){
+            monto = monto + entry.getKey().getPrecioPorUnidad() * entry.getValue();
+        }
+    }*/
 
     public LocalDate getFecha() {
         return fecha;
@@ -33,7 +41,4 @@ public abstract class Documento {
         this.fecha = fecha;
     }
 
-    public void setProductosSeleccionables(List<ProductoSeleccionable> productosSeleccionables) {
-        this.productosSeleccionables = productosSeleccionables;
-    }
 }

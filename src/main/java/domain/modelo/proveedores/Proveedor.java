@@ -15,22 +15,45 @@ public class Proveedor {
     private String razonSocial;
     private String nombreFantasia;
     private String direccion;
-    private String telefono;
+    private int telefono;
     private String correoElectronico;
     private int nroIIBB;
     private LocalDate inicioActividad;
     private int retencionImpuestos;
     private List<Documento> documentos;
     private List<Factura> facturas;
-    //private List<ProductoSeleccionable> productosSeleccionables; ????????
+    private List<ProductoSeleccionable> productosSeleccionables;
 
-    public Proveedor(int cuit, String razonSocial) {
+    public Proveedor(int cuit, String responsabilidadIVA, String razonSocial,
+                     String nombreFantasia, String direccion, int telefono,
+                     String correoElectronico, int nroIIBB, LocalDate inicioActividad,
+                     int retencionImpuestos) {
+
         this.cuit = cuit;
+        this.responsabilidadIVA = responsabilidadIVA;
         this.razonSocial = razonSocial;
+        this.nombreFantasia = nombreFantasia;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correoElectronico = correoElectronico;
+        this.nroIIBB = nroIIBB;
+        this.inicioActividad = inicioActividad;
+        this.retencionImpuestos = retencionImpuestos;
+        documentos = new ArrayList<>();
+        facturas = new ArrayList<>();
 
-        this.documentos = new ArrayList<>();
-        this.facturas = new ArrayList<>();
+    }
 
+    public List<ProductoSeleccionable> getProductosSeleccionables() {
+        return productosSeleccionables;
+    }
+
+    public void asociarProductoSeleccionable(ProductoSeleccionable ps){
+        productosSeleccionables.add(ps);
+    }
+
+    public void setProductosSeleccionables(List<ProductoSeleccionable> productosSeleccionables) {
+        this.productosSeleccionables = productosSeleccionables;
     }
 
     public void addFactura(Factura f){
@@ -58,7 +81,7 @@ public class Proveedor {
         return direccion;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
@@ -118,9 +141,5 @@ public class Proveedor {
     /*public ProductoSeleccionable getProductoSeleccionable(){
 
     }*/
-
-
-
-
 
 }

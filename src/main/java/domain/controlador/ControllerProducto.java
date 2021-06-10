@@ -39,9 +39,10 @@ public class ControllerProducto {
         return null;
     }
 
-    public void CrearProductoSeleccionable(float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor){
+    public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor){
         ProductoSeleccionable ps = new ProductoSeleccionable( precioPorUnidad,tipoDeUnidad, producto, proveedor);
         productoSeleccionables.add(ps);
+        return ps;
     }
 
     public void AsociarProveedor(){
