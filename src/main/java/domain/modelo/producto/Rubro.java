@@ -3,16 +3,26 @@ package domain.modelo.producto;
 public class Rubro {
 
     private String nombre;
-    private float porcentajeIVA;
+    private double porcentajeIVA;
 
-    public Rubro(String nombre) {
+    public Rubro(String nombre, double porcentajeIVA) {
+        this.nombre = nombre; this.porcentajeIVA = porcentajeIVA;
+    }
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public float getPorcentajeIVA() {
+    public double getPorcentajeIVA() {
         return porcentajeIVA;
     }
 
-
-
+    public void setPorcentajeIVA(float porcentajeIVA) {
+        this.porcentajeIVA = porcentajeIVA;
+    }
 }
