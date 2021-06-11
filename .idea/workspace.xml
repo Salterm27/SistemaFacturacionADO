@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif ControllerProducto.java">
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/NotaDeCredito.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/NotaDeCredito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/NotaDeDebito.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/NotaDeDebito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDePago.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDePago.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/FormAltaOP.class" beforeDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +32,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/CategoriaGanancias.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/producto/Producto.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/CategoriaGanancias.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1t5yU0JpieNFbWM28bWw1Ny3Sjw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -57,11 +51,11 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="273" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="215" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="369" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="settings.editor.selected.configurable" value="xpath.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -95,17 +89,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.AltaProveedor" />
@@ -130,6 +113,8 @@
       <workItem from="1622679384816" duration="134000" />
       <workItem from="1623074122828" duration="4000" />
       <workItem from="1623281397063" duration="3997000" />
+      <workItem from="1623420028395" duration="4051000" />
+      <workItem from="1623424129885" duration="348000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -152,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622679278215</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modif ControllerProducto.java">
+      <created>1623355267185</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623355267185</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

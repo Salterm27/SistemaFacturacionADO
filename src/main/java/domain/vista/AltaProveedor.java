@@ -12,7 +12,7 @@ public class AltaProveedor {
     private JTextField textRazonSocial;
     private JTextField textNombreFantasia;
     private JTextField textCuit;
-    private JTextField textIVA;
+    private JComboBox textIVA;
     private JTextField textIIBB;
     private JTextField textActividad;
     private JTextField textCalle;
@@ -60,7 +60,7 @@ public class AltaProveedor {
     }
 
     private void altaProveedor(){
-        cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getText(),textRazonSocial.getText(),
+        cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getActionCommand(),textRazonSocial.getText(),
                 textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
                 textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.now(), 1);
 
