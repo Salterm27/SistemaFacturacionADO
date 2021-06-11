@@ -33,7 +33,6 @@ public class AltaProveedor {
     private JLabel ciudad;
     private JLabel telefono;
     private JLabel correoElectronico;
-
     private ControllerProveedor cldrProveedor;
 
     public AltaProveedor(ControllerProveedor cldrProveedor){
@@ -45,11 +44,12 @@ public class AltaProveedor {
                 altaProveedor();
             }
         });
+
     }
 
-    public static void main(String[] args) {
+    private void start(){
         JFrame frame = new JFrame("Alta Proveedor");
-        frame.setContentPane( new AltaProveedor(null).PanelDeProveedor);
+        frame.setContentPane( new AltaProveedor(cldrProveedor).PanelDeProveedor);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

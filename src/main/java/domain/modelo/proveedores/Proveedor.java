@@ -41,7 +41,7 @@ public class Proveedor {
         this.retencionImpuestos = retencionImpuestos;
         documentos = new ArrayList<>();
         facturas = new ArrayList<>();
-
+        productosSeleccionables = new ArrayList<>();
     }
 
     public List<ProductoSeleccionable> getProductosSeleccionables() {

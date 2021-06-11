@@ -29,12 +29,12 @@
               </component>
             </children>
           </scrollpane>
-          <component id="b1b2c" class="javax.swing.JLabel">
+          <component id="b1b2c" class="javax.swing.JLabel" binding="labelTotal">
             <constraints>
               <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="TOTAL:"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="bce24" class="javax.swing.JButton" binding="agregarItemButton" default-binding="true">
@@ -45,21 +45,29 @@
               <text value="Agregar Item"/>
             </properties>
           </component>
-          <component id="5818a" class="javax.swing.JSpinner" binding="spinner1" default-binding="true">
+          <component id="5818a" class="javax.swing.JSpinner" binding="cantidadPedida">
             <constraints>
               <grid row="0" column="5" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
-          <component id="93d73" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+          <component id="93d73" class="javax.swing.JComboBox" binding="buscarItem">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties/>
           </component>
+          <component id="2c8fd" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Total"/>
+            </properties>
+          </component>
         </children>
       </grid>
-      <component id="ff78e" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="ff78e" class="javax.swing.JComboBox" binding="tipoDocBox">
         <constraints>
           <grid row="1" column="4" row-span="2" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -73,23 +81,15 @@
           <text value="Proveedor"/>
         </properties>
       </component>
-      <component id="38455" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="38455" class="javax.swing.JComboBox" binding="buscarProveedor">
         <constraints>
           <grid row="1" column="1" row-span="2" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
       </component>
-      <component id="f7ccd" class="javax.swing.JLabel">
+      <component id="f7ccd" class="javax.swing.JLabel" binding="labelFecha">
         <constraints>
           <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="55f0b" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Label"/>

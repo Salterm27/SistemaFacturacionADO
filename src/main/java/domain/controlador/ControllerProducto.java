@@ -39,10 +39,27 @@ public class ControllerProducto {
         return null;
     }
 
+    public List<ProductoSeleccionable> getProductoSeleccionables() {
+        return productoSeleccionables;
+    }
+
+    public void setProductoSeleccionables(List<ProductoSeleccionable> productoSeleccionables) {
+        this.productoSeleccionables = productoSeleccionables;
+    }
+
     public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor){
         ProductoSeleccionable ps = new ProductoSeleccionable( precioPorUnidad,tipoDeUnidad, producto, proveedor);
         productoSeleccionables.add(ps);
         return ps;
+    }
+
+    public ProductoSeleccionable getProductoSeleccionable(String nombre){
+        for (ProductoSeleccionable ps : productoSeleccionables){
+            if(ps.getProducto().getNombre() == nombre){
+                return ps;
+            }
+        }
+        return null;
     }
 
     public void AsociarProveedor(){

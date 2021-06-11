@@ -17,6 +17,10 @@ public class ControllerProveedor {
         proveedores = new ArrayList<>();
     }
 
+    public List<Proveedor> getProveedores() {
+        return proveedores;
+    }
+
     public Proveedor getProveedorXcuit(int cuit){
         for (Proveedor p: proveedores) {
             if (p.getCuit() == cuit){

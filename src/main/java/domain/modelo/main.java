@@ -7,6 +7,7 @@ import domain.modelo.producto.Producto;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.producto.Rubro;
 import domain.modelo.proveedores.Proveedor;
+import domain.vista.AltaDocumento;
 
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ public class main {
     public static void main(String[] args) {
         ControllerProveedor cldrProveedor = new ControllerProveedor();
         ControllerProducto cldrProducto = new ControllerProducto();
+
 
 
         System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
@@ -40,7 +42,12 @@ public class main {
         System.out.println("Caso de prueba 4: Crear producto seleccionable, asociar a producto y a proveedor");
         ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 10, 1,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678));
         cldrProveedor.asociarProductoSeleccionable(12345678, ps);
+        ProductoSeleccionable ps2 = cldrProducto.CrearProductoSeleccionable( 50, 1,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678));
+        cldrProveedor.asociarProductoSeleccionable(12345678, ps2);
 
 
+        // GUIs
+        AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
+        GUIdocumento.start();
     }
 }
