@@ -22,7 +22,6 @@ public class main {
         ControllerProducto cldrProducto = new ControllerProducto();
 
 
-
         System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
         cldrProveedor.addProveedor(12345678,  "resp_iva",  "Sebastian S.A",
                 "sebas",  "Lima 774",  1156549788,
@@ -41,7 +40,8 @@ public class main {
         System.out.println("Caso de prueba 2: adjuntar factura a proveedor");
         cldrProveedor.addFactura( 12345678, true,  null, null);
         cldrProveedor.imprimirfacturas(12345678);
-
+        cldrProveedor.addFactura( 11111111, true,  null, null);
+        cldrProveedor.imprimirfacturas(11111111);
 
 
         System.out.println("Caso de prueba 3: Crear instancia de producto y asociar rubro");
@@ -63,22 +63,21 @@ public class main {
 
 
         System.out.println("Caso de prueba 5: Crear una factura y asociarle items");
-
         //creo el listado de items a agregar con su cantidad
         Map<ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
-
         // le asigne el producto y la cantidad
         detalle.put(cldrProducto.getProductoSeleccionable("Television", 12345678),2);
-
         //ahora que tengo el hasmap, se lo paso como argumento
         cldrProveedor.addFactura( 12345678, true,  null, detalle);
-
         cldrProveedor.imprimirfacturas(12345678);
 
         System.out.println("Caso de prueba 6.2: Calcular ingresos brutos sobre una factura");
 
 
         System.out.println("Caso de prueba 6.3: Calcular IVA sobre una factura");
+
+        System.out.println("Caso de prueba 9: Calcular facturas emitidas por todos los proveedores en un periodo dado");
+        cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
         // GUIs
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
         //GUIdocumento.start();

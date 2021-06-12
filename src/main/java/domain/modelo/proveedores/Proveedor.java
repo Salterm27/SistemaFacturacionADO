@@ -1,7 +1,6 @@
 package domain.modelo.proveedores;
 
-import domain.modelo.documentos.Documento;
-import domain.modelo.documentos.Factura;
+import domain.modelo.documentos.*;
 import domain.modelo.producto.ProductoSeleccionable;
 
 import java.time.LocalDate;
@@ -20,8 +19,13 @@ public class Proveedor {
     private int nroIIBB;
     private LocalDate inicioActividad;
     private int retencionImpuestos;
-    private List<Documento> documentos;
+
     private List<Factura> facturas;
+    private List<NotaDeCredito> notasdecredito;
+    private List<NotaDeDebito> notasdedebito;
+    private List<OrdenDePago> ordenesdepago;
+    private List<OrdenDeCompra> ordenesdecompra;
+
     private List<ProductoSeleccionable> productosSeleccionables;
 
     public Proveedor(int cuit, String responsabilidadIVA, String razonSocial,
@@ -39,9 +43,13 @@ public class Proveedor {
         this.nroIIBB = nroIIBB;
         this.inicioActividad = inicioActividad;
         this.retencionImpuestos = retencionImpuestos;
-        documentos = new ArrayList<>();
-        facturas = new ArrayList<>();
-        productosSeleccionables = new ArrayList<>();
+
+        this.notasdecredito = new ArrayList<>();
+        this.notasdedebito = new ArrayList<>();
+        this.ordenesdepago = new ArrayList<>();
+        this.ordenesdecompra = new ArrayList<>();
+        this.facturas = new ArrayList<Factura>();
+        this.productosSeleccionables = new ArrayList<>();
     }
 
     public List<ProductoSeleccionable> getProductosSeleccionables() {
@@ -117,29 +125,43 @@ public class Proveedor {
         return 0;
     }
 
-    public List<Documento> getDocumentos (){
-        return this.documentos;
-
-    }
-
     public List<Documento> getDocumentosImpagos(){
         return null; // Iterar sobre documentos y delvolver los que esten en false.
-    }
-
-    public void getPagos(){
-
     }
 
     public List<Factura> getFacturasXdia(LocalDate dia){
         return facturas;
     }
 
-    public List getFacturas() {
+    public List<Factura> getFacturas() {
         return this.facturas;
     }
 
-    /*public ProductoSeleccionable getProductoSeleccionable(){
+    public List<Factura> getFacturas(LocalDate desde, LocalDate hasta) {
+        List<Factura> facturasxfecha = new ArrayList<>();
+        for (Factura f : facturas){
+            if( (f.getFecha().isBefore(hasta) || f.getFecha().isEqual(hasta)) &&
+                    f.getFecha().isAfter(desde) || f.getFecha().isEqual(hasta))
+            {
+                facturasxfecha.add(f);
+            }
+        }
+        return facturasxfecha;
+    }
 
-    }*/
+    public List<NotaDeCredito> getNotasdecredito() {
+        return notasdecredito;
+    }
 
+    public List<NotaDeDebito> getNotasdedebito() {
+        return notasdedebito;
+    }
+
+    public List<OrdenDePago> getOrdenesdepago() {
+        return ordenesdepago;
+    }
+
+    public List<OrdenDeCompra> getOrdenesdecompra() {
+        return ordenesdecompra;
+    }
 }
