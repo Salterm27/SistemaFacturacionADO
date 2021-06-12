@@ -6,12 +6,13 @@ import domain.modelo.proveedores.Proveedor;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ControllerProveedor {
     List <Proveedor> proveedores ;
-    int ItemizerFacturas = 0;
+    int documentCounter = 0;
 
 
     public ControllerProveedor() {
@@ -34,7 +35,7 @@ public class ControllerProveedor {
     public void addFactura(int cuit, Boolean aprobacion, OrdenDeCompra ordenDeCompra, Map<ProductoSeleccionable, Integer > detalle ){
 
         Proveedor p = this.getProveedorXcuit(cuit);
-        Factura a = new Factura(++ItemizerFacturas,  aprobacion,  ordenDeCompra, detalle);
+        Factura a = new Factura(++documentCounter,  aprobacion,  ordenDeCompra, detalle);
         p.addFactura(a);
     }
 
@@ -50,7 +51,7 @@ public class ControllerProveedor {
         Proveedor p = getProveedorXcuit(cuit);
         List<Factura> facturas =  p.getFacturas();
         for (Factura f: facturas){
-            System.out.println(f.getNroFactura() + " " + f.getFecha());
+            System.out.println(f.getNumeroDocumento() + " " + f.getFecha());
             //imprimir si el mapa esta ok, se puede comentar on continue
             if (f.getDetalle() != null) {
                 for (Map.Entry<ProductoSeleccionable, Integer> entry : f.getDetalle().entrySet()) {
@@ -72,7 +73,7 @@ public class ControllerProveedor {
 
     // consultas generales
 
-    private List<Documento> recopilarDocumentos(Proveedor p ){
+    private List<Documento> recopilarDocumentos( Proveedor p ){
         List documentos = new ArrayList<>();
         for (Factura factura: p.getFacturas()){
             documentos.add(factura);
@@ -83,24 +84,35 @@ public class ControllerProveedor {
         for (NotaDeDebito nd: p.getNotasdedebito()){
             documentos.add(nd);
         }
-        for (Factura factura: p.getFacturas()){
-            documentos.add(factura);
+        for (OrdenDeCompra ordenCompra: p.getOrdenesdecompra()){
+            documentos.add(ordenCompra);
         }
-        for (Factura factura: p.getFacturas()){
-            documentos.add(factura);
+        for (OrdenDePago ordenPago: p.getOrdenesdepago()){
+            documentos.add(ordenPago);
         }
         return documentos;
     }
 
-    public List getFacturasProveedor(int cuit){
+    public List getFacturas(int cuit){
         Proveedor p = getProveedorXcuit(cuit);
+        return p.getFacturas();
+    }
+
+    public List getFacturas(int cuit, LocalDate inicio, LocalDate fin ){
 
         return null;
     }
-    public List getFacturasProveedor(int cuit, LocalDate inicio, LocalDate fin ){
-        return null;
-    }
-    public List getFacturasProveedor(LocalDate inicio, LocalDate fin){
+    public List getFacturas(LocalDate inicio, LocalDate fin){
+        // map < Alias_Localdate , cantidad entre fechas >
+        Map <String,Integer> facturasXproveedor  = new HashMap<>();
+        System.out.println(inicio.toString() + " "  + fin.toString());
+        if( inicio.isBefore(fin) && fin.isAfter(inicio) ||inicio.isEqual(fin)){
+            for (Proveedor p: proveedores){
+                List facturaProveedorPorDia = p.getFacturas(inicio,fin);
+                facturasXproveedor.put(p.getNombreFantasia() +" qty:"  ,facturaProveedorPorDia.size());
+                System.out.println(p.getNombreFantasia() +" qty:" + facturaProveedorPorDia.size());
+            }
+        }
         return null;
     }
 }

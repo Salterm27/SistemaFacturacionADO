@@ -10,6 +10,7 @@ import java.util.Map;
 
 public abstract class Documento {
 
+    protected int numeroDocumento;
     protected Double monto;
     protected LocalDate fecha;
     protected Map <ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
@@ -40,5 +41,11 @@ public abstract class Documento {
         return fecha;
     }
 
+    public int getNumeroDocumento() {
+        return numeroDocumento;
+    }
 
+    public void setNumeroDocumento(int numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
 }

@@ -9,28 +9,19 @@ import java.util.Map;
 
 public class Factura extends Documento{
 
-    private int NroFactura;
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
     private ImpuestoAplicable impuestoAplicable;
 
 
     public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, Map<ProductoSeleccionable, Integer> detalle ){
-        NroFactura = nroFactura;
+        super.numeroDocumento = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;
         super.inicializarFecha();
         super.detalle = detalle;
     }
 
-
-    public Integer getNroFactura() {
-        return NroFactura;
-    }
-
-    public void setNroFactura(Integer nroFactura) {
-        NroFactura = nroFactura;
-    }
 
     public OrdenDeCompra getOrdenDeCompra() {
         return ordenDeCompra;

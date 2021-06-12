@@ -137,6 +137,18 @@ public class Proveedor {
         return this.facturas;
     }
 
+    public List<Factura> getFacturas(LocalDate desde, LocalDate hasta) {
+        List<Factura> facturasxfecha = new ArrayList<>();
+        for (Factura f : facturas){
+            if( (f.getFecha().isBefore(hasta) || f.getFecha().isEqual(hasta)) &&
+                    f.getFecha().isAfter(desde) || f.getFecha().isEqual(hasta))
+            {
+                facturasxfecha.add(f);
+            }
+        }
+        return facturasxfecha;
+    }
+
     public List<NotaDeCredito> getNotasdecredito() {
         return notasdecredito;
     }
