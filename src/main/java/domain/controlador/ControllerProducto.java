@@ -53,9 +53,9 @@ public class ControllerProducto {
         return ps;
     }
 
-    public ProductoSeleccionable getProductoSeleccionable(String nombre){
+    public ProductoSeleccionable getProductoSeleccionable(String nombre, int cuit){
         for (ProductoSeleccionable ps : productoSeleccionables){
-            if(ps.getProducto().getNombre() == nombre){
+            if(ps.getProducto().getNombre() == nombre && ps.getProveedor().getCuit() == cuit ){
                 return ps;
             }
         }
