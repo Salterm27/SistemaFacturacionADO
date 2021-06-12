@@ -1,7 +1,6 @@
 package domain.controlador;
 
-import domain.modelo.documentos.Factura;
-import domain.modelo.documentos.OrdenDeCompra;
+import domain.modelo.documentos.*;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
 
@@ -59,5 +58,40 @@ public class ControllerProveedor {
 
     public void asociarProductoSeleccionable(int cuitProveedor, ProductoSeleccionable ps){
         getProveedorXcuit(cuitProveedor).asociarProductoSeleccionable(ps);
+    }
+
+
+    // consultas generales
+
+    private List<Documento> recopilarDocumentos(Proveedor p ){
+        List documentos = new ArrayList<>();
+        for (Factura factura: p.getFacturas()){
+            documentos.add(factura);
+        }
+        for (NotaDeCredito nc: p.getNotasdecredito()){
+            documentos.add(nc);
+        }
+        for (NotaDeDebito nd: p.getNotasdedebito()){
+            documentos.add(nd);
+        }
+        for (Factura factura: p.getFacturas()){
+            documentos.add(factura);
+        }
+        for (Factura factura: p.getFacturas()){
+            documentos.add(factura);
+        }
+        return documentos;
+    }
+
+    public List getFacturasProveedor(int cuit){
+        Proveedor p = getProveedorXcuit(cuit);
+
+        return null;
+    }
+    public List getFacturasProveedor(int cuit, LocalDate inicio, LocalDate fin ){
+        return null;
+    }
+    public List getFacturasProveedor(LocalDate inicio, LocalDate fin){
+        return null;
     }
 }

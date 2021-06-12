@@ -29,12 +29,13 @@ public abstract class Documento {
         return monto;
     }
 
-    /*public void calcularMonto(){
+    public void calcularMonto(){
         monto = 0.0;
         for (Map.Entry<ProductoSeleccionable, Integer > entry : detalle.entrySet()){
             monto = monto + entry.getKey().getPrecioPorUnidad() * entry.getValue();
+
         }
-    }*/
+    }
 
     public LocalDate getFecha() {
         return fecha;
