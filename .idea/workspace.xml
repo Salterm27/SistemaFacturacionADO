@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif ControllerProducto.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeCredito.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/NotaDeDebito.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDeCompra.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDePago.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/RetencionImpuesto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/CategoriaGanancias.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/ImpuestoAplicable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/RetencionImpuesto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Producto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/ProductoSeleccionable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Rubro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
-    </list>
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif consultas varias" />
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,6 +123,7 @@
       <workItem from="1623074122828" duration="4000" />
       <workItem from="1623281397063" duration="3997000" />
       <workItem from="1623511757879" duration="178000" />
+      <workItem from="1623512010307" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -166,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622679278215</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modif consultas varias">
+      <created>1623512277616</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623512277616</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +185,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modif ControllerProducto.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif ControllerProducto.java" />
+    <MESSAGE value="modif consultas varias" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif consultas varias" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

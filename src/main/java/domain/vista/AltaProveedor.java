@@ -47,7 +47,7 @@ public class AltaProveedor {
 
     }
 
-    private void start(){
+    public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
         frame.setContentPane( new AltaProveedor(cldrProveedor).PanelDeProveedor);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
