@@ -11,6 +11,10 @@ import domain.vista.AltaDocumento;
 import domain.vista.AltaProveedor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class main {
     public static void main(String[] args) {
@@ -20,17 +24,25 @@ public class main {
 
 
         System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
-
         cldrProveedor.addProveedor(12345678,  "resp_iva",  "Sebastian S.A",
                 "sebas",  "Lima 774",  1156549788,
                 "correoElectronico_proveedor",  12345678,
                 LocalDate.of(2020,5,8),  15);
 
+        cldrProveedor.addProveedor(11111111,  "resp_iva",  "Tomas S.A",
+                "Tomas",  "Lima 774",  1156549788,
+                "correoElectronico_proveedor",  12345678,
+                LocalDate.of(2020,5,8),  15);
+
         cldrProveedor.mostrarProveedores();
 
+
+
         System.out.println("Caso de prueba 2: adjuntar factura a proveedor");
-        cldrProveedor.addFactura( 12345678, 1,  true,  null);
+        cldrProveedor.addFactura( 12345678, true,  null, null);
         cldrProveedor.imprimirfacturas(12345678);
+
+
 
         System.out.println("Caso de prueba 3: Crear instancia de producto y asociar rubro");
         cldrProducto.CrearProducto("Television");
@@ -40,6 +52,8 @@ public class main {
         p.setRubro(r);
         cldrProducto.getProducto("Television").mostrarDetalles() ;
 
+
+
         System.out.println("Caso de prueba 4: Crear producto seleccionable, asociar a producto y a proveedor");
         ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 10, 1,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678));
         cldrProveedor.asociarProductoSeleccionable(12345678, ps);
@@ -47,11 +61,29 @@ public class main {
         cldrProveedor.asociarProductoSeleccionable(12345678, ps2);
 
 
-        // GUIs
-        AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
-        GUIdocumento.start();
 
-        AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
-        GUIproveedor.start();
+        System.out.println("Caso de prueba 5: Crear una factura y asociarle items");
+
+        //creo el listado de items a agregar con su cantidad
+        Map<ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
+
+        // le asigne el producto y la cantidad
+        detalle.put(cldrProducto.getProductoSeleccionable("Television", 12345678),2);
+
+        //ahora que tengo el hasmap, se lo paso como argumento
+        cldrProveedor.addFactura( 12345678, true,  null, detalle);
+
+        cldrProveedor.imprimirfacturas(12345678);
+
+        System.out.println("Caso de prueba 6.2: Calcular ingresos brutos sobre una factura");
+
+
+        System.out.println("Caso de prueba 6.3: Calcular IVA sobre una factura");
+        // GUIs
+        //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
+        //GUIdocumento.start();
+
+        //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
+        //GUIproveedor.start();
     }
 }

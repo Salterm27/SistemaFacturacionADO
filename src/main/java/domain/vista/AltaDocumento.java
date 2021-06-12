@@ -97,6 +97,7 @@ public class AltaDocumento {
             buscarItem.addItem ( ps.getProducto().getNombre() +
                     " <" + ps.getProducto().getRubro().getNombre() + "> Precio:" +
                     (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));
+            //TO DO - No calcular el IVA aca sino en el final de la OP
         }
     }
 }
