@@ -7,6 +7,8 @@ import domain.modelo.proveedores.Proveedor;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -25,6 +27,7 @@ public class AltaDocumento {
     private JPanel panelDoc;
     private JLabel labelFecha;
     private JLabel labelTotal;
+    private JButton crearProveedorButton;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     public AltaDocumento(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto){
@@ -45,11 +48,8 @@ public class AltaDocumento {
         model.addColumn("Cantidad");
         model.addColumn("Total");
 
-
         table1.setModel(model);
 
-        // inicializo los combobox
-        setItemsToSeach();
         setItemsProveedor();
         agregarItemButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -68,6 +68,11 @@ public class AltaDocumento {
                 labelTotal.setText(Double.toString(Double.parseDouble(labelTotal.getText()) + valorTotal));
             }
         });
+        buscarProveedor.addActionListener (new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                setItemsToSeach();
+            }
+        });
     }
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
@@ -80,17 +85,18 @@ public class AltaDocumento {
 
     private void setItemsProveedor(){
         for(Proveedor p: cldrProveedor.getProveedores() ){
-            buscarProveedor.addItem(p.getNombreFantasia() + " | (" +p.getRazonSocial() + ")");
+            buscarProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
         }
     }
 
     private void setItemsToSeach(){
-        for (ProductoSeleccionable ps: cldrProducto.getProductoSeleccionables()){
+        int cuit = Integer.valueOf(buscarProveedor.getSelectedItem().toString().split(" cuit:")[1]);
+        buscarItem.removeAllItems();
+        System.out.println(cuit);
+        for (ProductoSeleccionable ps: cldrProveedor.getProveedorXcuit(cuit).getProductosSeleccionables()){
             buscarItem.addItem ( ps.getProducto().getNombre() +
                     " <" + ps.getProducto().getRubro().getNombre() + "> Precio:" +
-                    ps.getPrecioPorUnidad() );
-
+                    (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));
         }
-
     }
 }

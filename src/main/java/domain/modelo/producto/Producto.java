@@ -4,6 +4,15 @@ public class Producto {
 
     private String nombre;
     private Rubro rubro;
+    private double iva;
+
+    public double getIva() {
+        return iva;
+    }
+
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
 
     public Producto(String nombre) {
         this.nombre = nombre;

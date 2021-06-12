@@ -14,6 +14,7 @@ public class ProductoSeleccionable {
         this.tipoDeUnidad = tipoDeUnidad;
         this.producto = producto;
         this.proveedor = proveedor;
+        this.producto.setIva(21);
     }
 
     public Float getPrecioPorUnidad() {
