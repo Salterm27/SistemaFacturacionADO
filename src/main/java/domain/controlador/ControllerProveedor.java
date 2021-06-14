@@ -39,7 +39,7 @@ public class ControllerProveedor {
         p.addFactura(a);
     }
 
-    public void addProveedor(int cuit, String responsabilidadIVA, String razonSocial,
+    public void addProveedor(int cuit,String responsabilidadIVA, String razonSocial,
                              String nombreFantasia, String direccion, int telefono,
                              String correoElectronico, int nroIIBB, LocalDate inicioActividad,
                              int retencionImpuestos){
@@ -47,6 +47,23 @@ public class ControllerProveedor {
         proveedores.add (p);
         mostrarProveedores();
     }
+
+    public void addOrdenDePago(int cuit, int numDoc,float totalACancelar, float totalRetenciones, LocalDate fechaLimite){
+        OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite);
+        for(Proveedor p: proveedores){
+            if(p.getCuit() == cuit){
+                p.addOrdenDePago(op);
+                for(Factura f: p.getFacturas()){
+                    if(f.getNumeroDocumento() == numDoc){
+                        f.setOrdenDePago(op);
+                        System.out.println("se asocio op a factura: " + f.getNumeroDocumento() + " con proveedor " + p.getNombreFantasia());
+                    }
+                }
+            }
+        }
+    }
+
+
     public void imprimirfacturas( int cuit ){
         Proveedor p = getProveedorXcuit(cuit);
         List<Factura> facturas =  p.getFacturas();

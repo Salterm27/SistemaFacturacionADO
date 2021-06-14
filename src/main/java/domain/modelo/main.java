@@ -35,8 +35,6 @@ public class main {
 
         cldrProveedor.mostrarProveedores();
 
-
-
         System.out.println("Caso de prueba 2: adjuntar factura a proveedor");
         cldrProveedor.addFactura( 12345678, true,  null, null);
         cldrProveedor.imprimirfacturas(12345678);
@@ -76,13 +74,16 @@ public class main {
 
         System.out.println("Caso de prueba 6.3: Calcular IVA sobre una factura");
 
+        System.out.println("Caso de prueba 8: Generar Orden de pago y asociar a factura");
+        cldrProveedor.addOrdenDePago(12345678, 1, 11, 5, LocalDate.now());
+
         System.out.println("Caso de prueba 9: Calcular facturas emitidas por todos los proveedores en un periodo dado");
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
         // GUIs
-        //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
-        //GUIdocumento.start();
+        /*AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
+        GUIdocumento.start();*/
 
-        AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
-        GUIproveedor.start();
+        /*AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
+        GUIproveedor.start();*/
     }
 }

@@ -164,4 +164,8 @@ public class Proveedor {
     public List<OrdenDeCompra> getOrdenesdecompra() {
         return ordenesdecompra;
     }
+
+    public void addOrdenDePago(OrdenDePago op) {
+        ordenesdepago.add(op);
+    }
 }

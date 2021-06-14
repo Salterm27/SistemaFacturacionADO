@@ -12,7 +12,7 @@ public class Factura extends Documento{
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
     private ImpuestoAplicable impuestoAplicable;
-
+    private OrdenDePago ordenDePago;
 
     public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, Map<ProductoSeleccionable, Integer> detalle ){
         super.numeroDocumento = nroFactura;
@@ -22,6 +22,13 @@ public class Factura extends Documento{
         super.detalle = detalle;
     }
 
+    public OrdenDePago getOrdenDePago() {
+        return ordenDePago;
+    }
+
+    public void setOrdenDePago(OrdenDePago ordenDePago) {
+        this.ordenDePago = ordenDePago;
+    }
 
     public OrdenDeCompra getOrdenDeCompra() {
         return ordenDeCompra;
