@@ -1,12 +1,14 @@
 package domain.vista;
 
+import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProveedor;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
 
 public class AltaProveedor {
     private JPanel PanelDeProveedor;
@@ -15,9 +17,7 @@ public class AltaProveedor {
     private JTextField textCuit;
     private JComboBox textIVA;
     private JTextField textIIBB;
-    private JTextField textActividad;
     private JTextField textCalle;
-    private JTextField textNumero;
     private JTextField textCiudad;
     private JTextField textTelefono;
     private JTextField textElectronico;
@@ -30,14 +30,15 @@ public class AltaProveedor {
     private JLabel nIIBB;
     private JLabel iActividad;
     private JLabel calle;
-    private JLabel numero;
     private JLabel ciudad;
     private JLabel telefono;
     private JLabel correoElectronico;
+    private JPanel calendarPanel;
+    private JDateChooser fechaActividad;
     private ControllerProveedor cldrProveedor;
 
     public AltaProveedor(ControllerProveedor cldrProveedor){
-        this.cldrProveedor = new ControllerProveedor(); // por ahora se crea desp se recibe como param
+        this.cldrProveedor = cldrProveedor; // por ahora se crea desp se recibe como param
         aceptarButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -45,6 +46,15 @@ public class AltaProveedor {
                 altaProveedor();
             }
         });
+        Calendar cld = Calendar.getInstance();
+        fechaActividad = new JDateChooser(cld.getTime());
+        calendarPanel.add(fechaActividad);
+        fechaActividad.setDateFormatString("dd/MM/yyyy");
+
+
+        LocalDate date = LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault());
+        System.out.println(date);
+
     }
 
     public void start(){
@@ -63,7 +73,16 @@ public class AltaProveedor {
 
         cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getActionCommand(),textRazonSocial.getText(),
                 textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
-                textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.now(), 1);
+                textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault()), 1);
 
+        /*int cuit, String responsabilidadIVA, String razonSocial,
+                String nombreFantasia, String direccion, int telefono,
+        String correoElectronico, int nroIIBB, LocalDate inicioActividad,
+        int retencionImpuestos*/
+
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
