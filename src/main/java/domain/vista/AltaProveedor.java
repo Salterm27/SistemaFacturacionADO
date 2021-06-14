@@ -4,6 +4,8 @@ import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProveedor;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -34,13 +36,8 @@ public class AltaProveedor {
 
     public AltaProveedor(ControllerProveedor cldrProveedor){
         this.cldrProveedor = cldrProveedor; // por ahora se crea desp se recibe como param
-        aceptarButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-                altaProveedor();
-            }
-        });
+        this.asociarEventos();
+
         Calendar cld = Calendar.getInstance();
         fechaActividad = new JDateChooser(cld.getTime());
         calendarPanel.add(fechaActividad);
@@ -51,6 +48,8 @@ public class AltaProveedor {
         System.out.println(date);
 
     }
+
+
 
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
@@ -81,5 +80,18 @@ public class AltaProveedor {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+    }
+
+    private void asociarEventos() {
+        aceptarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                altaProveedor();
+                JOptionPane.showMessageDialog(null,"Se creo el Proveedor:" + " " + textRazonSocial.getText());
+            }
+        });
+
+
     }
 }
