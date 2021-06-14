@@ -45,7 +45,7 @@ public class ControllerProveedor {
                              int retencionImpuestos){
         Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial, nombreFantasia,  direccion,  telefono, correoElectronico,  nroIIBB,  inicioActividad,  retencionImpuestos);
         proveedores.add (p);
-
+        mostrarProveedores();
     }
     public void imprimirfacturas( int cuit ){
         Proveedor p = getProveedorXcuit(cuit);
@@ -93,15 +93,24 @@ public class ControllerProveedor {
         return documentos;
     }
 
-    public List getFacturas(int cuit){
+    public int getFacturas(int cuit){
         Proveedor p = getProveedorXcuit(cuit);
-        return p.getFacturas();
+        return p.getFacturas().size();
     }
 
     public List getFacturas(int cuit, LocalDate inicio, LocalDate fin ){
+        Proveedor p = getProveedorXcuit(cuit);
+        Map <String,Integer> facturasXproveedor  = new HashMap<>();
+        System.out.println(inicio.toString() + " "  + fin.toString());
+        if( inicio.isBefore(fin) && fin.isAfter(inicio)  && p != null || inicio.isEqual(fin) && p != null){
+            List facturaProveedorPorDia = p.getFacturas(inicio,fin);
+            facturasXproveedor.put(p.getNombreFantasia() +" qty:"  ,facturaProveedorPorDia.size());
+            System.out.println(p.getNombreFantasia() +" qty:" + facturaProveedorPorDia.size());
 
+        }
         return null;
     }
+
     public List getFacturas(LocalDate inicio, LocalDate fin){
         // map < Alias_Localdate , cantidad entre fechas >
         Map <String,Integer> facturasXproveedor  = new HashMap<>();

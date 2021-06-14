@@ -82,7 +82,7 @@ public class main {
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
         //GUIdocumento.start();
 
-        //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
-        //GUIproveedor.start();
+        AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
+        GUIproveedor.start();
     }
 }

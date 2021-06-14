@@ -3,6 +3,7 @@ package domain.vista;
 import domain.controlador.ControllerProveedor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -44,7 +45,6 @@ public class AltaProveedor {
                 altaProveedor();
             }
         });
-
     }
 
     public void start(){
@@ -60,6 +60,7 @@ public class AltaProveedor {
     }
 
     private void altaProveedor(){
+
         cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getActionCommand(),textRazonSocial.getText(),
                 textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
                 textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.now(), 1);

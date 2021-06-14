@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Merge remote-tracking branch 'origin/master' into Tomas_12-6&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;TP_Grupo6.iml&#10;#&#9;src/main/java/domain/modelo/documentos/Documento.java">
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif consultas varias">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,11 +49,11 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="273" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="215" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="253" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
-    <property name="settings.editor.selected.configurable" value="xpath.settings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -108,17 +103,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
@@ -146,6 +130,11 @@
       <workItem from="1623281397063" duration="3997000" />
       <workItem from="1623511757879" duration="178000" />
       <workItem from="1623512010307" duration="313000" />
+      <workItem from="1623532003736" duration="1480000" />
+      <workItem from="1623603052557" duration="54000" />
+      <workItem from="1623606852509" duration="351000" />
+      <workItem from="1623613147549" duration="1911000" />
+      <workItem from="1623629563707" duration="2774000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -175,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623512277616</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="modif consultas varias">
+      <created>1623527941955</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623527941955</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
