@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="AltaDocumento">
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Metodo Generar Orden de pago">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Factura.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDeCompra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Factura.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623527941955</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Metodo Generar Orden de pago">
+      <created>1623687002147</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623687002147</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +216,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modif ControllerProducto.java" />
     <MESSAGE value="modif consultas varias" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif consultas varias" />
+    <MESSAGE value="Metodo Generar Orden de pago" />
+    <option name="LAST_COMMIT_MESSAGE" value="Metodo Generar Orden de pago" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -2,6 +2,8 @@ package domain.vista;
 
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
+import domain.modelo.documentos.Factura;
+import domain.modelo.documentos.OrdenDeCompra;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
 
@@ -28,13 +30,22 @@ public class AltaDocumento {
     private JLabel labelFecha;
     private JLabel labelTotal;
     private JButton crearProveedorButton;
+    private JComboBox ordenesdecompra;
+    private JLabel labelOCasociada;
+    private JComboBox facturasAsociadas;
+    private JLabel labelFacturasAsociadas;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
+    private Proveedor proveedor;
     public AltaDocumento(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto){
         this.cldrProveedor = cldrProveedor;
         this.cldrProducto = cldrProducto;
 
+        mostrarOrdenesDeCompraAsociadas(false);
+        mostrarFacturasAsociadas(false);
+
         labelFecha.setText("Fecha: "+ LocalDate.now().toString());
+        tipoDocBox.addItem("");
         tipoDocBox.addItem("Factura");
         tipoDocBox.addItem("Nota de Credito");
         tipoDocBox.addItem("Nota de Debito");
@@ -73,7 +84,42 @@ public class AltaDocumento {
                 setItemsToSeach();
             }
         });
+        tipoDocBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarFacturasAsociadas(false);
+                mostrarOrdenesDeCompraAsociadas(false);
+
+                if(tipoDocBox.getSelectedItem().toString() == "Factura"){
+                    mostrarOrdenesDeCompraAsociadas(true);
+                    if(proveedor!=null){
+                        for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
+                            ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
+                        }
+                    }
+                }
+                else if (tipoDocBox.getSelectedItem().toString() == "Orden de pago"){
+                    mostrarFacturasAsociadas(true);
+                    if(proveedor!=null){
+                        for(Factura f: proveedor.getFacturas()){
+                            facturasAsociadas.addItem(f.getNumeroDocumento() +"-"+f.getFecha()+"-"+f.getMonto() );
+                        }
+                    }
+                }
+
+            }
+        });
     }
+
+    private void mostrarOrdenesDeCompraAsociadas(boolean select){
+        ordenesdecompra.setVisible(select);
+        labelOCasociada.setVisible(select);
+    }
+    private void mostrarFacturasAsociadas(boolean select){
+        facturasAsociadas.setVisible(select);
+        labelFacturasAsociadas.setVisible(select);
+    }
+
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
         frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
@@ -84,6 +130,7 @@ public class AltaDocumento {
     }
 
     private void setItemsProveedor(){
+        buscarProveedor.addItem("");
         for(Proveedor p: cldrProveedor.getProveedores() ){
             buscarProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
         }
@@ -91,9 +138,10 @@ public class AltaDocumento {
 
     private void setItemsToSeach(){
         int cuit = Integer.valueOf(buscarProveedor.getSelectedItem().toString().split(" cuit:")[1]);
+        this.proveedor =  cldrProveedor.getProveedorXcuit(cuit);
         buscarItem.removeAllItems();
         System.out.println(cuit);
-        for (ProductoSeleccionable ps: cldrProveedor.getProveedorXcuit(cuit).getProductosSeleccionables()){
+        for (ProductoSeleccionable ps: proveedor.getProductosSeleccionables()){
             buscarItem.addItem ( ps.getProducto().getNombre() +
                     " <" + ps.getProducto().getRubro().getNombre() + "> Precio:" +
                     (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));

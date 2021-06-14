@@ -63,6 +63,10 @@ public class ControllerProveedor {
         }
     }
 
+    public void addOrdenDeCompra(){
+        OrdenDeCompra oc = new OrdenDeCompra();
+    }
+
 
     public void imprimirfacturas( int cuit ){
         Proveedor p = getProveedorXcuit(cuit);
