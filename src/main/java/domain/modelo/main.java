@@ -81,7 +81,7 @@ public class main {
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
         // GUIs
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
-        //GUIdocumento.start();
+       // GUIdocumento.start();
 
         AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         GUIproveedor.start();

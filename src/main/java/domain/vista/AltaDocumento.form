@@ -71,7 +71,9 @@
         <constraints>
           <grid row="1" column="5" row-span="3" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <model/>
+        </properties>
       </component>
       <component id="c95e4" class="javax.swing.JLabel" binding="labelProveedor">
         <constraints>

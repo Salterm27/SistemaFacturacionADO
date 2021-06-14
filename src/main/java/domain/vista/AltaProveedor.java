@@ -24,12 +24,6 @@ public class AltaProveedor {
     private JTextField textElectronico;
     private JButton aceptarButton;
     private JButton cancelarButton;
-    private JLabel rSocial;
-    private JLabel nFantasia;
-    private JLabel cuit;
-    private JLabel rIVA;
-    private JLabel nIIBB;
-    private JLabel iActividad;
     private JLabel calle;
     private JLabel ciudad;
     private JLabel telefono;
@@ -64,6 +58,8 @@ public class AltaProveedor {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
     }
 
     private int StringtoNum(String x){

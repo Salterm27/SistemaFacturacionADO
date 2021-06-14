@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif consultas varias">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
@@ -51,7 +53,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="128" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="253" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="509" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
@@ -154,7 +156,7 @@
       <workItem from="1623606852509" duration="351000" />
       <workItem from="1623613147549" duration="1911000" />
       <workItem from="1623629563707" duration="2774000" />
-      <workItem from="1623703016865" duration="237000" />
+      <workItem from="1623703016865" duration="3417000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -198,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623687002147</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modif consultas varias">
+      <created>1623703385344</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1623703385363</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,9 +240,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="modif ControllerProducto.java" />
-    <MESSAGE value="modif consultas varias" />
     <MESSAGE value="Metodo Generar Orden de pago" />
-    <option name="LAST_COMMIT_MESSAGE" value="Metodo Generar Orden de pago" />
+    <MESSAGE value="modif consultas varias" />
+    <option name="LAST_COMMIT_MESSAGE" value="modif consultas varias" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
