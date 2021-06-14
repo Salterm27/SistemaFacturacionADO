@@ -15,6 +15,7 @@ public class MenuPrincipal {
     private JButton buttonCompulsa;
     private JButton buttonDocumentos;
     private JButton creacionDeProductosButton;
+    private JButton consultasGeneralesButton;
     private ControllerProducto cldrProducto;
     private ControllerProveedor cldrProveedor;
 

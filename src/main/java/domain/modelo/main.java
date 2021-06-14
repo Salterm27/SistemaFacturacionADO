@@ -9,6 +9,7 @@ import domain.modelo.producto.Rubro;
 import domain.modelo.proveedores.Proveedor;
 import domain.vista.AltaDocumento;
 import domain.vista.AltaProveedor;
+import domain.vista.MenuPrincipal;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -83,7 +84,10 @@ public class main {
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
        // GUIdocumento.start();
 
-        AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
-        GUIproveedor.start();
+        //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
+        //GUIproveedor.start();
+
+        MenuPrincipal GUImenu = new MenuPrincipal(cldrProducto, cldrProveedor);
+        GUImenu.start();
     }
 }
