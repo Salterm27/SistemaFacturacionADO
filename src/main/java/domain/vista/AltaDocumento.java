@@ -111,6 +111,16 @@ public class AltaDocumento {
         });
     }
 
+    public void start(){
+        JFrame frame = new JFrame("Alta Proveedor");
+        frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.pack();
+        frame.setVisible(true);
+
+    }
+
     private void mostrarOrdenesDeCompraAsociadas(boolean select){
         ordenesdecompra.setVisible(select);
         labelOCasociada.setVisible(select);
@@ -118,15 +128,6 @@ public class AltaDocumento {
     private void mostrarFacturasAsociadas(boolean select){
         facturasAsociadas.setVisible(select);
         labelFacturasAsociadas.setVisible(select);
-    }
-
-    public void start(){
-        JFrame frame = new JFrame("Alta Proveedor");
-        frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-
     }
 
     private void setItemsProveedor(){
