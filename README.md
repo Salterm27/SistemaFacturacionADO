@@ -6,8 +6,6 @@ Consta de un sistema de carga de datos provenientes de un proveedor.
 Tiene la capacidad de generar una factura discriminando los productos por proveedor, ademas de generar ordenes de pago, notas de credito y debido, y ordenes de compra.
 
 Participantes: 
- - Merlo, Marco Joaquín
- - Alterman, Sebastián
- - Schuster, Tomás
+
  
 
