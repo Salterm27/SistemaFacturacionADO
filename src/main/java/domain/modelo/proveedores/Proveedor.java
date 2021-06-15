@@ -64,10 +64,7 @@ public class Proveedor {
         this.productosSeleccionables = productosSeleccionables;
     }
 
-    public void addFactura(Factura f){
-        this.facturas.add(f);
-    }
-
+    public void addFactura(Factura f){this.facturas.add(f);}
 
     public int getCuit() {
         return cuit;
