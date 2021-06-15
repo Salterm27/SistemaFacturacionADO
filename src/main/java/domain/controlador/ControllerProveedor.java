@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ControllerProveedor {
     List <Proveedor> proveedores ;
-    int documentCounter = 0;
+    int documentCounter = 1;
 
 
     public ControllerProveedor() {
@@ -33,9 +33,9 @@ public class ControllerProveedor {
     }
 
     public void addFactura(int cuit, Boolean aprobacion, OrdenDeCompra ordenDeCompra, Map<ProductoSeleccionable, Integer > detalle ){
-
         Proveedor p = this.getProveedorXcuit(cuit);
         Factura a = new Factura(++documentCounter,  aprobacion,  ordenDeCompra, detalle);
+        a.calcularMonto();
         p.addFactura(a);
     }
 
@@ -50,6 +50,7 @@ public class ControllerProveedor {
 
     public void addOrdenDePago(int cuit, int numDoc,float totalACancelar, float totalRetenciones, LocalDate fechaLimite){
         OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite);
+        op.calcularMonto();
         for(Proveedor p: proveedores){
             if(p.getCuit() == cuit){
                 p.addOrdenDePago(op);
