@@ -5,11 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif consultas varias">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jcalendar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/jgoodies_forms_1_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jcalendar.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jgoodies-common-1.8.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jgoodies-forms-1.9.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/OrdenDeCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-core-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-core-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-core.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-swing-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-swing-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/miglayout-swing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/Documento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDeCompra.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/documentos/OrdenDeCompra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/modelo/proveedores/Proveedor.class" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,13 +67,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="128" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="253" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="282" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -64,6 +85,7 @@
       <recent name="domain.modelo.impuestos" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ts252\IdeaProjects\SistemaFacturacionGrupo6\lib" />
       <recent name="C:\Users\ts252\IdeaProjects\SistemaFacturacionGrupo6\src\main\java\domain\vista" />
     </key>
   </component>
@@ -107,13 +129,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,6 +174,7 @@
       <workItem from="1623606852509" duration="351000" />
       <workItem from="1623613147549" duration="1911000" />
       <workItem from="1623629563707" duration="2774000" />
+      <workItem from="1623711571283" duration="4269000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
