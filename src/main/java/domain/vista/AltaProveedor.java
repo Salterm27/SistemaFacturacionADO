@@ -4,6 +4,7 @@ import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProveedor;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,6 +15,7 @@ import java.util.Calendar;
 
 
 public class AltaProveedor {
+
     private JPanel PanelDeProveedor;
     private JTextField textRazonSocial;
     private JTextField textNombreFantasia;

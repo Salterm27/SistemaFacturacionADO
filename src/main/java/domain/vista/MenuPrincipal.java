@@ -18,6 +18,7 @@ public class MenuPrincipal {
     private JButton consultasGeneralesButton;
     private ControllerProducto cldrProducto;
     private ControllerProveedor cldrProveedor;
+    private MenuPrincipal self;
 
     public MenuPrincipal(ControllerProducto cldrProducto, ControllerProveedor cldrProveedor){
         this.cldrProducto = cldrProducto;
@@ -32,8 +33,9 @@ public class MenuPrincipal {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setLocationRelativeTo(null);
         frame.setSize(800,400);
+        frame.setLocationRelativeTo(null);
+
         frame.setResizable(false);
     }
 
@@ -43,6 +45,8 @@ public class MenuPrincipal {
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                AltaProveedor frame= new AltaProveedor(cldrProveedor);
+                frame.start();
 
             }
         });

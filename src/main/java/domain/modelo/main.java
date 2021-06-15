@@ -9,6 +9,7 @@ import domain.modelo.producto.Rubro;
 import domain.modelo.proveedores.Proveedor;
 import domain.vista.AltaDocumento;
 import domain.vista.AltaProveedor;
+import domain.vista.ConsultasGenerales;
 import domain.vista.MenuPrincipal;
 
 import java.time.LocalDate;
@@ -89,5 +90,8 @@ public class main {
 
         MenuPrincipal GUImenu = new MenuPrincipal(cldrProducto, cldrProveedor);
         GUImenu.start();
+
+        //ConsultasGenerales GUIconsultas = new ConsultasGenerales(cldrProveedor, cldrProducto);
+        //GUIconsultas.start();
     }
 }
