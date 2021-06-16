@@ -33,6 +33,7 @@ public class AltaProveedor {
     private JLabel telefono;
     private JLabel correoElectronico;
     private JPanel calendarPanel;
+    private JButton ATRASButton;
     private JDateChooser fechaActividad;
     private static ControllerProveedor cldrProveedor;
 
@@ -48,6 +49,7 @@ public class AltaProveedor {
 
         LocalDate date = LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault());
         System.out.println(date);
+
 
     }
 
@@ -99,6 +101,14 @@ public class AltaProveedor {
                 super.mouseClicked(e);
                 altaProveedor();
                 JOptionPane.showMessageDialog(null,"Se creo el Proveedor:" + " " + textRazonSocial.getText());
+            }
+        });
+
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
             }
         });
 
