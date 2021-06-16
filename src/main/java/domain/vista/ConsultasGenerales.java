@@ -14,8 +14,7 @@ import java.awt.event.ActionListener;
 public class ConsultasGenerales {
     private JPanel panel1;
     private JTabbedPane tabbedPane1;
-    private JComboBox comboBox1;
-    private JButton GENERARButton;
+    private JComboBox Facturas_proveedores;
     private JPanel calendario;
     private JComboBox cuentaCorriente_Proveedor;
     private JTextField CuentaCorriente_EstadodeudaTotal;
@@ -24,20 +23,35 @@ public class ConsultasGenerales {
     private JTable Facturas_table;
     private JTable CuentaCorriente_tabla;
     private DefaultTableModel modelCCtabla;
-
+    private DefaultTableModel modelfacturaTabla;
     // CUENTA CORRIENTE
     // PROVEEDOR, SALDO ( TODOS COMPROBANTES - LO QUE SE LE PAGO )
     public ConsultasGenerales(ControllerProveedor cldrProveedor){
         this.cldrProveedor = cldrProveedor;
-        setProveedor();
 
+        setProveedor();
         makeTableModelCCtabla();
+        makeFacturaTabla();
+
 
         cuentaCorriente_Proveedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int cuit = Integer.valueOf(cuentaCorriente_Proveedor.getSelectedItem().toString().split("cuit:")[1]);
                 CuentaCorriente_EstadodeudaTotal.setText("El estado actual es: "+ estadoDeCuentaCorriente(cuit));
+            }
+        });
+        Facturas_proveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int cuit = Integer.valueOf(Facturas_proveedores.getSelectedItem().toString().split("cuit:")[1]);
+                Proveedor p  =  cldrProveedor.getProveedorXcuit(cuit);
+                //modelfacturaTabla.getDataVector().removeAllElements();
+                if(p!=null){
+                    for(Factura f : p.getFacturas()){
+                        addToFacturaTabla(String.valueOf(f.getNumeroDocumento()),f.getFecha().toString(),String.valueOf(f.getMonto()));
+                    }
+                }
             }
         });
     }
@@ -52,8 +66,10 @@ public class ConsultasGenerales {
 
     private void setProveedor(){
         this.cuentaCorriente_Proveedor.addItem("");
+        this.Facturas_proveedores.addItem("");
         for(Proveedor p: cldrProveedor.getProveedores() ){
             cuentaCorriente_Proveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
+            Facturas_proveedores.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
         }
     }
 
@@ -64,6 +80,21 @@ public class ConsultasGenerales {
         modelCCtabla.addColumn("Total");
         CuentaCorriente_tabla.setModel(modelCCtabla);
     }
+
+    private void makeFacturaTabla(){
+        modelfacturaTabla = new DefaultTableModel();
+        modelfacturaTabla.addColumn("Documento");
+        modelfacturaTabla.addColumn("Fecha emision");
+        modelfacturaTabla.addColumn("Total");
+        Facturas_table.setModel(modelfacturaTabla);
+    }
+
+    private void addToFacturaTabla(String documento, String fechaEmision, String total){
+        modelCCtabla.addRow(new Object[]{
+                documento, fechaEmision, total
+        });
+    }
+
     private void addToModelCCtabla(String documento, String fechaEmision, String total){
         modelCCtabla.addRow(new Object[]{
                 documento, fechaEmision, total
