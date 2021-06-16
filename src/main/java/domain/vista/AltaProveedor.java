@@ -51,10 +51,8 @@ public class AltaProveedor {
         calendarPanel.add(fechaActividad);
         fechaActividad.setDateFormatString("dd/MM/yyyy");
 
-
         LocalDate date = LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault());
         System.out.println(date);
-
     }
 
     public void start(){
@@ -70,7 +68,6 @@ public class AltaProveedor {
     }
 
     private void altaProveedor(){
-
         cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getActionCommand(),textRazonSocial.getText(),
                 textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
                 textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault()), 1);

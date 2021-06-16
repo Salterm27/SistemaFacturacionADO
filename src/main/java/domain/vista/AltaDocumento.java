@@ -9,7 +9,8 @@ import domain.modelo.proveedores.Proveedor;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -37,9 +38,12 @@ public class AltaDocumento {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
+    JFrame frame;
+
     public AltaDocumento(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto){
         this.cldrProveedor = cldrProveedor;
         this.cldrProducto = cldrProducto;
+        frame = new JFrame("Alta Proveedor");
 
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
@@ -109,16 +113,24 @@ public class AltaDocumento {
 
             }
         });
+        crearProveedorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AltaProveedor ap = new AltaProveedor(cldrProveedor);
+                ap.start();
+
+            }
+        });
     }
 
     public void start(){
-        JFrame frame = new JFrame("Alta Proveedor");
+
+
         frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.pack();
         frame.setVisible(true);
-
     }
 
     private void mostrarOrdenesDeCompraAsociadas(boolean select){
