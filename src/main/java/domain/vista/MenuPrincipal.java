@@ -19,16 +19,29 @@ public class MenuPrincipal {
     private ControllerProducto cldrProducto;
     private ControllerProveedor cldrProveedor;
     private MenuPrincipal self;
+    private JFrame frame;
 
     public MenuPrincipal(ControllerProducto cldrProducto, ControllerProveedor cldrProveedor){
         this.cldrProducto = cldrProducto;
         this.cldrProveedor = cldrProveedor;
+        frame = new JFrame("Menu Inicial");
 
+        buttonProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                arrancarAltaProveedor();
+
+
+
+
+            }
+        });
 
     }
 
     public void start(){
-        JFrame frame = new JFrame("Menu Inicial");
+
         frame.setContentPane( new MenuPrincipal(cldrProducto, cldrProveedor).panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
@@ -37,21 +50,33 @@ public class MenuPrincipal {
         frame.setLocationRelativeTo(null);
 
         frame.setResizable(false);
+
+        //asociarEventos();
     }
 
     //metodo para meter todas las acciones de los botones de la pantalla Menu
-    private void asociarEventos() {
+   /* private void asociarEventos() {
 
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("marquillo");
                 AltaProveedor frame= new AltaProveedor(cldrProveedor);
                 frame.start();
+
+
 
             }
         });
 
 
-    }
+    }*/
 
+
+    private void arrancarAltaProveedor(){
+        AltaProveedor frame= new AltaProveedor(cldrProveedor);
+        this.frame.dispose();
+        frame.start();
+
+    }
 }

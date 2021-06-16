@@ -34,7 +34,7 @@ public class AltaProveedor {
     private JLabel correoElectronico;
     private JPanel calendarPanel;
     private JDateChooser fechaActividad;
-    private ControllerProveedor cldrProveedor;
+    private static ControllerProveedor cldrProveedor;
 
     public AltaProveedor(ControllerProveedor cldrProveedor){
         this.cldrProveedor = cldrProveedor; // por ahora se crea desp se recibe como param
@@ -51,7 +51,15 @@ public class AltaProveedor {
 
     }
 
-
+    /*public static void main (String args[]){
+        JFrame frame = new JFrame("Alta Proveedor");
+        frame.setContentPane( new AltaProveedor(cldrProveedor).PanelDeProveedor);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+    }*/
 
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
