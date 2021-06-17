@@ -38,9 +38,9 @@ public class AltaDocumento {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
-    public AltaDocumento(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto){
-        this.cldrProveedor = cldrProveedor;
-        this.cldrProducto = cldrProducto;
+    public AltaDocumento(){
+        this.cldrProducto = ControllerProducto.getInstance();
+        this.cldrProveedor = ControllerProveedor.getInstance();
 
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
@@ -115,7 +115,7 @@ public class AltaDocumento {
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
 
-        frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
+        frame.setContentPane( new AltaDocumento().panelDoc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.pack();

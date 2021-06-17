@@ -19,9 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 public class main {
+
     public static void main(String[] args) {
-        ControllerProveedor cldrProveedor = new ControllerProveedor();
-        ControllerProducto cldrProducto = new ControllerProducto();
+
+        ControllerProducto cldrProducto  = ControllerProducto.getInstance();
+        ControllerProveedor cldrProveedor = ControllerProveedor.getInstance();
 
 
         System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
@@ -88,7 +90,7 @@ public class main {
         //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         //GUIproveedor.start();
 
-        MenuPrincipal GUImenu = new MenuPrincipal(cldrProducto, cldrProveedor);
+        MenuPrincipal GUImenu = new MenuPrincipal();
         GUImenu.start();
 
         //ConsultasGenerales GUIconsultas = new ConsultasGenerales(cldrProveedor, cldrProducto);

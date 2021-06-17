@@ -11,6 +11,9 @@ public class ControllerProducto {
     List<ProductoSeleccionable> productoSeleccionables = new ArrayList<>();
     List<Rubro> rubros = new ArrayList<>();
 
+    private static final ControllerProducto instance = new ControllerProducto();
+    public static ControllerProducto getInstance(){return instance;}
+
     public Rubro buscarRubro (String nombre){
         for (Rubro r : rubros){
             if (r.getNombre() == nombre) {

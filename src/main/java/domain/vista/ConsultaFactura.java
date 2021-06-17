@@ -1,5 +1,6 @@
 package domain.vista;
 
+import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 import domain.modelo.documentos.Factura;
 import domain.modelo.proveedores.Proveedor;
@@ -15,8 +16,8 @@ public class ConsultaFactura {
     private JPanel panel1;
     private ControllerProveedor cldrProveedor;
 
-    public ConsultaFactura(ControllerProveedor cldrProveedor){
-        this.cldrProveedor = cldrProveedor;
+    public ConsultaFactura(){
+        this.cldrProveedor = ControllerProveedor.getInstance();
         setProveedor();
 
         DefaultTableModel modelTabla = new DefaultTableModel();
@@ -49,7 +50,7 @@ public class ConsultaFactura {
     }
     public void start(){
         JFrame frame = new JFrame("Consultas - factura por proveedor");
-        frame.setContentPane( new ConsultaFactura(cldrProveedor).panel1);
+        frame.setContentPane( new ConsultaFactura().panel1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(640,480);
         frame.pack();

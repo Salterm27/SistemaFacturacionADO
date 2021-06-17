@@ -14,6 +14,8 @@ public class ControllerProveedor {
     List <Proveedor> proveedores ;
     int documentCounter = 1;
 
+    private static final ControllerProveedor instance = new ControllerProveedor();
+    public static ControllerProveedor getInstance(){return instance;}
 
     public ControllerProveedor() {
         proveedores = new ArrayList<>();

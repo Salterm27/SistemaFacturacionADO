@@ -21,9 +21,9 @@ public class MenuPrincipal {
     private MenuPrincipal self;
     private JFrame frame;
 
-    public MenuPrincipal(ControllerProducto cldrProducto, ControllerProveedor cldrProveedor){
-        this.cldrProducto = cldrProducto;
-        this.cldrProveedor = cldrProveedor;
+    public MenuPrincipal(){
+        this.cldrProducto = ControllerProducto.getInstance();
+        this.cldrProveedor = ControllerProveedor.getInstance();
         frame = new JFrame("Menu Inicial");
 
         buttonProveedores.addActionListener(new ActionListener() {
@@ -45,7 +45,7 @@ public class MenuPrincipal {
 
     public void start(){
 
-        frame.setContentPane( new MenuPrincipal(cldrProducto, cldrProveedor).panelPrincipal);
+        frame.setContentPane( new MenuPrincipal().panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -85,7 +85,7 @@ public class MenuPrincipal {
 
     private void arrancarAltaDocumentos() {
 
-        AltaDocumento frame=new AltaDocumento(cldrProveedor, cldrProducto);
+        AltaDocumento frame=new AltaDocumento();
         frame.start();
     }
 }
