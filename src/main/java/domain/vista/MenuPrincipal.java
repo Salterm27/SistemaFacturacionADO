@@ -88,4 +88,22 @@ public class MenuPrincipal {
         AltaDocumento frame=new AltaDocumento();
         frame.start();
     }
+
+    /* private void asociarEventos() {
+
+        buttonProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("marquillo");
+                AltaProveedor frame= new AltaProveedor(cldrProveedor);
+                frame.start();
+
+
+
+            }
+        });
+
+
+    }*/
+
 }
