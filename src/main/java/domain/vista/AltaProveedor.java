@@ -38,6 +38,7 @@ public class AltaProveedor {
     private JDateChooser fechaActividad;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
+    private AltaProveedor self;
 
     public AltaProveedor(){
         this.cldrProveedor = ControllerProveedor.getInstance();
@@ -106,6 +107,7 @@ public class AltaProveedor {
                 super.mouseClicked(e);
                 altaProveedor();
                 JOptionPane.showMessageDialog(null,"Se creo el Proveedor:" + " " + textRazonSocial.getText());
+
             }
         });
 
@@ -113,10 +115,10 @@ public class AltaProveedor {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-
             }
         });
-
-
     }
+
+
+
 }
