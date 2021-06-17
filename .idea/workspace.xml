@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Menu Inicial con 2 botones funcionando">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jcalendar__3_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_19_55__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_19_55__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_19_57__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_19_57__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_16__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_16__Default_Changelist_.xml" afterDir="false" />
@@ -16,13 +15,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultaFactura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultaFactura.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="recoveryDos" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,17 +118,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
@@ -170,6 +152,7 @@
       <workItem from="1623629563707" duration="2774000" />
       <workItem from="1623703016865" duration="12288000" />
       <workItem from="1623878878476" duration="4260000" />
+      <workItem from="1623892346374" duration="676000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
