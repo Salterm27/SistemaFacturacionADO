@@ -25,7 +25,7 @@ public class AltaDocumento {
     private JButton agregarItemButton;
     private JButton generarDocumentoButton;
     private JLabel labelProveedor;
-    private JButton CANCELARButton;
+    private JButton cancelarButton;
     private JPanel panelDoc;
     private JLabel labelFecha;
     private JLabel labelTotal;
@@ -34,6 +34,7 @@ public class AltaDocumento {
     private JLabel labelOCasociada;
     private JComboBox facturasAsociadas;
     private JLabel labelFacturasAsociadas;
+    private JLabel fechaHoy;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
@@ -44,7 +45,7 @@ public class AltaDocumento {
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
 
-        labelFecha.setText("Fecha: "+ LocalDate.now().toString());
+        fechaHoy.setText("Fecha: "+ LocalDate.now().toString());
         tipoDocBox.addItem("");
         tipoDocBox.addItem("Factura");
         tipoDocBox.addItem("Nota de Credito");

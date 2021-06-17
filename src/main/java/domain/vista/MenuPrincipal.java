@@ -29,15 +29,18 @@ public class MenuPrincipal {
         buttonProveedores.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 arrancarAltaProveedor();
-
-
-
-
             }
         });
 
+        buttonDocumentos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarAltaDocumentos();
+            }
+
+
+        });
     }
 
     public void start(){
@@ -75,8 +78,14 @@ public class MenuPrincipal {
 
     private void arrancarAltaProveedor(){
         AltaProveedor frame= new AltaProveedor(cldrProveedor);
-        this.frame.dispose();
+        this.frame.setVisible(false);
         frame.start();
 
+    }
+
+    private void arrancarAltaDocumentos() {
+
+        AltaDocumento frame=new AltaDocumento(cldrProveedor, cldrProducto);
+        frame.start();
     }
 }
