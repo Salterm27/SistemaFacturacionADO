@@ -64,12 +64,15 @@ public class ConsultaFactura {
                 modelTabla.getDataVector().removeAllElements();
                 if ( proveedorSeleccionado != null){
                     for (Factura f: proveedorSeleccionado.getFacturas()){
-                        if( f.getFecha().equals(datedesde) || f.getFecha().isEqual(datehasta) ){
+                        if( f.getFecha().isAfter(datedesde) && f.getFecha().isBefore(datehasta) || f.getFecha().equals(datedesde) || f.getFecha().isEqual(datehasta) ){
                             System.out.println(f.getFecha().toString()+ " " + datedesde.toString() + " " + datehasta.toString());
                             modelTabla.addRow(new Object[]{
                                     f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
                         }
+
+
                     }
+                    modelTabla.fireTableDataChanged();
                 }
 
 

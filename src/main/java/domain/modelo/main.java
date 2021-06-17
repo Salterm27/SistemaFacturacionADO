@@ -80,6 +80,7 @@ public class main {
 
         System.out.println("Caso de prueba 9: Calcular facturas emitidas por todos los proveedores en un periodo dado");
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
+
         // GUIs
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
        // GUIdocumento.start();
@@ -90,7 +91,10 @@ public class main {
         //MenuPrincipal GUImenu = new MenuPrincipal();
         //GUImenu.start();
 
-        ConsultaFactura cf = new ConsultaFactura();
-        cf.start();
+        //ConsultaFactura cf = new ConsultaFactura();
+        //cf.start();
+
+        ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
+        ccc.start();
     }
 }
