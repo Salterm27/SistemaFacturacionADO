@@ -136,7 +136,7 @@ public class AltaDocumento {
         JFrame frame = new JFrame("Alta Proveedor");
 
         frame.setContentPane( new AltaDocumento().panelDoc);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

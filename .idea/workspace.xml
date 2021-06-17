@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Menu Inicial con 2 botones funcionando">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" afterDir="false" />
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Nuevas Pantallas Producto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623898651655</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Nuevas Pantallas Producto">
+      <created>1623900047812</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1623900047812</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +323,8 @@
     <MESSAGE value="Metodo Generar Orden de pago" />
     <MESSAGE value="modif consultas varias" />
     <MESSAGE value="Menu Inicial con 2 botones funcionando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu Inicial con 2 botones funcionando" />
+    <MESSAGE value="Nuevas Pantallas Producto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nuevas Pantallas Producto" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

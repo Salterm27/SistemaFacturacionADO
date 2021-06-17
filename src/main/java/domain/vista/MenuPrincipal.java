@@ -41,6 +41,15 @@ public class MenuPrincipal {
 
 
         });
+
+        creacionDeProductosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarCreacionProducto();
+            }
+
+
+        });
     }
 
     public void start(){
@@ -88,4 +97,11 @@ public class MenuPrincipal {
         AltaDocumento frame=new AltaDocumento();
         frame.start();
     }
+
+    private void arrancarCreacionProducto() {
+
+        CreacionProducto frame = new CreacionProducto(cldrProducto);
+        frame.start();
+    }
+
 }
