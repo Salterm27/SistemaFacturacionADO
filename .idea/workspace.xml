@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="modif consultas varias">
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Menu Inicial con 2 botones funcionando">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TP_Grupo6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TP_Grupo6.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/AltaDocumento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/vista/AltaDocumento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/domain/vista/AltaProveedor.class" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -234,7 +238,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623881774072</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Menu Inicial con 2 botones funcionando">
+      <created>1623890097227</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1623890097227</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Menu Inicial con 2 botones funcionando">
+      <created>1623890230097</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1623890230097</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +287,8 @@
     <MESSAGE value="modif ControllerProducto.java" />
     <MESSAGE value="Metodo Generar Orden de pago" />
     <MESSAGE value="modif consultas varias" />
-    <option name="LAST_COMMIT_MESSAGE" value="modif consultas varias" />
+    <MESSAGE value="Menu Inicial con 2 botones funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menu Inicial con 2 botones funcionando" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
