@@ -1,0 +1,358 @@
+Index: src/main/java/domain/vista/AltaDocumento.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain.vista;\r\n\r\nimport domain.controlador.ControllerProducto;\r\nimport domain.controlador.ControllerProveedor;\r\nimport domain.modelo.documentos.Factura;\r\nimport domain.modelo.documentos.OrdenDeCompra;\r\nimport domain.modelo.producto.ProductoSeleccionable;\r\nimport domain.modelo.proveedores.Proveedor;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.table.DefaultTableModel;\r\nimport java.awt.*;\r\nimport java.awt.event.*;\r\nimport java.awt.event.ActionListener;\r\nimport java.awt.event.MouseAdapter;\r\nimport java.awt.event.MouseEvent;\r\nimport java.time.LocalDate;\r\n\r\n\r\npublic class AltaDocumento {\r\n    private JComboBox buscarProveedor;\r\n    private JComboBox tipoDocBox;\r\n    private JTable table1;\r\n    private JComboBox buscarItem;\r\n    private JSpinner cantidadPedida;\r\n    private JButton agregarItemButton;\r\n    private JButton generarDocumentoButton;\r\n    private JLabel labelProveedor;\r\n    private JButton CANCELARButton;\r\n    private JPanel panelDoc;\r\n    private JLabel labelFecha;\r\n    private JLabel labelTotal;\r\n    private JButton crearProveedorButton;\r\n    private JComboBox ordenesdecompra;\r\n    private JLabel labelOCasociada;\r\n    private JComboBox facturasAsociadas;\r\n    private JLabel labelFacturasAsociadas;\r\n    private ControllerProveedor cldrProveedor;\r\n    private ControllerProducto cldrProducto;\r\n    private Proveedor proveedor;\r\n    JFrame frame;\r\n\r\n    public AltaDocumento(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto){\r\n        this.cldrProveedor = cldrProveedor;\r\n        this.cldrProducto = cldrProducto;\r\n        frame = new JFrame(\"Alta Proveedor\");\r\n\r\n        mostrarOrdenesDeCompraAsociadas(false);\r\n        mostrarFacturasAsociadas(false);\r\n\r\n        labelFecha.setText(\"Fecha: \"+ LocalDate.now().toString());\r\n        tipoDocBox.addItem(\"\");\r\n        tipoDocBox.addItem(\"Factura\");\r\n        tipoDocBox.addItem(\"Nota de Credito\");\r\n        tipoDocBox.addItem(\"Nota de Debito\");\r\n        tipoDocBox.addItem(\"Orden de compra\");\r\n        tipoDocBox.addItem(\"Orden de pago\");\r\n        labelTotal.setText(\"0\");\r\n\r\n        DefaultTableModel model = new DefaultTableModel();\r\n        model.addColumn(\"Nombre\");\r\n        model.addColumn(\"Precio\");\r\n        model.addColumn(\"Cantidad\");\r\n        model.addColumn(\"Total\");\r\n\r\n        table1.setModel(model);\r\n\r\n        setItemsProveedor();\r\n        agregarItemButton.addMouseListener(new MouseAdapter() {\r\n            @Override\r\n            public void mouseClicked(MouseEvent e) {\r\n                super.mouseClicked(e);\r\n                // model.addRow(new Object[]{\"item1\",\"200\",\"2\",\"400\"})\r\n                String[] selecc = buscarItem.getSelectedItem().toString().split(\"Precio:\");\r\n                int cant = (Integer)cantidadPedida.getValue();\r\n                Double valorTotal = ( Double.parseDouble(selecc[1]) * cant);\r\n                model.addRow(new Object[]{\r\n                        selecc[0],\r\n                        selecc[1],\r\n                        cant,\r\n                        Double.toString(valorTotal)\r\n                });\r\n                labelTotal.setText(Double.toString(Double.parseDouble(labelTotal.getText()) + valorTotal));\r\n            }\r\n        });\r\n        buscarProveedor.addActionListener (new ActionListener() {\r\n            public void actionPerformed(ActionEvent e) {\r\n                setItemsToSeach();\r\n            }\r\n        });\r\n        tipoDocBox.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                mostrarFacturasAsociadas(false);\r\n                mostrarOrdenesDeCompraAsociadas(false);\r\n\r\n                if(tipoDocBox.getSelectedItem().toString() == \"Factura\"){\r\n                    mostrarOrdenesDeCompraAsociadas(true);\r\n                    if(proveedor!=null){\r\n                        for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){\r\n                            ordenesdecompra.addItem(oc.getNumeroDocumento() + \"-\" + oc.getMonto() );\r\n                        }\r\n                    }\r\n                }\r\n                else if (tipoDocBox.getSelectedItem().toString() == \"Orden de pago\"){\r\n                    mostrarFacturasAsociadas(true);\r\n                    if(proveedor!=null){\r\n                        for(Factura f: proveedor.getFacturas()){\r\n                            facturasAsociadas.addItem(f.getNumeroDocumento() +\"-\"+f.getFecha()+\"-\"+f.getMonto() );\r\n                        }\r\n                    }\r\n                }\r\n\r\n            }\r\n        });\r\n        crearProveedorButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                AltaProveedor ap = new AltaProveedor(cldrProveedor);\r\n                ap.start();\r\n\r\n            }\r\n        });\r\n    }\r\n\r\n    public void start(){\r\n\r\n\r\n        frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);\r\n        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);\r\n        frame.setLocationRelativeTo(null);\r\n        frame.pack();\r\n        frame.setVisible(true);\r\n    }\r\n\r\n    private void mostrarOrdenesDeCompraAsociadas(boolean select){\r\n        ordenesdecompra.setVisible(select);\r\n        labelOCasociada.setVisible(select);\r\n    }\r\n    private void mostrarFacturasAsociadas(boolean select){\r\n        facturasAsociadas.setVisible(select);\r\n        labelFacturasAsociadas.setVisible(select);\r\n    }\r\n\r\n    private void setItemsProveedor(){\r\n        buscarProveedor.addItem(\"\");\r\n        for(Proveedor p: cldrProveedor.getProveedores() ){\r\n            buscarProveedor.addItem(p.getNombreFantasia() + \", cuit:\" +p.getCuit());\r\n        }\r\n    }\r\n\r\n    private void setItemsToSeach(){\r\n        int cuit = Integer.valueOf(buscarProveedor.getSelectedItem().toString().split(\" cuit:\")[1]);\r\n        this.proveedor =  cldrProveedor.getProveedorXcuit(cuit);\r\n        buscarItem.removeAllItems();\r\n        System.out.println(cuit);\r\n        for (ProductoSeleccionable ps: proveedor.getProductosSeleccionables()){\r\n            buscarItem.addItem ( ps.getProducto().getNombre() +\r\n                    \" <\" + ps.getProducto().getRubro().getNombre() + \"> Precio:\" +\r\n                    (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));\r\n            //TO DO - No calcular el IVA aca sino en el final de la OP\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/domain/vista/AltaDocumento.java b/src/main/java/domain/vista/AltaDocumento.java
+--- a/src/main/java/domain/vista/AltaDocumento.java	(revision 154b2c4ea6321fe767612675af29ef2c5dbe0c08)
++++ b/src/main/java/domain/vista/AltaDocumento.java	(date 1623888808879)
+@@ -26,7 +26,7 @@
+     private JButton agregarItemButton;
+     private JButton generarDocumentoButton;
+     private JLabel labelProveedor;
+-    private JButton CANCELARButton;
++    private JButton cancelarButton;
+     private JPanel panelDoc;
+     private JLabel labelFecha;
+     private JLabel labelTotal;
+@@ -35,6 +35,7 @@
+     private JLabel labelOCasociada;
+     private JComboBox facturasAsociadas;
+     private JLabel labelFacturasAsociadas;
++    private JLabel fechaHoy;
+     private ControllerProveedor cldrProveedor;
+     private ControllerProducto cldrProducto;
+     private Proveedor proveedor;
+@@ -48,7 +49,7 @@
+         mostrarOrdenesDeCompraAsociadas(false);
+         mostrarFacturasAsociadas(false);
+ 
+-        labelFecha.setText("Fecha: "+ LocalDate.now().toString());
++        fechaHoy.setText("Fecha: "+ LocalDate.now().toString());
+         tipoDocBox.addItem("");
+         tipoDocBox.addItem("Factura");
+         tipoDocBox.addItem("Nota de Credito");
+@@ -124,12 +125,21 @@
+     }
+ 
+     public void start(){
++<<<<<<< HEAD
+ 
+ 
+         frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
+         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+         frame.setLocationRelativeTo(null);
++=======
++        JFrame frame = new JFrame("Alta Proveedor");
++
++        frame.setContentPane( new AltaDocumento(cldrProveedor, cldrProducto).panelDoc);
++        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
++
++>>>>>>> origin/marco_1406
+         frame.pack();
++        frame.setLocationRelativeTo(null);
+         frame.setVisible(true);
+     }
+ 
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Palette2\">\r\n    <group name=\"Swing\">\r\n      <item class=\"com.intellij.uiDesigner.HSpacer\" tooltip-text=\"Horizontal Spacer\" icon=\"/com/intellij/uiDesigner/icons/hspacer.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"1\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"com.intellij.uiDesigner.VSpacer\" tooltip-text=\"Vertical Spacer\" icon=\"/com/intellij/uiDesigner/icons/vspacer.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" />\r\n      </item>\r\n      <item class=\"javax.swing.JPanel\" icon=\"/com/intellij/uiDesigner/icons/panel.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JScrollPane\" icon=\"/com/intellij/uiDesigner/icons/scrollPane.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JButton\" icon=\"/com/intellij/uiDesigner/icons/button.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"1\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"Button\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JRadioButton\" icon=\"/com/intellij/uiDesigner/icons/radioButton.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"RadioButton\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JCheckBox\" icon=\"/com/intellij/uiDesigner/icons/checkBox.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"CheckBox\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JLabel\" icon=\"/com/intellij/uiDesigner/icons/label.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"Label\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JTextField\" icon=\"/com/intellij/uiDesigner/icons/textField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JPasswordField\" icon=\"/com/intellij/uiDesigner/icons/passwordField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JFormattedTextField\" icon=\"/com/intellij/uiDesigner/icons/formattedTextField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTextArea\" icon=\"/com/intellij/uiDesigner/icons/textArea.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTextPane\" icon=\"/com/intellij/uiDesigner/icons/textPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JEditorPane\" icon=\"/com/intellij/uiDesigner/icons/editorPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JComboBox\" icon=\"/com/intellij/uiDesigner/icons/comboBox.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"2\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JTable\" icon=\"/com/intellij/uiDesigner/icons/table.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JList\" icon=\"/com/intellij/uiDesigner/icons/list.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"2\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTree\" icon=\"/com/intellij/uiDesigner/icons/tree.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTabbedPane\" icon=\"/com/intellij/uiDesigner/icons/tabbedPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"200\" height=\"200\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JSplitPane\" icon=\"/com/intellij/uiDesigner/icons/splitPane.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"200\" height=\"200\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JSpinner\" icon=\"/com/intellij/uiDesigner/icons/spinner.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JSlider\" icon=\"/com/intellij/uiDesigner/icons/slider.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JSeparator\" icon=\"/com/intellij/uiDesigner/icons/separator.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JProgressBar\" icon=\"/com/intellij/uiDesigner/icons/progressbar.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JToolBar\" icon=\"/com/intellij/uiDesigner/icons/toolbar.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\">\r\n          <preferred-size width=\"-1\" height=\"20\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JToolBar$Separator\" icon=\"/com/intellij/uiDesigner/icons/toolbarSeparator.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JScrollBar\" icon=\"/com/intellij/uiDesigner/icons/scrollbar.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"0\" anchor=\"0\" fill=\"2\" />\r\n      </item>\r\n      <item class=\"domain.vista.AltaProveedor\" icon=\"\" removable=\"true\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"0\" />\r\n      </item>\r\n    </group>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+--- a/.idea/uiDesigner.xml	(revision 154b2c4ea6321fe767612675af29ef2c5dbe0c08)
++++ b/.idea/uiDesigner.xml	(date 1623888803061)
+@@ -122,6 +122,12 @@
+       <item class="domain.vista.AltaProveedor" icon="" removable="true" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="0" />
+       </item>
++      <item class="com.toedter.calendar.JCalendar" icon="/com/intellij/uiDesigner/icons/panel.png" removable="true" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="0" />
++      </item>
++      <item class="com.toedter.calendar.JDateChooser" icon="/com/intellij/uiDesigner/icons/panel.png" removable="true" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="0" />
++      </item>
+     </group>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/domain/vista/ConsultasGenerales.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package domain.vista;\r\nimport domain.controlador.ControllerProveedor;\r\nimport domain.modelo.documentos.Factura;\r\nimport domain.modelo.documentos.NotaDeCredito;\r\nimport domain.modelo.documentos.NotaDeDebito;\r\nimport domain.modelo.documentos.OrdenDePago;\r\nimport domain.modelo.proveedores.Proveedor;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.table.DefaultTableModel;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class ConsultasGenerales {\r\n    private JPanel panel1;\r\n    private JTabbedPane tabbedPane1;\r\n    private JComboBox Facturas_proveedores;\r\n    private JPanel calendario;\r\n    private JComboBox cuentaCorriente_Proveedor;\r\n    private JTextField CuentaCorriente_EstadodeudaTotal;\r\n    private JTextField CuentaCorriente_impuesto;\r\n    private ControllerProveedor cldrProveedor;\r\n    private JTable Facturas_table;\r\n    private JTable CuentaCorriente_tabla;\r\n    private DefaultTableModel modelCCtabla;\r\n    private DefaultTableModel modelfacturaTabla;\r\n    // CUENTA CORRIENTE\r\n    // PROVEEDOR, SALDO ( TODOS COMPROBANTES - LO QUE SE LE PAGO )\r\n    public ConsultasGenerales(ControllerProveedor cldrProveedor){\r\n        this.cldrProveedor = cldrProveedor;\r\n\r\n        setProveedor();\r\n        makeTableModelCCtabla();\r\n        makeFacturaTabla();\r\n\r\n\r\n        cuentaCorriente_Proveedor.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                int cuit = Integer.valueOf(cuentaCorriente_Proveedor.getSelectedItem().toString().split(\"cuit:\")[1]);\r\n                CuentaCorriente_EstadodeudaTotal.setText(\"El estado actual es: \"+ estadoDeCuentaCorriente(cuit));\r\n            }\r\n        });\r\n        Facturas_proveedores.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                int cuit = Integer.valueOf(Facturas_proveedores.getSelectedItem().toString().split(\"cuit:\")[1]);\r\n                Proveedor p  =  cldrProveedor.getProveedorXcuit(cuit);\r\n                //modelfacturaTabla.getDataVector().removeAllElements();\r\n                if(p!=null){\r\n                    for(Factura f : p.getFacturas()){\r\n                        addToFacturaTabla(String.valueOf(f.getNumeroDocumento()),f.getFecha().toString(),String.valueOf(f.getMonto()));\r\n                    }\r\n                }\r\n            }\r\n        });\r\n    }\r\n\r\n    public void start(){\r\n        JFrame frame = new JFrame(\"Consultas\");\r\n        frame.setContentPane( new ConsultasGenerales(cldrProveedor).panel1);\r\n        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\r\n        frame.pack();\r\n        frame.setVisible(true);\r\n    }\r\n\r\n    private void setProveedor(){\r\n        this.cuentaCorriente_Proveedor.addItem(\"\");\r\n        this.Facturas_proveedores.addItem(\"\");\r\n        for(Proveedor p: cldrProveedor.getProveedores() ){\r\n            cuentaCorriente_Proveedor.addItem(p.getNombreFantasia() + \", cuit:\" +p.getCuit());\r\n            Facturas_proveedores.addItem(p.getNombreFantasia() + \", cuit:\" +p.getCuit());\r\n        }\r\n    }\r\n\r\n    private void makeTableModelCCtabla(){\r\n        modelCCtabla = new DefaultTableModel();\r\n        modelCCtabla.addColumn(\"Documento\");\r\n        modelCCtabla.addColumn(\"Fecha emision\");\r\n        modelCCtabla.addColumn(\"Total\");\r\n        CuentaCorriente_tabla.setModel(modelCCtabla);\r\n    }\r\n\r\n    private void makeFacturaTabla(){\r\n        modelfacturaTabla = new DefaultTableModel();\r\n        modelfacturaTabla.addColumn(\"Documento\");\r\n        modelfacturaTabla.addColumn(\"Fecha emision\");\r\n        modelfacturaTabla.addColumn(\"Total\");\r\n        Facturas_table.setModel(modelfacturaTabla);\r\n    }\r\n\r\n    private void addToFacturaTabla(String documento, String fechaEmision, String total){\r\n        modelCCtabla.addRow(new Object[]{\r\n                documento, fechaEmision, total\r\n        });\r\n    }\r\n\r\n    private void addToModelCCtabla(String documento, String fechaEmision, String total){\r\n        modelCCtabla.addRow(new Object[]{\r\n                documento, fechaEmision, total\r\n        });\r\n    }\r\n    private double estadoDeCuentaCorriente(int cuit){\r\n\r\n        modelCCtabla.getDataVector().removeAllElements();\r\n\r\n        // falta impuestos\r\n        double estadoCuenta= 0;\r\n        Proveedor p  =  cldrProveedor.getProveedorXcuit(cuit);\r\n        for(Factura f : p.getFacturas()){\r\n            estadoCuenta = estadoCuenta + f.getMonto();\r\n            addToModelCCtabla(String.valueOf(f.getNumeroDocumento()),f.getFecha().toString(),String.valueOf(f.getMonto()));\r\n        }\r\n        for (NotaDeCredito nc: p.getNotasdecredito()){\r\n            estadoCuenta = estadoCuenta - nc.getMonto();\r\n            addToModelCCtabla(String.valueOf(nc.getNumeroDocumento()),nc.getFecha().toString(),String.valueOf(nc.getMonto()));\r\n\r\n        }\r\n        for (NotaDeDebito nd: p.getNotasdedebito()){\r\n            estadoCuenta = estadoCuenta + nd.getMonto();\r\n            addToModelCCtabla(String.valueOf(nd.getNumeroDocumento()),nd.getFecha().toString(),String.valueOf(nd.getMonto()));\r\n\r\n        }\r\n        for (OrdenDePago op: p.getOrdenesdepago()){\r\n            estadoCuenta = estadoCuenta - op.getMonto();\r\n            addToModelCCtabla(String.valueOf(op.getNumeroDocumento()),op.getFecha().toString(),String.valueOf(op.getMonto()));\r\n\r\n        }\r\n        return estadoCuenta;\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/domain/vista/ConsultasGenerales.java b/src/main/java/domain/vista/ConsultasGenerales.java
+--- a/src/main/java/domain/vista/ConsultasGenerales.java	(revision 154b2c4ea6321fe767612675af29ef2c5dbe0c08)
++++ b/src/main/java/domain/vista/ConsultasGenerales.java	(date 1623888835818)
+@@ -6,16 +6,25 @@
+ import domain.modelo.documentos.OrdenDePago;
+ import domain.modelo.proveedores.Proveedor;
+ 
++import com.toedter.calendar.JDateChooser;
++import domain.controlador.ControllerProducto;
++import domain.controlador.ControllerProveedor;
++
+ import javax.swing.*;
++<<<<<<< HEAD
+ import javax.swing.table.DefaultTableModel;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
++=======
++import java.util.Calendar;
++>>>>>>> origin/marco_1406
+ 
+ public class ConsultasGenerales {
+-    private JPanel panel1;
++    private JPanel panelPrincipal;
+     private JTabbedPane tabbedPane1;
+     private JComboBox Facturas_proveedores;
+     private JPanel calendario;
++<<<<<<< HEAD
+     private JComboBox cuentaCorriente_Proveedor;
+     private JTextField CuentaCorriente_EstadodeudaTotal;
+     private JTextField CuentaCorriente_impuesto;
+@@ -127,6 +136,27 @@
+ 
+         }
+         return estadoCuenta;
++=======
++    //private JDateChooser fechaDesde;
++    private ControllerProveedor cldrProveedor;
++    private ControllerProducto cldrProducto;
++
++    public ConsultasGenerales(ControllerProveedor cldrProveedor, ControllerProducto cldrProducto) {
++
++        this.cldrProveedor = cldrProveedor;
++        this.cldrProducto = cldrProducto;
++    }
++
++    public void start(){
++        JFrame frame = new JFrame("Consultas Generales");
++        frame.setContentPane( new ConsultasGenerales(cldrProveedor, cldrProducto).panelPrincipal);
++        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
++        frame.setLocationRelativeTo(null);
++        frame.pack();
++        frame.setVisible(true);
++        frame.setResizable(false);
++
++>>>>>>> origin/marco_1406
+     }
+ }
+ 
+Index: src/main/java/domain/vista/ConsultasGenerales.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<form xmlns=\"http://www.intellij.com/uidesigner/form/\" version=\"1\" bind-to-class=\"domain.vista.ConsultasGenerales\">\r\n  <grid id=\"27dc6\" binding=\"panel1\" default-binding=\"true\" layout-manager=\"GridLayoutManager\" row-count=\"1\" column-count=\"1\" same-size-horizontally=\"false\" same-size-vertically=\"false\" hgap=\"-1\" vgap=\"-1\">\r\n    <margin top=\"0\" left=\"0\" bottom=\"0\" right=\"0\"/>\r\n    <constraints>\r\n      <xy x=\"20\" y=\"20\" width=\"729\" height=\"400\"/>\r\n    </constraints>\r\n    <properties>\r\n      <preferredSize width=\"600\" height=\"600\"/>\r\n    </properties>\r\n    <border type=\"none\"/>\r\n    <children>\r\n      <tabbedpane id=\"3414b\" binding=\"tabbedPane1\" default-binding=\"true\">\r\n        <constraints>\r\n          <grid row=\"0\" column=\"0\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\">\r\n            <preferred-size width=\"200\" height=\"200\"/>\r\n          </grid>\r\n        </constraints>\r\n        <properties>\r\n          <preferredSize width=\"1024\" height=\"1024\"/>\r\n        </properties>\r\n        <border type=\"none\"/>\r\n        <children>\r\n          <grid id=\"2cf22\" layout-manager=\"GridBagLayout\">\r\n            <constraints>\r\n              <tabbedpane title=\"Facturas\"/>\r\n            </constraints>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children>\r\n              <component id=\"dd52\" class=\"javax.swing.JTable\" binding=\"Facturas_table\">\r\n                <constraints>\r\n                  <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"17\" vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\">\r\n                    <preferred-size width=\"150\" height=\"50\"/>\r\n                  </grid>\r\n                  <gridbag weightx=\"0.0\" weighty=\"1.0\"/>\r\n                </constraints>\r\n                <properties/>\r\n              </component>\r\n              <component id=\"91b25\" class=\"javax.swing.JComboBox\" binding=\"Facturas_proveedores\">\r\n                <constraints>\r\n                  <grid row=\"0\" column=\"2\" row-span=\"1\" col-span=\"13\" vsize-policy=\"0\" hsize-policy=\"2\" anchor=\"8\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n                  <gridbag weightx=\"1.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties>\r\n                  <model/>\r\n                </properties>\r\n              </component>\r\n              <component id=\"cf894\" class=\"javax.swing.JLabel\">\r\n                <constraints>\r\n                  <grid row=\"0\" column=\"1\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"8\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n                  <gridbag weightx=\"0.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties>\r\n                  <text value=\"PROVEEDOR\"/>\r\n                </properties>\r\n              </component>\r\n              <component id=\"b5c1\" class=\"javax.swing.JLabel\">\r\n                <constraints>\r\n                  <grid row=\"1\" column=\"1\" row-span=\"1\" col-span=\"1\" vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"4\" fill=\"0\" indent=\"0\" use-parent-layout=\"false\"/>\r\n                  <gridbag weightx=\"0.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties>\r\n                  <text value=\"DESDE\"/>\r\n                </properties>\r\n              </component>\r\n              <grid id=\"bd295\" binding=\"calendario\" layout-manager=\"FormLayout\">\r\n                <rowspec value=\"center:d:grow\"/>\r\n                <colspec value=\"fill:d:grow\"/>\r\n                <constraints>\r\n                  <grid row=\"1\" column=\"2\" row-span=\"1\" col-span=\"1\" vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\"/>\r\n                  <gridbag weightx=\"1.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties/>\r\n                <border type=\"none\"/>\r\n                <children/>\r\n              </grid>\r\n            </children>\r\n          </grid>\r\n          <grid id=\"1968a\" layout-manager=\"FormLayout\">\r\n            <rowspec value=\"center:d:grow\"/>\r\n            <colspec value=\"fill:d:grow\"/>\r\n            <constraints>\r\n              <tabbedpane title=\" Ordenes de pago\"/>\r\n            </constraints>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n          <grid id=\"b4f0b\" layout-manager=\"GridBagLayout\">\r\n            <constraints>\r\n              <tabbedpane title=\"Cuenta Corriente proveedor\"/>\r\n            </constraints>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children>\r\n              <component id=\"4704c\" class=\"javax.swing.JTable\" binding=\"CuentaCorriente_tabla\">\r\n                <constraints>\r\n                  <grid row=\"1\" column=\"0\" row-span=\"1\" col-span=\"16\" vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\" indent=\"0\" use-parent-layout=\"false\">\r\n                    <preferred-size width=\"150\" height=\"50\"/>\r\n                  </grid>\r\n                  <gridbag weightx=\"0.0\" weighty=\"1.0\"/>\r\n                </constraints>\r\n                <properties/>\r\n              </component>\r\n              <component id=\"4fc79\" class=\"javax.swing.JComboBox\" binding=\"cuentaCorriente_Proveedor\">\r\n                <constraints>\r\n                  <grid row=\"0\" column=\"1\" row-span=\"1\" col-span=\"14\" vsize-policy=\"0\" hsize-policy=\"2\" anchor=\"8\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\"/>\r\n                  <gridbag weightx=\"1.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties/>\r\n              </component>\r\n              <component id=\"62219\" class=\"javax.swing.JTextField\" binding=\"CuentaCorriente_EstadodeudaTotal\">\r\n                <constraints>\r\n                  <grid row=\"2\" column=\"8\" row-span=\"1\" col-span=\"8\" vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\">\r\n                    <preferred-size width=\"150\" height=\"-1\"/>\r\n                  </grid>\r\n                  <gridbag weightx=\"1.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties>\r\n                  <editable value=\"false\"/>\r\n                  <enabled value=\"true\"/>\r\n                </properties>\r\n              </component>\r\n              <component id=\"34327\" class=\"javax.swing.JTextField\" binding=\"CuentaCorriente_impuesto\">\r\n                <constraints>\r\n                  <grid row=\"2\" column=\"0\" row-span=\"1\" col-span=\"6\" vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" indent=\"0\" use-parent-layout=\"false\">\r\n                    <preferred-size width=\"150\" height=\"-1\"/>\r\n                  </grid>\r\n                  <gridbag weightx=\"1.0\" weighty=\"0.0\"/>\r\n                </constraints>\r\n                <properties>\r\n                  <editable value=\"false\"/>\r\n                  <enabled value=\"true\"/>\r\n                </properties>\r\n              </component>\r\n            </children>\r\n          </grid>\r\n          <grid id=\"efb55\" layout-manager=\"FormLayout\">\r\n            <rowspec value=\"center:d:grow\"/>\r\n            <colspec value=\"fill:d:grow\"/>\r\n            <constraints>\r\n              <tabbedpane title=\"Productos\"/>\r\n            </constraints>\r\n            <properties/>\r\n            <border type=\"none\"/>\r\n            <children/>\r\n          </grid>\r\n        </children>\r\n      </tabbedpane>\r\n    </children>\r\n  </grid>\r\n</form>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/domain/vista/ConsultasGenerales.form b/src/main/java/domain/vista/ConsultasGenerales.form
+--- a/src/main/java/domain/vista/ConsultasGenerales.form	(revision 154b2c4ea6321fe767612675af29ef2c5dbe0c08)
++++ b/src/main/java/domain/vista/ConsultasGenerales.form	(date 1623888834795)
+@@ -1,7 +1,13 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="domain.vista.ConsultasGenerales">
++<<<<<<< HEAD
+   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+     <margin top="0" left="0" bottom="0" right="0"/>
++=======
++  <grid id="27dc6" binding="panelPrincipal" layout-manager="FormLayout">
++    <rowspec value="center:d:grow"/>
++    <colspec value="fill:d:grow"/>
++>>>>>>> origin/marco_1406
+     <constraints>
+       <xy x="20" y="20" width="729" height="400"/>
+     </constraints>
+@@ -17,6 +23,7 @@
+           </grid>
+         </constraints>
+         <properties>
++          <background color="-7917235"/>
+           <preferredSize width="1024" height="1024"/>
+         </properties>
+         <border type="none"/>
+@@ -77,6 +84,159 @@
+               </grid>
+             </children>
+           </grid>
++          <tabbedpane id="8fc82" default-binding="true">
++            <constraints>
++              <tabbedpane title="Untitled"/>
++            </constraints>
++            <properties>
++              <background color="-7917235"/>
++              <preferredSize width="1024" height="1024"/>
++            </properties>
++            <border type="none"/>
++            <children>
++              <grid id="8eaae" layout-manager="FormLayout">
++                <rowspec value="center:d:noGrow"/>
++                <rowspec value="top:4dlu:noGrow"/>
++                <rowspec value="center:max(d;4px):noGrow"/>
++                <rowspec value="top:4dlu:noGrow"/>
++                <rowspec value="center:max(d;4px):noGrow"/>
++                <rowspec value="top:4dlu:noGrow"/>
++                <rowspec value="center:d:grow"/>
++                <colspec value="fill:max(d;4px):noGrow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:max(d;4px):noGrow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:max(d;4px):noGrow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <colspec value="left:4dlu:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <constraints>
++                  <tabbedpane title="Facturas"/>
++                </constraints>
++                <properties/>
++                <border type="none"/>
++                <children>
++                  <component id="804d" class="javax.swing.JTable" default-binding="true">
++                    <constraints>
++                      <grid row="6" column="0" row-span="1" col-span="17" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
++                        <preferred-size width="150" height="50"/>
++                      </grid>
++                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
++                    </constraints>
++                    <properties/>
++                  </component>
++                  <component id="a0a9e" class="javax.swing.JButton" default-binding="true">
++                    <constraints>
++                      <grid row="4" column="2" row-span="1" col-span="15" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
++                      <forms/>
++                    </constraints>
++                    <properties>
++                      <text value="GENERAR"/>
++                    </properties>
++                  </component>
++                  <component id="7d3ac" class="javax.swing.JComboBox" default-binding="true">
++                    <constraints>
++                      <grid row="0" column="4" row-span="1" col-span="13" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
++                      <forms/>
++                    </constraints>
++                    <properties>
++                      <model/>
++                    </properties>
++                  </component>
++                  <component id="9e1a8" class="javax.swing.JLabel">
++                    <constraints>
++                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
++                      <forms/>
++                    </constraints>
++                    <properties>
++                      <text value="PROVEEDOR"/>
++                    </properties>
++                  </component>
++                  <component id="fc273" class="javax.swing.JLabel">
++                    <constraints>
++                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
++                      <forms defaultalign-horz="false"/>
++                    </constraints>
++                    <properties>
++                      <text value="DESDE"/>
++                    </properties>
++                  </component>
++                  <grid id="bc14a" layout-manager="FormLayout">
++                    <rowspec value="center:d:grow"/>
++                    <colspec value="fill:d:grow"/>
++                    <constraints>
++                      <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
++                      <forms/>
++                    </constraints>
++                    <properties/>
++                    <border type="none"/>
++                    <children/>
++                  </grid>
++                </children>
++              </grid>
++              <grid id="f5ebc" layout-manager="FormLayout">
++                <rowspec value="center:d:grow"/>
++                <colspec value="fill:d:grow"/>
++                <constraints>
++                  <tabbedpane title=" Ordenes de pago"/>
++                </constraints>
++                <properties/>
++                <border type="none"/>
++                <children>
++                  <component id="50cc0" class="javax.swing.JTable" default-binding="true">
++                    <constraints>
++                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
++                        <preferred-size width="150" height="50"/>
++                      </grid>
++                      <forms defaultalign-horz="false" defaultalign-vert="false"/>
++                    </constraints>
++                    <properties/>
++                  </component>
++                </children>
++              </grid>
++              <grid id="5f004" layout-manager="FormLayout">
++                <rowspec value="center:d:grow"/>
++                <colspec value="fill:d:grow"/>
++                <constraints>
++                  <tabbedpane title="Cuenta Corriente proveedor"/>
++                </constraints>
++                <properties/>
++                <border type="none"/>
++                <children/>
++              </grid>
++              <grid id="50a50" layout-manager="FormLayout">
++                <rowspec value="center:d:noGrow"/>
++                <colspec value="fill:d:grow"/>
++                <constraints>
++                  <tabbedpane title="Productos"/>
++                </constraints>
++                <properties/>
++                <border type="none"/>
++                <children>
++                  <grid id="150d5" layout-manager="FormLayout">
++                    <rowspec value="center:d:grow"/>
++                    <colspec value="fill:d:grow"/>
++                    <constraints>
++                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
++                      <forms/>
++                    </constraints>
++                    <properties/>
++                    <border type="none"/>
++                    <children/>
++                  </grid>
++                </children>
++              </grid>
++            </children>
++          </tabbedpane>
+           <grid id="1968a" layout-manager="FormLayout">
+             <rowspec value="center:d:grow"/>
+             <colspec value="fill:d:grow"/>
+@@ -85,7 +245,17 @@
+             </constraints>
+             <properties/>
+             <border type="none"/>
+-            <children/>
++            <children>
++              <component id="ddffe" class="javax.swing.JTable" default-binding="true">
++                <constraints>
++                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
++                    <preferred-size width="150" height="50"/>
++                  </grid>
++                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
++                </constraints>
++                <properties/>
++              </component>
++            </children>
+           </grid>
+           <grid id="b4f0b" layout-manager="GridBagLayout">
+             <constraints>
