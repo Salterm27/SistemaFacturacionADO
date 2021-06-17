@@ -7,10 +7,7 @@ import domain.modelo.producto.Producto;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.producto.Rubro;
 import domain.modelo.proveedores.Proveedor;
-import domain.vista.AltaDocumento;
-import domain.vista.AltaProveedor;
-import domain.vista.ConsultasGenerales;
-import domain.vista.MenuPrincipal;
+import domain.vista.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -90,10 +87,10 @@ public class main {
         //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         //GUIproveedor.start();
 
-        MenuPrincipal GUImenu = new MenuPrincipal();
-        GUImenu.start();
+        //MenuPrincipal GUImenu = new MenuPrincipal();
+        //GUImenu.start();
 
-        //ConsultasGenerales GUIconsultas = new ConsultasGenerales(cldrProveedor, cldrProducto);
-        //GUIconsultas.start();
+        ConsultaFactura cf = new ConsultaFactura();
+        cf.start();
     }
 }
