@@ -38,9 +38,11 @@ public class AltaDocumento {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
+    private JFrame frame;
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
+        frame = new JFrame("Menu Inicial");
 
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
@@ -80,6 +82,16 @@ public class AltaDocumento {
                 labelTotal.setText(Double.toString(Double.parseDouble(labelTotal.getText()) + valorTotal));
             }
         });
+
+        crearProveedorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarAltaProveedor();
+            }
+        });
+
+
+
         buscarProveedor.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setItemsToSeach();
@@ -110,6 +122,14 @@ public class AltaDocumento {
 
             }
         });
+
+    }
+
+    private void arrancarAltaProveedor(){
+        AltaProveedor frame= new AltaProveedor(cldrProveedor);
+        this.frame.setVisible(false);
+        frame.start();
+
     }
 
     public void start(){
