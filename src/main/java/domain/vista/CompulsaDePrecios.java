@@ -1,4 +1,7 @@
 package domain.vista;
 
-public class CompulsaDePrecios {
+import javax.swing.*;
+
+public class CompulsaDePrecios extends JDialog {
+    private JPanel panelPrincipal;
 }
