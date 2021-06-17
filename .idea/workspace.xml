@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Menu Inicial con 2 botones funcionando">
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +108,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -259,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623894272128</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Menu Inicial con 2 botones funcionando">
+      <created>1623898651655</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1623898651655</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
