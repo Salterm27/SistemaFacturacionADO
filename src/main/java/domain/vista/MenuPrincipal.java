@@ -41,30 +41,6 @@ public class MenuPrincipal {
 
 
         });
-
-        creacionDeProductosButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                arrancarCreacionProducto();
-            }
-
-
-        });
-
-        buttonCompulsa.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("IMPRESION DE PREUBA");
-                arrancarCompulsaDePrecios();
-            }
-        });
-
-        consultasGeneralesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                arrancarConsultasGenerales();
-            }
-        });
     }
 
     public void start(){
@@ -75,6 +51,7 @@ public class MenuPrincipal {
         frame.setVisible(true);
         frame.setSize(800,400);
         frame.setLocationRelativeTo(null);
+
         frame.setResizable(false);
 
         //asociarEventos();
@@ -100,7 +77,7 @@ public class MenuPrincipal {
 
 
     private void arrancarAltaProveedor(){
-        AltaProveedor frame= new AltaProveedor();
+        AltaProveedor frame= new AltaProveedor(cldrProveedor);
         this.frame.setVisible(false);
         frame.start();
 
@@ -112,21 +89,21 @@ public class MenuPrincipal {
         frame.start();
     }
 
-    private void arrancarCreacionProducto() {
+    /* private void asociarEventos() {
 
-        CreacionProducto frame = new CreacionProducto();
-        frame.start();
-    }
+        buttonProveedores.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("marquillo");
+                AltaProveedor frame= new AltaProveedor(cldrProveedor);
+                frame.start();
 
-    private void arrancarCompulsaDePrecios(){
-        CompulsaDePrecios frame = new CompulsaDePrecios();
-        frame.start();
-    }
 
-    private void arrancarConsultasGenerales(){
-        ConsultasGenerales frame = new ConsultasGenerales();
-        frame.start();
-    }
 
+            }
+        });
+
+
+    }*/
 
 }
