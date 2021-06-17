@@ -50,6 +50,21 @@ public class MenuPrincipal {
 
 
         });
+
+        buttonCompulsa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("IMPRESION DE PREUBA");
+                arrancarCompulsaDePrecios();
+            }
+        });
+
+        consultasGeneralesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarConsultasGenerales();
+            }
+        });
     }
 
     public void start(){
@@ -60,7 +75,6 @@ public class MenuPrincipal {
         frame.setVisible(true);
         frame.setSize(800,400);
         frame.setLocationRelativeTo(null);
-
         frame.setResizable(false);
 
         //asociarEventos();
@@ -86,7 +100,7 @@ public class MenuPrincipal {
 
 
     private void arrancarAltaProveedor(){
-        AltaProveedor frame= new AltaProveedor(cldrProveedor);
+        AltaProveedor frame= new AltaProveedor();
         this.frame.setVisible(false);
         frame.start();
 
@@ -100,8 +114,19 @@ public class MenuPrincipal {
 
     private void arrancarCreacionProducto() {
 
-        CreacionProducto frame = new CreacionProducto(cldrProducto);
+        CreacionProducto frame = new CreacionProducto();
         frame.start();
     }
+
+    private void arrancarCompulsaDePrecios(){
+        CompulsaDePrecios frame = new CompulsaDePrecios();
+        frame.start();
+    }
+
+    private void arrancarConsultasGenerales(){
+        ConsultasGenerales frame = new ConsultasGenerales();
+        frame.start();
+    }
+
 
 }

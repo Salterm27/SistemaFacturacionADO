@@ -1,6 +1,7 @@
 package domain.vista;
 
 import com.toedter.calendar.JDateChooser;
+import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 
 import javax.swing.*;
@@ -35,10 +36,12 @@ public class AltaProveedor {
     private JPanel calendarPanel;
     private JButton ATRASButton;
     private JDateChooser fechaActividad;
-    private static ControllerProveedor cldrProveedor;
+    private ControllerProveedor cldrProveedor;
+    private ControllerProducto cldrProducto;
 
-    public AltaProveedor(ControllerProveedor cldrProveedor){
-        this.cldrProveedor = cldrProveedor; // por ahora se crea desp se recibe como param
+    public AltaProveedor(){
+        this.cldrProveedor = ControllerProveedor.getInstance();
+        this.cldrProducto = ControllerProducto.getInstance();// por ahora se crea desp se recibe como param
         this.asociarEventos();
 
         Calendar cld = Calendar.getInstance();
@@ -67,7 +70,7 @@ public class AltaProveedor {
 
     public void start(){
         JFrame frame = new JFrame("Alta Proveedor");
-        frame.setContentPane( new AltaProveedor(cldrProveedor).PanelDeProveedor);
+        frame.setContentPane(new AltaProveedor().PanelDeProveedor);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
