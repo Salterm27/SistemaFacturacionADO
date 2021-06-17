@@ -38,8 +38,21 @@ public class MenuPrincipal {
             public void actionPerformed(ActionEvent e) {
                 arrancarAltaDocumentos();
             }
+        });
 
+        buttonCompulsa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarCompulsaDePrecios();
 
+            }
+        });
+
+        creacionDeProductosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarCreacionDeProductos();
+            }
         });
     }
 
@@ -51,33 +64,12 @@ public class MenuPrincipal {
         frame.setVisible(true);
         frame.setSize(800,400);
         frame.setLocationRelativeTo(null);
-
         frame.setResizable(false);
 
-        //asociarEventos();
-    }
-
-    //metodo para meter todas las acciones de los botones de la pantalla Menu
-   /* private void asociarEventos() {
-
-        buttonProveedores.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("marquillo");
-                AltaProveedor frame= new AltaProveedor(cldrProveedor);
-                frame.start();
-
-
-
-            }
-        });
-
-
-    }*/
-
+        }
 
     private void arrancarAltaProveedor(){
-        AltaProveedor frame= new AltaProveedor(cldrProveedor);
+        AltaProveedor frame= new AltaProveedor();
         this.frame.setVisible(false);
         frame.start();
 
@@ -89,21 +81,15 @@ public class MenuPrincipal {
         frame.start();
     }
 
-    /* private void asociarEventos() {
+    private void arrancarCompulsaDePrecios() {
 
-        buttonProveedores.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("marquillo");
-                AltaProveedor frame= new AltaProveedor(cldrProveedor);
-                frame.start();
+        CompulsaDePrecios frame = new CompulsaDePrecios();
+        frame.start();
+    }
 
-
-
-            }
-        });
-
-
-    }*/
+    private void arrancarCreacionDeProductos(){
+        CreacionProducto frame = new CreacionProducto();
+        frame.start();
+    }
 
 }

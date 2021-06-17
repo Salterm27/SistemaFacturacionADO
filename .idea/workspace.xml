@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Nuevas Pantallas Producto">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_25__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_25__Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CompulsaDePrecios.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CompulsaDePrecios.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CompulsaDePrecios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CompulsaDePrecios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/ConsultasGenerales.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
@@ -39,6 +29,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" root0="FORCE_HIGHLIGHTING" />
