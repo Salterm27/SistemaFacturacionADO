@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Nuevas Pantallas Producto">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_25__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_06_2021_21_25__Default_Changelist_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/MenuPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaDocumento.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -291,7 +289,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623943471442</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Nuevas Pantallas Producto">
+      <created>1623966161598</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1623966161598</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
