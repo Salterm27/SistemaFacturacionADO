@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ControllerProducto {
 
-    System.out.println("GITHUB LCDTRPMQLRMP")
+
 
     List<Producto> productos = new ArrayList<>();
     List<ProductoSeleccionable> productoSeleccionables = new ArrayList<>();
