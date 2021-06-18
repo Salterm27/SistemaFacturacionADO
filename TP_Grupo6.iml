@@ -25,5 +25,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="jcalendar (3)" level="project" />
+    <orderEntry type="library" name="jgoodies-forms-1.9.0 (2)" level="project" />
   </component>
 </module>

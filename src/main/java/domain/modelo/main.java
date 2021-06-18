@@ -7,10 +7,7 @@ import domain.modelo.producto.Producto;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.producto.Rubro;
 import domain.modelo.proveedores.Proveedor;
-import domain.vista.AltaDocumento;
-import domain.vista.AltaProveedor;
-import domain.vista.ConsultasGenerales;
-import domain.vista.MenuPrincipal;
+import domain.vista.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -83,6 +80,7 @@ public class main {
 
         System.out.println("Caso de prueba 9: Calcular facturas emitidas por todos los proveedores en un periodo dado");
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
+
         // GUIs
         //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
        // GUIdocumento.start();
@@ -90,10 +88,13 @@ public class main {
         //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         //GUIproveedor.start();
 
-        MenuPrincipal GUImenu = new MenuPrincipal();
-        GUImenu.start();
+        //MenuPrincipal GUImenu = new MenuPrincipal();
+        //GUImenu.start();
 
-        //ConsultasGenerales GUIconsultas = new ConsultasGenerales(cldrProveedor, cldrProducto);
-        //GUIconsultas.start();
+        //ConsultaFactura cf = new ConsultaFactura();
+        //cf.start();
+
+        ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
+        ccc.start();
     }
 }

@@ -4,9 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Menu Inicial con 2 botones funcionando">
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" afterDir="false" />
-    </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +26,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/documentos/Documento.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/producto/Producto.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/domain/modelo/impuestos/CategoriaGanancias.java" root0="FORCE_HIGHLIGHTING" />
@@ -50,12 +46,12 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="128" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="312" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="135" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Facultad/Introduccion a la Orientacion de Objetos/2021/Ejercicios/TPOIOO/jcalendar-1.4.jar" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -66,6 +62,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ts252\IdeaProjects\SistemaFacturacionGrupo6\src\main\java\domain\vista" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="domain.vista" />
     </key>
   </component>
   <component name="RunManager" selected="Application.main">
@@ -249,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623890230097</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="ConsultaFactura y ConsultaCuentaCorriente&#10;hechas y funcionando">
+      <created>1623974091802</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1623974091802</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +291,8 @@
     <MESSAGE value="Metodo Generar Orden de pago" />
     <MESSAGE value="modif consultas varias" />
     <MESSAGE value="Menu Inicial con 2 botones funcionando" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu Inicial con 2 botones funcionando" />
+    <MESSAGE value="ConsultaFactura y ConsultaCuentaCorriente&#10;hechas y funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConsultaFactura y ConsultaCuentaCorriente&#10;hechas y funcionando" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
