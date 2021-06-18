@@ -8,6 +8,7 @@ import java.util.List;
 
 public class ControllerProducto {
 
+
     List<Producto> productos = new ArrayList<>();
     List<ProductoSeleccionable> productoSeleccionables = new ArrayList<>();
     List<Rubro> rubros = new ArrayList<>();
