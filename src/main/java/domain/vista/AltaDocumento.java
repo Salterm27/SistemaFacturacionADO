@@ -106,12 +106,27 @@ public class AltaDocumento {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Map<ProductoSeleccionable, Integer > detalle = new HashMap<>();
-                List ps = proveedor.getProductosSeleccionables();
 
+                for(int i = 0; i<model.getRowCount(); i++){
+                    ProductoSeleccionable ps = buscarPs(model.getValueAt(i,0).toString());
+                    int cant = Integer.valueOf(model.getValueAt(i,2).toString());
+                    detalle.put( ps,cant );
+                    System.out.println(ps.getProducto().getNombre() + " " + cant);
+                }
 
                 if(tipoDocBox.getSelectedItem().toString() == "Factura") {
                     cldrProveedor.addFactura(proveedor.getCuit(),false, null, detalle);
                 }
+            }
+
+            private ProductoSeleccionable buscarPs(String nombre){
+                nombre = nombre.split(" <")[0];
+                for (ProductoSeleccionable ps:proveedor.getProductosSeleccionables()){
+                        if( ps.getProducto().getNombre().equals(nombre)){
+                            return ps;
+                        }
+                }
+                return null;
             }
         });
     }
