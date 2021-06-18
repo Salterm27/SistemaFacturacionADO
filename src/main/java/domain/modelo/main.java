@@ -82,8 +82,8 @@ public class main {
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
 
         // GUIs
-        //AltaDocumento GUIdocumento = new AltaDocumento(cldrProveedor, cldrProducto);
-       // GUIdocumento.start();
+        AltaDocumento GUIdocumento = new AltaDocumento();
+        GUIdocumento.start();
 
         //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         //GUIproveedor.start();
@@ -94,7 +94,7 @@ public class main {
         //ConsultaFactura cf = new ConsultaFactura();
         //cf.start();
 
-        ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
-        ccc.start();
+        //ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
+        //ccc.start();
     }
 }

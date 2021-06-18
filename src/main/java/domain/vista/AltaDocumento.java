@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class AltaDocumento {
@@ -38,6 +41,8 @@ public class AltaDocumento {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
+    private DefaultTableModel model;
+
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
@@ -54,7 +59,7 @@ public class AltaDocumento {
         tipoDocBox.addItem("Orden de pago");
         labelTotal.setText("0");
 
-        DefaultTableModel model = new DefaultTableModel();
+        model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Precio");
         model.addColumn("Cantidad");
@@ -83,6 +88,8 @@ public class AltaDocumento {
         buscarProveedor.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setItemsToSeach();
+                esOP();
+                esFactura();
             }
         });
         tipoDocBox.addActionListener(new ActionListener() {
@@ -90,26 +97,43 @@ public class AltaDocumento {
             public void actionPerformed(ActionEvent e) {
                 mostrarFacturasAsociadas(false);
                 mostrarOrdenesDeCompraAsociadas(false);
+                esFactura();
+                esOP();
+            }
 
-                if(tipoDocBox.getSelectedItem().toString() == "Factura"){
-                    mostrarOrdenesDeCompraAsociadas(true);
-                    if(proveedor!=null){
-                        for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
-                            ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
-                        }
-                    }
-                }
-                else if (tipoDocBox.getSelectedItem().toString() == "Orden de pago"){
-                    mostrarFacturasAsociadas(true);
-                    if(proveedor!=null){
-                        for(Factura f: proveedor.getFacturas()){
-                            facturasAsociadas.addItem(f.getNumeroDocumento() +"-"+f.getFecha()+"-"+f.getMonto() );
-                        }
-                    }
-                }
+        });
+        generarDocumentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Map<ProductoSeleccionable, Integer > detalle = new HashMap<>();
+                List ps = proveedor.getProductosSeleccionables();
 
+
+                if(tipoDocBox.getSelectedItem().toString() == "Factura") {
+                    cldrProveedor.addFactura(proveedor.getCuit(),false, null, detalle);
+                }
             }
         });
+    }
+    private void esFactura() {
+        if(tipoDocBox.getSelectedItem().toString() == "Factura"){
+            mostrarOrdenesDeCompraAsociadas(true);
+            if(proveedor!=null){
+                for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
+                    ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
+                }
+            }
+        }
+    }
+    private void esOP(){
+        if (tipoDocBox.getSelectedItem().toString() == "Orden de pago") {
+            mostrarFacturasAsociadas(true);
+            if (proveedor != null) {
+                for (Factura f : proveedor.getFacturas()) {
+                    facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + "-" + f.getMonto());
+                }
+            }
+        }
     }
 
     public void start(){
@@ -128,6 +152,7 @@ public class AltaDocumento {
         labelOCasociada.setVisible(select);
     }
     private void mostrarFacturasAsociadas(boolean select){
+        facturasAsociadas.removeAllItems();
         facturasAsociadas.setVisible(select);
         labelFacturasAsociadas.setVisible(select);
     }
