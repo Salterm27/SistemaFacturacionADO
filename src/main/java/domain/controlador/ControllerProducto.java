@@ -60,7 +60,8 @@ public class ControllerProducto {
     }
 
     public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor, float iva){
-        ProductoSeleccionable ps = new ProductoSeleccionable(precioPorUnidad,tipoDeUnidad, producto, proveedor, iva);
+        ProductoSeleccionable ps = new ProductoSeleccionable(precioPorUnidad,tipoDeUnidad, producto, proveedor);
+        ps.getProducto().setIva( iva );
         productoSeleccionables.add(ps);
         return ps;
     }

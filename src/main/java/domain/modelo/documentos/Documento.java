@@ -32,7 +32,7 @@ public abstract class Documento {
             for (Item i: detalle){
                 double montoPorProducto = i.getPs().getPrecioPorUnidad() * i.getCantidad();
                 System.out.println("precio/producto: " + i.getPs().getPrecioPorUnidad() +" Cantidad:"+ i.getCantidad());
-                //montoPorProducto = montoPorProducto + (montoPorProducto * i.getPs().getIva()/100);
+                montoPorProducto = montoPorProducto + (montoPorProducto * i.getPs().getProducto().getIva()/100);
                 monto = monto + montoPorProducto;
             }
             System.out.println("cantidad de productos: " + detalle.size());

@@ -55,9 +55,9 @@ public class main {
 
         System.out.println("Caso de prueba 4: Crear producto seleccionable, asociar a producto y a proveedor");
         String peso = null;
-        ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 10, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678), 21);
+        ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 1, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678), 21);
         cldrProveedor.asociarProductoSeleccionable(12345678, ps);
-        ProductoSeleccionable ps2 = cldrProducto.CrearProductoSeleccionable( 50, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678),21);
+        ProductoSeleccionable ps2 = cldrProducto.CrearProductoSeleccionable( 5, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678),21);
         cldrProveedor.asociarProductoSeleccionable(12345678, ps2);
 
 
@@ -84,14 +84,17 @@ public class main {
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
 
         // GUIs
+        MenuPrincipal GUImenu = new MenuPrincipal();
+        GUImenu.start();
+
+        /*
         AltaDocumento GUIdocumento = new AltaDocumento();
         GUIdocumento.start();
-/*
+
         AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         GUIproveedor.start();
 
-        MenuPrincipal GUImenu = new MenuPrincipal();
-        GUImenu.start();
+
 
         ConsultaFactura cf = new ConsultaFactura();
         cf.start();
