@@ -39,7 +39,7 @@
           <text value="Tipo Unidad"/>
         </properties>
       </component>
-      <component id="95dff" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="95dff" class="javax.swing.JComboBox" binding="comboTipoUnidad">
         <constraints>
           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -51,17 +51,9 @@
           </model>
         </properties>
       </component>
-      <component id="b3f0f" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="b3f0f" class="javax.swing.JComboBox" binding="comboProveedores">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties/>
-      </component>
-      <component id="c22d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
-          </grid>
         </constraints>
         <properties/>
       </component>
@@ -81,7 +73,7 @@
           <text value="Tipo IVA"/>
         </properties>
       </component>
-      <component id="64e5b" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+      <component id="64e5b" class="javax.swing.JComboBox" binding="comboTipoIVA">
         <constraints>
           <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -95,7 +87,7 @@
           </model>
         </properties>
       </component>
-      <component id="9acf2" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="9acf2" class="javax.swing.JTextField" binding="textPrecioUnidad">
         <constraints>
           <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -154,6 +146,12 @@
           </grid>
         </constraints>
       </vspacer>
+      <component id="1ed5c" class="javax.swing.JComboBox" binding="comboNombreProducto">
+        <constraints>
+          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
     </children>
   </grid>
 </form>

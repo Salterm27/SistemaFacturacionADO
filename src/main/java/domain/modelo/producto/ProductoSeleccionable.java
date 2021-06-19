@@ -5,16 +5,16 @@ import domain.modelo.proveedores.Proveedor;
 public class ProductoSeleccionable {
 
     private float precioPorUnidad;
-    private int tipoDeUnidad;
+    private String tipoDeUnidad;
     private Producto producto;
     private Proveedor proveedor;
 
-    public ProductoSeleccionable(  float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor) {
+    public ProductoSeleccionable(  float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor, float iva) {
         this.precioPorUnidad = precioPorUnidad;
         this.tipoDeUnidad = tipoDeUnidad;
         this.producto = producto;
         this.proveedor = proveedor;
-        this.producto.setIva(21);
+
     }
 
     public Float getPrecioPorUnidad() {
@@ -25,11 +25,11 @@ public class ProductoSeleccionable {
         this.precioPorUnidad = precioPorUnidad;
     }
 
-    public Integer getTipoDeUnidad() {
+    public String getTipoDeUnidad() {
         return tipoDeUnidad;
     }
 
-    public void setTipoDeUnidad(Integer tipoDeUnidad) {
+    public void setTipoDeUnidad() {
         this.tipoDeUnidad = tipoDeUnidad;
     }
 
@@ -37,7 +37,7 @@ public class ProductoSeleccionable {
         this.precioPorUnidad = precioPorUnidad;
     }
 
-    public void setTipoDeUnidad(int tipoDeUnidad) {
+    public void setTipoDeUnidad(String tipoDeUnidad) {
         this.tipoDeUnidad = tipoDeUnidad;
     }
 

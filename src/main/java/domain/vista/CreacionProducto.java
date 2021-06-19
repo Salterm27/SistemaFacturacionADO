@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 public class CreacionProducto {
     private JPanel panelPrincipal;
-    private JTextField textField1;
-    private JComboBox comboBox1;
+    private JTextField textProducto;
+    private JComboBox comboRubro;
     private JButton asociarPoductoYProveedorButton;
     private JButton aceptarButton;
     private JButton cancelarButton;
@@ -30,6 +30,14 @@ public class CreacionProducto {
                 arrancarAsociacionProducto();
             }
 
+        });
+
+        aceptarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cldrProducto.CrearProducto(textProducto.getText(),comboRubro.getSelectedItem().toString());
+                JOptionPane.showMessageDialog(null,"Se creo el Producto:" + " " + textProducto.getText());
+            }
         });
     }
 

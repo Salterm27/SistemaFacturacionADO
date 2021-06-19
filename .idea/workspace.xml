@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Nuevas Pantallas Producto">
+    <list default="true" id="b2eca989-2fa5-428f-85b5-8270350f978d" name="Default Changelist" comment="Actualizacion Menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AltaProveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/controlador/ControllerProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/ProductoSeleccionable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/ProductoSeleccionable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Rubro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/producto/Rubro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/modelo/proveedores/Proveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/AsociacionProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/vista/CreacionProducto.java" afterDir="false" />
     </list>
     <list id="e425ad33-298c-4e37-a6b4-42a8d9a96fca" name="Changes by marco_000" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,6 +157,7 @@
       <workItem from="1623892346374" duration="676000" />
       <workItem from="1623939751036" duration="1788000" />
       <workItem from="1623953179581" duration="853000" />
+      <workItem from="1624109746012" duration="9929000" />
     </task>
     <task id="LOCAL-00001" summary="modif ControllerProducto.java">
       <created>1622679180748</created>
@@ -304,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623966449382</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Actualizacion Menu">
+      <created>1623967980727</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623967980727</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +357,8 @@
     <MESSAGE value="modif consultas varias" />
     <MESSAGE value="Menu Inicial con 2 botones funcionando" />
     <MESSAGE value="Nuevas Pantallas Producto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nuevas Pantallas Producto" />
+    <MESSAGE value="Actualizacion Menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Actualizacion Menu" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
