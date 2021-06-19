@@ -82,19 +82,19 @@ public class main {
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
 
         // GUIs
-        AltaDocumento GUIdocumento = new AltaDocumento();
+        /*AltaDocumento GUIdocumento = new AltaDocumento();
         GUIdocumento.start();
 
-        //AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
-        //GUIproveedor.start();
+        AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
+        GUIproveedor.start();
 
-        //MenuPrincipal GUImenu = new MenuPrincipal();
-        //GUImenu.start();
+        MenuPrincipal GUImenu = new MenuPrincipal();
+        GUImenu.start();
 
-        //ConsultaFactura cf = new ConsultaFactura();
-        //cf.start();
-
-        //ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
-        //ccc.start();
+        ConsultaFactura cf = new ConsultaFactura();
+        cf.start();
+        */
+        ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
+        ccc.start();
     }
 }
