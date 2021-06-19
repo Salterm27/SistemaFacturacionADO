@@ -17,6 +17,10 @@ public class ProductoSeleccionable {
         this.producto.setIva(21);
     }
 
+    public double getIva(){
+        return this.producto.getIva();
+    }
+
     public Float getPrecioPorUnidad() {
         return precioPorUnidad;
     }

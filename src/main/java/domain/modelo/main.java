@@ -2,6 +2,7 @@ package domain.modelo;
 
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
+import domain.modelo.documentos.Item;
 import domain.modelo.documentos.OrdenDeCompra;
 import domain.modelo.producto.Producto;
 import domain.modelo.producto.ProductoSeleccionable;
@@ -49,7 +50,7 @@ public class main {
         Producto p = cldrProducto.getProducto("Television");
         Rubro r = cldrProducto.buscarRubro("Electronica");
         p.setRubro(r);
-        cldrProducto.getProducto("Television").mostrarDetalles() ;
+        cldrProducto.getProducto("Television").mostrarDetalles();
 
 
 
@@ -63,9 +64,10 @@ public class main {
 
         System.out.println("Caso de prueba 5: Crear una factura y asociarle items");
         //creo el listado de items a agregar con su cantidad
-        Map<ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
+        List<Item> detalle = new ArrayList();
         // le asigne el producto y la cantidad
-        detalle.put(cldrProducto.getProductoSeleccionable("Television", 12345678),2);
+        Item item = new Item(cldrProducto.getProductoSeleccionable("Television", 12345678),2);
+        detalle.add(item);
         //ahora que tengo el hasmap, se lo paso como argumento
         cldrProveedor.addFactura( 12345678, true,  null, detalle);
         cldrProveedor.imprimirfacturas(12345678);
@@ -82,9 +84,9 @@ public class main {
         cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
 
         // GUIs
-        /*AltaDocumento GUIdocumento = new AltaDocumento();
+        AltaDocumento GUIdocumento = new AltaDocumento();
         GUIdocumento.start();
-
+/*
         AltaProveedor GUIproveedor = new AltaProveedor(cldrProveedor);
         GUIproveedor.start();
 
@@ -93,8 +95,8 @@ public class main {
 
         ConsultaFactura cf = new ConsultaFactura();
         cf.start();
-        */
+
         ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
-        ccc.start();
+        ccc.start();*/
     }
 }

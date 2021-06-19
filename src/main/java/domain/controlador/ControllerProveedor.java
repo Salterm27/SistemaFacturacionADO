@@ -3,7 +3,6 @@ package domain.controlador;
 import domain.modelo.documentos.*;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +33,7 @@ public class ControllerProveedor {
         return null;
     }
 
-    public void addFactura(int cuit, Boolean aprobacion, OrdenDeCompra ordenDeCompra, Map<ProductoSeleccionable, Integer > detalle ){
+    public void addFactura(int cuit, Boolean aprobacion, OrdenDeCompra ordenDeCompra, List detalle ){
         Proveedor p = this.getProveedorXcuit(cuit);
         Factura a = new Factura(++documentCounter,  aprobacion,  ordenDeCompra, detalle);
         a.calcularMonto();
@@ -76,10 +75,9 @@ public class ControllerProveedor {
         List<Factura> facturas =  p.getFacturas();
         for (Factura f: facturas){
             System.out.println(f.getNumeroDocumento() + " " + f.getFecha());
-            //imprimir si el mapa esta ok, se puede comentar on continue
             if (f.getDetalle() != null) {
-                for (Map.Entry<ProductoSeleccionable, Integer> entry : f.getDetalle().entrySet()) {
-                    System.out.println("\t" + entry.getKey().getProducto().getNombre() + " " + entry.getValue().toString());
+                for (Item i : f.getDetalle()) {
+                    System.out.println();
                 }
             }
         }

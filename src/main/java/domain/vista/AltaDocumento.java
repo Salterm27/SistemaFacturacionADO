@@ -3,6 +3,7 @@ package domain.vista;
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 import domain.modelo.documentos.Factura;
+import domain.modelo.documentos.Item;
 import domain.modelo.documentos.OrdenDeCompra;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
@@ -14,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -105,13 +107,13 @@ public class AltaDocumento {
         generarDocumentoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Map<ProductoSeleccionable, Integer > detalle = new HashMap<>();
+                List<Item> detalle = new ArrayList<>();
 
                 for(int i = 0; i<model.getRowCount(); i++){
                     ProductoSeleccionable ps = buscarPs(model.getValueAt(i,0).toString());
                     int cant = Integer.valueOf(model.getValueAt(i,2).toString());
-                    detalle.put( ps,cant );
-                    System.out.println(ps.getProducto().getNombre() + " " + cant);
+                    Item item = new Item(ps,cant);
+                    detalle.add(item);
                 }
 
                 if(tipoDocBox.getSelectedItem().toString() == "Factura") {
