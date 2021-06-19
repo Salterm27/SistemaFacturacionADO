@@ -25,14 +25,17 @@ public class ControllerProducto {
         return null;
     }
 
-    public void addRubro (String nombre, double porcentajeIVA ){
-        Rubro rubro = new Rubro(nombre, porcentajeIVA);
+    public Rubro crearRubro (String nombre ){
+        Rubro rubro = new Rubro(nombre);
         rubros.add(rubro);
+        return rubro;
     }
 
-    public void CrearProducto(String nombre){
+    public void CrearProducto(String nombre, String rubro){
         Producto producto = new Producto(nombre);
+        producto.setRubro(crearRubro(rubro));
         productos.add(producto);
+        System.out.println("PRODUCTO:"+producto.getNombre()+ " " +"RUBRO:"+ producto.getRubro().getNombre());
     }
 
     public Producto getProducto(String nombre){
@@ -44,6 +47,10 @@ public class ControllerProducto {
         return null;
     }
 
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
     public List<ProductoSeleccionable> getProductoSeleccionables() {
         return productoSeleccionables;
     }
@@ -52,8 +59,8 @@ public class ControllerProducto {
         this.productoSeleccionables = productoSeleccionables;
     }
 
-    public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, int tipoDeUnidad, Producto producto , Proveedor proveedor){
-        ProductoSeleccionable ps = new ProductoSeleccionable( precioPorUnidad,tipoDeUnidad, producto, proveedor);
+    public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor, float iva){
+        ProductoSeleccionable ps = new ProductoSeleccionable(precioPorUnidad,tipoDeUnidad, producto, proveedor, iva);
         productoSeleccionables.add(ps);
         return ps;
     }
@@ -68,6 +75,8 @@ public class ControllerProducto {
     }
 
     public void AsociarProveedor(){
+
+
     }
     public void EliminarProducto(){
     }
@@ -75,5 +84,6 @@ public class ControllerProducto {
     }
     public void OpcionesProducto(){
     }
+
 
 }

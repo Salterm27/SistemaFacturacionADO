@@ -45,8 +45,7 @@ public class main {
 
 
         System.out.println("Caso de prueba 3: Crear instancia de producto y asociar rubro");
-        cldrProducto.CrearProducto("Television");
-        cldrProducto.addRubro ("Electronica", 10.5);
+        cldrProducto.CrearProducto("Television", "Electronica");
         Producto p = cldrProducto.getProducto("Television");
         Rubro r = cldrProducto.buscarRubro("Electronica");
         p.setRubro(r);
@@ -55,9 +54,10 @@ public class main {
 
 
         System.out.println("Caso de prueba 4: Crear producto seleccionable, asociar a producto y a proveedor");
-        ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 10, 1,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678));
+        String peso = null;
+        ProductoSeleccionable ps = cldrProducto.CrearProductoSeleccionable( 10, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678), 21);
         cldrProveedor.asociarProductoSeleccionable(12345678, ps);
-        ProductoSeleccionable ps2 = cldrProducto.CrearProductoSeleccionable( 50, 1,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678));
+        ProductoSeleccionable ps2 = cldrProducto.CrearProductoSeleccionable( 50, peso,cldrProducto.getProducto("Television"), cldrProveedor.getProveedorXcuit(12345678),21);
         cldrProveedor.asociarProductoSeleccionable(12345678, ps2);
 
 
