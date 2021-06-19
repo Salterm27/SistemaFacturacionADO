@@ -9,13 +9,14 @@ public class ProductoSeleccionable {
     private Producto producto;
     private Proveedor proveedor;
 
-    public ProductoSeleccionable(  float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor, float iva) {
+    public ProductoSeleccionable(  float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor) {
         this.precioPorUnidad = precioPorUnidad;
         this.tipoDeUnidad = tipoDeUnidad;
         this.producto = producto;
         this.proveedor = proveedor;
 
     }
+
 
     public Float getPrecioPorUnidad() {
         return precioPorUnidad;

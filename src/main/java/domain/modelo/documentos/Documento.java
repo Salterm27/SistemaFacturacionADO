@@ -13,17 +13,13 @@ public abstract class Documento {
     protected int numeroDocumento;
     protected Double monto;
     protected LocalDate fecha;
-    protected Map <ProductoSeleccionable, Integer > detalle = new HashMap<ProductoSeleccionable, Integer>();
+    protected List <Item> detalle;
 
     public void inicializarFecha(){
         this.fecha = (LocalDate.now());
     }
-    public Map<ProductoSeleccionable, Integer> getDetalle() {
+    public List<Item> getDetalle() {
         return detalle;
-    }
-    public void addProductoSeleccionable(ProductoSeleccionable ps, int cantidad){
-        detalle.put(ps,cantidad);
-        this.monto = this.monto + (ps.getPrecioPorUnidad()*cantidad);
     }
 
     public Double getMonto() {
@@ -33,9 +29,14 @@ public abstract class Documento {
     public void calcularMonto(){
         monto = 0.0;
         if (detalle!=null){
-            for (Map.Entry<ProductoSeleccionable, Integer > entry : detalle.entrySet()){
-                monto = monto + entry.getKey().getPrecioPorUnidad() * entry.getValue();
+            for (Item i: detalle){
+                double montoPorProducto = i.getPs().getPrecioPorUnidad() * i.getCantidad();
+                System.out.println("precio/producto: " + i.getPs().getPrecioPorUnidad() +" Cantidad:"+ i.getCantidad());
+                montoPorProducto = montoPorProducto + (montoPorProducto * i.getPs().getProducto().getIva()/100);
+                monto = monto + montoPorProducto;
             }
+            System.out.println("cantidad de productos: " + detalle.size());
+            System.out.println("Monto: " + monto);
         }
     }
 

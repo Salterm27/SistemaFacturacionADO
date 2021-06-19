@@ -14,7 +14,7 @@ public class Factura extends Documento{
     private ImpuestoAplicable impuestoAplicable;
     private OrdenDePago ordenDePago;
 
-    public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, Map<ProductoSeleccionable, Integer> detalle ){
+    public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, List<Item> detalle ){
         super.numeroDocumento = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;

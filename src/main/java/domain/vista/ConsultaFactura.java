@@ -44,16 +44,27 @@ public class ConsultaFactura {
         selecProveedor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int cuit = Integer.valueOf(selecProveedor.getSelectedItem().toString().split("cuit:")[1]);
-                proveedorSeleccionado = cldrProveedor.getProveedorXcuit(cuit);
-                if ( proveedorSeleccionado != null){
+                if(selecProveedor.getSelectedItem().toString().equals("TODOS")){
                     modelTabla.getDataVector().removeAllElements();
-                    for (Factura f: proveedorSeleccionado.getFacturas()){
-                        modelTabla.addRow(new Object[]{
-                                f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
+                    for(Proveedor p: cldrProveedor.getProveedores()){
+                        for (Factura f: p.getFacturas()){
+                            modelTabla.addRow(new Object[]{
+                                    p.getNombreFantasia() + " " + f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
+                        }
                     }
                 }
-
+                else{
+                    int cuit = Integer.valueOf(selecProveedor.getSelectedItem().toString().split("cuit:")[1]);
+                    proveedorSeleccionado = cldrProveedor.getProveedorXcuit(cuit);
+                    if ( proveedorSeleccionado != null){
+                        modelTabla.getDataVector().removeAllElements();
+                        for (Factura f: proveedorSeleccionado.getFacturas()){
+                            modelTabla.addRow(new Object[]{
+                                    f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
+                        }
+                    }
+                }
+                modelTabla.fireTableDataChanged();
             }
         });
         buttonFiltrar.addActionListener(new ActionListener() {
@@ -62,25 +73,38 @@ public class ConsultaFactura {
                 LocalDate datedesde = LocalDate.ofInstant(fechaDesde.getDate().toInstant(), ZoneId.systemDefault());
                 LocalDate datehasta = LocalDate.ofInstant(fechaHasta.getDate().toInstant(), ZoneId.systemDefault());
                 modelTabla.getDataVector().removeAllElements();
-                if ( proveedorSeleccionado != null){
-                    for (Factura f: proveedorSeleccionado.getFacturas()){
-                        if( f.getFecha().isAfter(datedesde) && f.getFecha().isBefore(datehasta) || f.getFecha().equals(datedesde) || f.getFecha().isEqual(datehasta) ){
-                            System.out.println(f.getFecha().toString()+ " " + datedesde.toString() + " " + datehasta.toString());
-                            modelTabla.addRow(new Object[]{
-                                    f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
-                        }
-
-
+                if(selecProveedor.getSelectedItem().toString().equals("TODOS")){
+                    modelTabla.getDataVector().removeAllElements();
+                    for(Proveedor p: cldrProveedor.getProveedores()){
+                        for (Factura f : p.getFacturas()) {
+                            if (f.getFecha().isAfter(datedesde) && f.getFecha().isBefore(datehasta) || f.getFecha().equals(datedesde) || f.getFecha().isEqual(datehasta)) {
+                                System.out.println(f.getFecha().toString() + " " + datedesde.toString() + " " + datehasta.toString());
+                                modelTabla.addRow(new Object[]{
+                                        p.getNombreFantasia() + " " + f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
+                                }
+                            }
                     }
-                    modelTabla.fireTableDataChanged();
                 }
+                else {
+                    if (proveedorSeleccionado != null) {
+                        for (Factura f : proveedorSeleccionado.getFacturas()) {
+                            if (f.getFecha().isAfter(datedesde) && f.getFecha().isBefore(datehasta) || f.getFecha().equals(datedesde) || f.getFecha().isEqual(datehasta)) {
+                                System.out.println(f.getFecha().toString() + " " + datedesde.toString() + " " + datehasta.toString());
+                                modelTabla.addRow(new Object[]{
+                                        f.getNumeroDocumento(), f.getFecha(), f.getMonto()});
+                            }
 
 
+                        }
+                    }
+                }
+                modelTabla.fireTableDataChanged();
             }
         });
     }
     private void setProveedor(){
         this.selecProveedor.addItem("");
+        this.selecProveedor.addItem("TODOS");
         for(Proveedor p: cldrProveedor.getProveedores() ){
             selecProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
         }

@@ -3,6 +3,7 @@ package domain.vista;
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 import domain.modelo.documentos.Factura;
+import domain.modelo.documentos.Item;
 import domain.modelo.documentos.OrdenDeCompra;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
@@ -14,6 +15,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class AltaDocumento {
@@ -38,12 +43,11 @@ public class AltaDocumento {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
-    private JFrame frame;
+    private DefaultTableModel model;
 
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
-        frame = new JFrame("Menu Inicial");
 
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
@@ -57,7 +61,7 @@ public class AltaDocumento {
         tipoDocBox.addItem("Orden de pago");
         labelTotal.setText("0");
 
-        DefaultTableModel model = new DefaultTableModel();
+        model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Precio");
         model.addColumn("Cantidad");
@@ -83,19 +87,11 @@ public class AltaDocumento {
                 labelTotal.setText(Double.toString(Double.parseDouble(labelTotal.getText()) + valorTotal));
             }
         });
-
-        crearProveedorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                arrancarAltaProveedor();
-            }
-        });
-
-
-
         buscarProveedor.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setItemsToSeach();
+                esOP();
+                esFactura();
             }
         });
         tipoDocBox.addActionListener(new ActionListener() {
@@ -103,45 +99,68 @@ public class AltaDocumento {
             public void actionPerformed(ActionEvent e) {
                 mostrarFacturasAsociadas(false);
                 mostrarOrdenesDeCompraAsociadas(false);
+                esFactura();
+                esOP();
+            }
 
-                if(tipoDocBox.getSelectedItem().toString() == "Factura"){
-                    mostrarOrdenesDeCompraAsociadas(true);
-                    if(proveedor!=null){
-                        for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
-                            ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
-                        }
-                    }
-                }
-                else if (tipoDocBox.getSelectedItem().toString() == "Orden de pago"){
-                    mostrarFacturasAsociadas(true);
-                    if(proveedor!=null){
-                        for(Factura f: proveedor.getFacturas()){
-                            facturasAsociadas.addItem(f.getNumeroDocumento() +"-"+f.getFecha()+"-"+f.getMonto() );
-                        }
-                    }
+        });
+        generarDocumentoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                List<Item> detalle = new ArrayList<>();
+
+                for(int i = 0; i<model.getRowCount(); i++){
+                    ProductoSeleccionable ps = buscarPs(model.getValueAt(i,0).toString());
+                    int cant = Integer.valueOf(model.getValueAt(i,2).toString());
+                    Item item = new Item(ps,cant);
+                    detalle.add(item);
                 }
 
+                if(tipoDocBox.getSelectedItem().toString() == "Factura") {
+                    cldrProveedor.addFactura(proveedor.getCuit(),false, null, detalle);
+                }
+            }
+
+            private ProductoSeleccionable buscarPs(String nombre){
+                nombre = nombre.split(" <")[0];
+                for (ProductoSeleccionable ps:proveedor.getProductosSeleccionables()){
+                        if( ps.getProducto().getNombre().equals(nombre)){
+                            return ps;
+                        }
+                }
+                return null;
             }
         });
-
     }
-
-    private void arrancarAltaProveedor(){
-        AltaProveedor frame= new AltaProveedor();
-        this.frame.setVisible(false);
-        frame.start();
-
+    private void esFactura() {
+        if(tipoDocBox.getSelectedItem().toString() == "Factura"){
+            mostrarOrdenesDeCompraAsociadas(true);
+            if(proveedor!=null){
+                for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
+                    ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
+                }
+            }
+        }
+    }
+    private void esOP(){
+        if (tipoDocBox.getSelectedItem().toString() == "Orden de pago") {
+            mostrarFacturasAsociadas(true);
+            if (proveedor != null) {
+                for (Factura f : proveedor.getFacturas()) {
+                    facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + "-" + f.getMonto());
+                }
+            }
+        }
     }
 
     public void start(){
-        JFrame frame = new JFrame("Alta Documento");
+        JFrame frame = new JFrame("Alta Proveedor");
 
         frame.setContentPane( new AltaDocumento().panelDoc);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        frame.setResizable(false);
 
     }
 
@@ -150,6 +169,7 @@ public class AltaDocumento {
         labelOCasociada.setVisible(select);
     }
     private void mostrarFacturasAsociadas(boolean select){
+        facturasAsociadas.removeAllItems();
         facturasAsociadas.setVisible(select);
         labelFacturasAsociadas.setVisible(select);
     }
@@ -167,8 +187,10 @@ public class AltaDocumento {
         buscarItem.removeAllItems();
         System.out.println(cuit);
         for (ProductoSeleccionable ps: proveedor.getProductosSeleccionables()){
-            buscarItem.addItem ( ps.getProducto().getNombre() +
-                    " <" + ps.getProducto().getRubro().getNombre() + "> Precio:" +
+            buscarItem.addItem (
+                    ps.getProducto().getNombre() +
+                    " <" + ps.getProducto().getRubro().getNombre() + "> " +
+                            "Precio:" +
                     (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));
             //TO DO - No calcular el IVA aca sino en el final de la OP
         }
