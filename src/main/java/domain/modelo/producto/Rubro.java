@@ -5,7 +5,7 @@ public class Rubro {
     private String nombre;
     private double porcentajeIVA;
 
-    public Rubro(String nombre, double porcentajeIVA) {
+    public Rubro(String nombre) {
         this.nombre = nombre; this.porcentajeIVA = porcentajeIVA;
     }
 
