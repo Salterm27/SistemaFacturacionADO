@@ -24,6 +24,7 @@
             </constraints>
             <properties>
               <background color="-6381922"/>
+              <enabled value="false"/>
             </properties>
             <border type="none"/>
             <children>

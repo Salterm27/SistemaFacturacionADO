@@ -33,8 +33,10 @@ public class ControllerProveedor {
         return null;
     }
 
-    public void addFactura(int cuit, Boolean aprobacion, OrdenDeCompra ordenDeCompra, List detalle ){
+    public void addFactura(int cuit, Boolean aprobacion, int idordenDeCompra, List detalle ){
         Proveedor p = this.getProveedorXcuit(cuit);
+        OrdenDeCompra ordenDeCompra = null;
+        for (OrdenDeCompra oc: p.getOrdenesdecompra()){ if(oc.getNumeroDocumento()==idordenDeCompra){ ordenDeCompra = oc; }}
         Factura a = new Factura(++documentCounter,  aprobacion,  ordenDeCompra, detalle);
         a.calcularMonto();
         p.addFactura(a);
@@ -65,8 +67,10 @@ public class ControllerProveedor {
         }
     }
 
-    public void addOrdenDeCompra(){
-        OrdenDeCompra oc = new OrdenDeCompra();
+    public void addOrdenDeCompra(int cuit, List<Item>detalle){
+        OrdenDeCompra oc = new OrdenDeCompra(++documentCounter,detalle);
+        oc.calcularMonto();
+        for(Proveedor p: proveedores){ if(p.getCuit() == cuit){p.addordenDeCompra(oc);} }
     }
 
 
@@ -145,5 +149,8 @@ public class ControllerProveedor {
             }
         }
         return null;
+    }
+
+    public void getOrdenDeCompraXNum(String s) {
     }
 }

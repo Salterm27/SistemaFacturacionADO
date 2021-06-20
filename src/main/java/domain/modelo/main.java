@@ -2,6 +2,7 @@ package domain.modelo;
 
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
+import domain.controlador.datosVariosPruebas;
 import domain.modelo.documentos.Item;
 import domain.modelo.documentos.OrdenDeCompra;
 import domain.modelo.producto.Producto;
@@ -22,9 +23,9 @@ public class main {
 
         ControllerProducto cldrProducto  = ControllerProducto.getInstance();
         ControllerProveedor cldrProveedor = ControllerProveedor.getInstance();
+        datosVariosPruebas datos = new datosVariosPruebas();
 
-
-        System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
+        /*System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
         cldrProveedor.addProveedor(12345678,  "resp_iva",  "Sebastian S.A",
                 "sebas",  "Lima 774",  1156549788,
                 "correoElectronico_proveedor",  12345678,
@@ -38,9 +39,9 @@ public class main {
         cldrProveedor.mostrarProveedores();
 
         System.out.println("Caso de prueba 2: adjuntar factura a proveedor");
-        cldrProveedor.addFactura( 12345678, true,  null, null);
+        cldrProveedor.addFactura( 12345678, true,  0, null);
         cldrProveedor.imprimirfacturas(12345678);
-        cldrProveedor.addFactura( 11111111, true,  null, null);
+        cldrProveedor.addFactura( 11111111, true,  0, null);
         cldrProveedor.imprimirfacturas(11111111);
 
 
@@ -69,7 +70,7 @@ public class main {
         Item item = new Item(cldrProducto.getProductoSeleccionable("Television", 12345678),2);
         detalle.add(item);
         //ahora que tengo el hasmap, se lo paso como argumento
-        cldrProveedor.addFactura( 12345678, true,  null, detalle);
+        cldrProveedor.addFactura( 12345678, true,  0, detalle);
         cldrProveedor.imprimirfacturas(12345678);
 
         System.out.println("Caso de prueba 6.2: Calcular ingresos brutos sobre una factura");
@@ -81,7 +82,7 @@ public class main {
         cldrProveedor.addOrdenDePago(12345678, 1, 11, 5, LocalDate.now());
 
         System.out.println("Caso de prueba 9: Calcular facturas emitidas por todos los proveedores en un periodo dado");
-        cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());
+        cldrProveedor.getFacturas(LocalDate.now(),LocalDate.now());*/
 
         // GUIs
         MenuPrincipal GUImenu = new MenuPrincipal();

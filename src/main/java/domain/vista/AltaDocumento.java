@@ -117,8 +117,16 @@ public class AltaDocumento {
                 }
 
                 if(tipoDocBox.getSelectedItem().toString() == "Factura") {
-                    cldrProveedor.addFactura(proveedor.getCuit(),false, null, detalle);
+                    cldrProveedor.addFactura(
+                            proveedor.getCuit(),false,
+                            Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split(" ")[0])),
+                            detalle);
                 }
+                if(tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
+                    cldrProveedor.addOrdenDeCompra(proveedor.getCuit(), detalle);
+                }
+                model.getDataVector().removeAllElements();
+                model.fireTableDataChanged();
             }
 
             private ProductoSeleccionable buscarPs(String nombre){
@@ -136,8 +144,9 @@ public class AltaDocumento {
         if(tipoDocBox.getSelectedItem().toString() == "Factura"){
             mostrarOrdenesDeCompraAsociadas(true);
             if(proveedor!=null){
+                ordenesdecompra.removeAllItems();
                 for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
-                    ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getMonto() );
+                    ordenesdecompra.addItem(oc.getNumeroDocumento() + " " + oc.getFecha().toString() +" $"+ oc.getMonto() );
                 }
             }
         }
@@ -147,15 +156,14 @@ public class AltaDocumento {
             mostrarFacturasAsociadas(true);
             if (proveedor != null) {
                 for (Factura f : proveedor.getFacturas()) {
-                    facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + "-" + f.getMonto());
+                    facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + " $" + f.getMonto());
                 }
             }
         }
     }
 
     public void start(){
-        JFrame frame = new JFrame("Alta Proveedor");
-
+        JFrame frame = new JFrame("Alta Documento");
         frame.setContentPane( new AltaDocumento().panelDoc);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
