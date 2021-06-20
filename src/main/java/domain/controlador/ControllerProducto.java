@@ -25,17 +25,35 @@ public class ControllerProducto {
         return null;
     }
 
+    public List<Rubro> getRubros() {
+        return rubros;
+    }
+
     public Rubro crearRubro (String nombre ){
         Rubro rubro = new Rubro(nombre);
         rubros.add(rubro);
         return rubro;
     }
 
-    public void CrearProducto(String nombre, String rubro){
-        Producto producto = new Producto(nombre);
-        producto.setRubro(crearRubro(rubro));
-        productos.add(producto);
-        System.out.println("PRODUCTO:"+producto.getNombre()+ " " +"RUBRO:"+ producto.getRubro().getNombre());
+
+    public boolean CrearProducto(String nombre, String rubro){
+        if(getProducto(nombre)==null){
+            Producto producto = new Producto(nombre);
+            producto.setRubro(getRubro(rubro));
+            productos.add(producto);
+            System.out.println("PRODUCTO:"+producto.getNombre()+ " " +"RUBRO:"+ producto.getRubro().getNombre());
+            return true;
+        }
+        return false;
+    }
+
+    private Rubro getRubro(String rubro) {
+        for(Rubro r : rubros){
+            if (r.getNombre() == rubro){
+                return r;
+            }
+        }
+        return null;
     }
 
     public Producto getProducto(String nombre){
@@ -60,10 +78,18 @@ public class ControllerProducto {
     }
 
     public ProductoSeleccionable CrearProductoSeleccionable(float precioPorUnidad, String tipoDeUnidad, Producto producto , Proveedor proveedor, float iva){
-        ProductoSeleccionable ps = new ProductoSeleccionable(precioPorUnidad,tipoDeUnidad, producto, proveedor);
-        ps.getProducto().setIva( iva );
-        productoSeleccionables.add(ps);
-        return ps;
+        ProductoSeleccionable ps = getProductoSeleccionable(producto.getNombre(), proveedor.getCuit());
+        if(ps==null){
+            ps = new ProductoSeleccionable(precioPorUnidad,tipoDeUnidad, producto, proveedor);
+            ps.getProducto().setIva( iva );
+            productoSeleccionables.add(ps);
+            return ps;
+        }
+        else{
+            ps.setPrecioPorUnidad(precioPorUnidad);
+            ps.setTipoDeUnidad(tipoDeUnidad);
+        }
+        return null;
     }
 
     public ProductoSeleccionable getProductoSeleccionable(String nombre, int cuit){

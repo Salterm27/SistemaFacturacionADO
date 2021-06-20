@@ -41,16 +41,7 @@
           </grid>
         </constraints>
         <properties>
-          <model>
-            <item value=""/>
-            <item value="Electrodomesticos"/>
-            <item value="Comestibles"/>
-            <item value="Servicios"/>
-            <item value="Inmuebles"/>
-            <item value="Mobiliario"/>
-            <item value="Libreria"/>
-            <item value="Limpieza"/>
-          </model>
+          <model/>
         </properties>
       </component>
       <component id="5a36a" class="javax.swing.JButton" binding="cancelarButton" default-binding="true">

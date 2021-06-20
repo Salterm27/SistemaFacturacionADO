@@ -2,6 +2,7 @@ package domain.vista;
 
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
+import domain.modelo.producto.Rubro;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,13 +17,16 @@ public class CreacionProducto {
     private JButton cancelarButton;
     //private static ControllerProducto cldrProducto;
     private ControllerProducto cldrProducto;
-    private ControllerProveedor cldrProveedor;
 
 
     public CreacionProducto() {
         this.cldrProducto = ControllerProducto.getInstance();
-        this.cldrProveedor = ControllerProveedor.getInstance();
-        //this.cldrProducto = cldrProducto;
+
+        comboRubro.addItem("");
+        for(Rubro r:cldrProducto.getRubros()){
+            comboRubro.addItem(r.getNombre());
+        }
+
 
         asociarPoductoYProveedorButton.addActionListener(new ActionListener() {
             @Override

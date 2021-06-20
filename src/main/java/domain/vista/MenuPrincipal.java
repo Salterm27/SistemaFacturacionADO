@@ -54,6 +54,18 @@ public class MenuPrincipal {
                 arrancarCreacionDeProductos();
             }
         });
+
+        consultasGeneralesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarConsultasGenerales();
+            }
+        });
+    }
+
+    private void arrancarConsultasGenerales() {
+        ConsultasGenerales cg = new ConsultasGenerales();
+        cg.start();
     }
 
     public void start(){

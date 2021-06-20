@@ -6,23 +6,33 @@ import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 public class ConsultasGenerales {
     private JPanel panelPrincipal;
-    private JTabbedPane tabbedPane1;
-    private JComboBox comboBox1;
-    private JTable table1;
-    private JButton GENERARButton;
-    private JPanel calendario;
-    private JDateChooser fechaDesde;
-    private ControllerProducto cldrProducto;
-    private ControllerProveedor cldrProveedor;
+    private JButton CONSULTACUENTACORRIENTEButton;
+    private JButton CONSULTADEFACTURASPORButton;
+
 
     public ConsultasGenerales() {
-        this.cldrProveedor = ControllerProveedor.getInstance();
-        this.cldrProducto = ControllerProducto.getInstance();
 
+
+        CONSULTACUENTACORRIENTEButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ConsultaCuentaCorriente ccc = new ConsultaCuentaCorriente();
+                ccc.start();
+            }
+        });
+        CONSULTADEFACTURASPORButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ConsultaFactura cf = new ConsultaFactura();
+                cf.start();
+            }
+        });
     }
 
     public void start(){

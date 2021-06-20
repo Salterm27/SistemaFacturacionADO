@@ -167,4 +167,8 @@ public class Proveedor {
     public void addOrdenDePago(OrdenDePago op) {
         ordenesdepago.add(op);
     }
+
+    public void addordenDeCompra(OrdenDeCompra oc) {
+        this.ordenesdecompra.add(oc);
+    }
 }
