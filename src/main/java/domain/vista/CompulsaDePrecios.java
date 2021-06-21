@@ -60,6 +60,7 @@ public class CompulsaDePrecios  {
                         });
                     }
                 }
+                table1.setAutoCreateRowSorter(true);
                 model.fireTableDataChanged();
             }
         });
@@ -71,7 +72,7 @@ public class CompulsaDePrecios  {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setLocationRelativeTo(null);
     }
 

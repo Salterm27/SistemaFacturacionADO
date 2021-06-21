@@ -40,6 +40,7 @@ public class ConsultasGenerales {
         frame.setContentPane( new ConsultasGenerales().panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setSize(300,300);
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
