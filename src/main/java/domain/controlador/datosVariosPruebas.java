@@ -1,8 +1,11 @@
 package domain.controlador;
 
+import domain.modelo.documentos.Item;
 import domain.modelo.producto.ProductoSeleccionable;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class datosVariosPruebas {
 
@@ -39,6 +42,7 @@ public class datosVariosPruebas {
         cldrProducto.CrearProducto("Internet 5g 720Mbps","Servicios");
         cldrProducto.CrearProducto("Internet Fibra Optica 2000Mbps","Servicios");
     }
+
     private void dataProveedor(){
         cldrProveedor.addProveedor(161516161,"","Empresa uno S.A", "Empresa uno",
                 "dire..",0000000,"xxxx@xxxx.com",5,

@@ -3,6 +3,8 @@ package domain.controlador;
 import domain.modelo.documentos.*;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
+
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -149,5 +151,12 @@ public class ControllerProveedor {
             }
         }
         return null;
+    }
+
+    public JComboBox comboProveedor(JComboBox x){
+        for(Proveedor p: proveedores ){
+            x.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
+        }
+        return x;
     }
 }

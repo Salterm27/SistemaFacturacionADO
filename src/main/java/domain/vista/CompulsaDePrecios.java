@@ -19,7 +19,6 @@ public class CompulsaDePrecios  {
     private JButton cancelarButton;
     private JTable table1;
     private ControllerProducto cldrProducto;
-    private ControllerProveedor cldrProveedor;
     private DefaultTableModel model;
 
     public CompulsaDePrecios(){
