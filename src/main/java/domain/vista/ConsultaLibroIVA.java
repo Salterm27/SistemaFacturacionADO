@@ -41,6 +41,8 @@ public class ConsultaLibroIVA {
     public ConsultaLibroIVA() {
         this.cldrProveedor = ControllerProveedor.getInstance();
 
+
+
         Calendar cld = Calendar.getInstance();
         fechaDesde = new JDateChooser(cld.getTime());
         fechaHasta = new JDateChooser(cld.getTime());

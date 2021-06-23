@@ -25,7 +25,8 @@ public class ConsultaFactura {
 
     public ConsultaFactura(){
         this.cldrProveedor = ControllerProveedor.getInstance();
-        setProveedor();
+        selecProveedor.addItem("");selecProveedor.addItem("TODOS");
+        selecProveedor = cldrProveedor.comboProveedor(selecProveedor);
 
         Calendar cld = Calendar.getInstance();
         JDateChooser fechaDesde = new JDateChooser(cld.getTime());
@@ -102,13 +103,7 @@ public class ConsultaFactura {
             }
         });
     }
-    private void setProveedor(){
-        this.selecProveedor.addItem("");
-        this.selecProveedor.addItem("TODOS");
-        for(Proveedor p: cldrProveedor.getProveedores() ){
-            selecProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
-        }
-    }
+
     public void start(){
         JFrame frame = new JFrame("Consultas - factura por proveedor");
         frame.setContentPane( new ConsultaFactura().panel1);

@@ -27,15 +27,14 @@ public class AsociacionProducto {
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
         desplegarProducto();
-        desplegarProveedores();
-        int cuit = Integer.valueOf(comboProveedores.getSelectedItem().toString().split(", CUIT:")[1]);
 
+        comboProveedores = cldrProveedor.comboProveedor(comboProveedores);
 
 
         asociarProductoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int cuit = Integer.valueOf(comboProveedores.getSelectedItem().toString().split(", CUIT:")[1]);
+                int cuit = Integer.valueOf(comboProveedores.getSelectedItem().toString().split(", cuit:")[1]);
 
                 ProductoSeleccionable ps=cldrProducto.CrearProductoSeleccionable(Float.valueOf(textPrecioUnidad.getText()), comboTipoUnidad.getSelectedItem().toString(),
                         cldrProducto.getProducto(comboNombreProducto.getSelectedItem().toString()),
@@ -70,12 +69,5 @@ public class AsociacionProducto {
 
     }
 
-    private void desplegarProveedores(){
-
-        for (Proveedor p: cldrProveedor.getProveedores()){
-            comboProveedores.addItem(p.getRazonSocial() + ", CUIT:" + p.getCuit());
-        }
-
-    }
 
 }
