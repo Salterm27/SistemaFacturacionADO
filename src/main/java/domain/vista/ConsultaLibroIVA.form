@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="domain.vista.ConsultaLibroIVA">
-  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
@@ -21,30 +21,6 @@
           </component>
         </children>
       </scrollpane>
-      <component id="5c2d9" class="javax.swing.JLabel" binding="labelSubTotal">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="SubTotal:"/>
-        </properties>
-      </component>
-      <component id="51ca6" class="javax.swing.JLabel" binding="labelIVA">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="IVA:"/>
-        </properties>
-      </component>
-      <component id="9d5a5" class="javax.swing.JLabel" binding="LabelTotal">
-        <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Total:"/>
-        </properties>
-      </component>
       <component id="d90b2" class="javax.swing.JButton" binding="APLICARButton" default-binding="true">
         <constraints>
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -69,9 +45,33 @@
         <border type="none"/>
         <children/>
       </grid>
-      <component id="9511e" class="javax.swing.JLabel" binding="IVA5">
+      <component id="946ce" class="javax.swing.JLabel" binding="IVA10_5">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="IVA 10,5%:"/>
+        </properties>
+      </component>
+      <component id="2d491" class="javax.swing.JLabel" binding="labelCantDoc">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Total documentos:"/>
+        </properties>
+      </component>
+      <component id="f41c" class="javax.swing.JLabel" binding="IVA2_5">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="IVA 2,5%:"/>
+        </properties>
+      </component>
+      <component id="9511e" class="javax.swing.JLabel" binding="IVA5">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="IVA 5%:"/>
@@ -79,42 +79,50 @@
       </component>
       <component id="a78ce" class="javax.swing.JLabel" binding="IVA21">
         <constraints>
-          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="IVA 21%:"/>
         </properties>
       </component>
-      <component id="f41c" class="javax.swing.JLabel" binding="IVA2_5">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="IVA 2,5%:"/>
-        </properties>
-      </component>
-      <component id="946ce" class="javax.swing.JLabel" binding="IVA7">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="IVA 7%:"/>
-        </properties>
-      </component>
       <component id="37195" class="javax.swing.JLabel" binding="IVA27">
         <constraints>
-          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="IVA 27%:"/>
         </properties>
       </component>
-      <component id="2d491" class="javax.swing.JLabel" binding="labelCantDoc">
+      <component id="51ca6" class="javax.swing.JLabel" binding="labelIVA">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="IVA:"/>
+        </properties>
+      </component>
+      <component id="5c2d9" class="javax.swing.JLabel" binding="labelSubTotal">
         <constraints>
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Total documentos:"/>
+          <text value="SubTotal:"/>
+        </properties>
+      </component>
+      <component id="403c8" class="javax.swing.JLabel" binding="IIBB">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="IIBB:"/>
+        </properties>
+      </component>
+      <component id="9d5a5" class="javax.swing.JLabel" binding="LabelTotal">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Total:"/>
         </properties>
       </component>
     </children>

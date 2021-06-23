@@ -16,7 +16,7 @@ public class Proveedor {
     private String direccion;
     private int telefono;
     private String correoElectronico;
-    private int nroIIBB;
+    private double iibb;
     private LocalDate inicioActividad;
     private int retencionImpuestos;
 
@@ -30,7 +30,7 @@ public class Proveedor {
 
     public Proveedor(int cuit, String responsabilidadIVA, String razonSocial,
                      String nombreFantasia, String direccion, int telefono,
-                     String correoElectronico, int nroIIBB, LocalDate inicioActividad,
+                     String correoElectronico, double nroIIBB, LocalDate inicioActividad,
                      int retencionImpuestos) {
 
         this.cuit = cuit;
@@ -40,7 +40,7 @@ public class Proveedor {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.nroIIBB = nroIIBB;
+        this.iibb = nroIIBB;
         this.inicioActividad = inicioActividad;
         this.retencionImpuestos = retencionImpuestos;
 
@@ -96,8 +96,8 @@ public class Proveedor {
         return correoElectronico;
     }
 
-    public int getNroIIBB() {
-        return nroIIBB;
+    public double getNroIIBB() {
+        return iibb;
     }
 
     public LocalDate getInicioActividad() {

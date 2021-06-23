@@ -87,7 +87,7 @@ public class AltaProveedor {
 
         cldrProveedor.addProveedor(StringtoNum(textCuit.getText()),textIVA.getActionCommand(),textRazonSocial.getText(),
                 textNombreFantasia.getText(),textCalle.getText(),StringtoNum(textTelefono.getText()),
-                textElectronico.getText(), StringtoNum(textIIBB.getText()), LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault()), 1);
+                textElectronico.getText(), Double.parseDouble(textIIBB.getText()), LocalDate.ofInstant(fechaActividad.getDate().toInstant(), ZoneId.systemDefault()), 1);
 
         /*int cuit, String responsabilidadIVA, String razonSocial,
                 String nombreFantasia, String direccion, int telefono,

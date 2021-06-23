@@ -44,7 +44,7 @@ public class ControllerProveedor {
 
     public void addProveedor(int cuit,String responsabilidadIVA, String razonSocial,
                              String nombreFantasia, String direccion, int telefono,
-                             String correoElectronico, int nroIIBB, LocalDate inicioActividad,
+                             String correoElectronico, double nroIIBB, LocalDate inicioActividad,
                              int retencionImpuestos){
         Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial, nombreFantasia,  direccion,  telefono, correoElectronico,  nroIIBB,  inicioActividad,  retencionImpuestos);
         proveedores.add (p);

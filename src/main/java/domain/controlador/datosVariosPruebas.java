@@ -41,28 +41,28 @@ public class datosVariosPruebas {
     }
     private void dataProveedor(){
         cldrProveedor.addProveedor(161516161,"","Empresa uno S.A", "Empresa uno",
-                "dire..",0000000,"xxxx@xxxx.com",546,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2006,7,17),7);
         cldrProveedor.addProveedor(786578557,"","Empresa dos S.A", "Empresa dos",
-                "dire..",0000000,"xxxx@xxxx.com",615,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2005,8,15),8);
         cldrProveedor.addProveedor(785786444,"","Empresa tres S.A", "Empresa tres",
-                "dire..",0000000,"xxxx@xxxx.com",777,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2007,4,30),9);
         cldrProveedor.addProveedor(782656533,"","Empresa cuatro S.A", "Empresa cuatro",
-                "dire..",0000000,"xxxx@xxxx.com",282,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2020,6,16),10);
         cldrProveedor.addProveedor(872972611,"","Empresa cinco S.A", "Empresa cinco",
-                "dire..",0000000,"xxxx@xxxx.com",658,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2020,2,23),20);
         cldrProveedor.addProveedor(445242242,"","Empresa seis S.A", "Empresa seis",
-                "dire..",0000000,"xxxx@xxxx.com",789,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2013,1,13),10);
         cldrProveedor.addProveedor(887845533,"","Empresa siete S.A", "Empresa siete",
-                "dire..",0000000,"xxxx@xxxx.com",987,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2011,4,25),15);
         cldrProveedor.addProveedor(747472354,"","Empresa ocho S.A", "Empresa ocho",
-                "dire..",0000000,"xxxx@xxxx.com",123,
+                "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2010,1,12),10);
     }
     private void dataProductoSeleccionable(){
