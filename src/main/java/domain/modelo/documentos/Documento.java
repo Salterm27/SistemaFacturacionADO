@@ -19,6 +19,8 @@ public abstract class Documento {
     protected ImpuestoAplicable impuestoAplicable;
 
     public double getIva() { return impuestoAplicable.getIva(); }
+    public double getIIBB() { return impuestoAplicable.getIIBB(); }
+
     public void inicializarFecha(){
         this.fecha = (LocalDate.now());
     }
