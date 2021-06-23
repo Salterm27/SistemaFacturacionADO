@@ -132,7 +132,7 @@ public class ConsultaLibroIVA {
                         iva27 = iva27 + item.getTotalIva();
                     }
                 }
-                iibb = iibb + (((doc.getMonto() - doc.getIva()) * p.getNroIIBB()) / 100);
+                iibb = iibb + (((doc.getMonto() - doc.getIva()) * p.getPorcentajeIIBB()) / 100);
                 Subtotal = Subtotal + doc.getMonto() - doc.getIva();
                 cantDocEmitidos++;
             }
