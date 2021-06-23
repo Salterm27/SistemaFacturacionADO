@@ -11,10 +11,13 @@ import java.util.Map;
 public abstract class Documento {
 
     protected int numeroDocumento;
-    protected Double monto;
+    protected double monto;
     protected LocalDate fecha;
     protected List <Item> detalle;
+    protected double iva;
 
+
+    public double getIva() { return iva; }
     public void inicializarFecha(){
         this.fecha = (LocalDate.now());
     }
@@ -27,13 +30,15 @@ public abstract class Documento {
     }
 
     public void calcularMonto(){
-        monto = 0.0;
+        monto = 0;
+        iva = 0;
         if (detalle!=null){
             for (Item i: detalle){
                 double montoPorProducto = i.getPs().getPrecioPorUnidad() * i.getCantidad();
-                System.out.println("precio/producto: " + i.getPs().getPrecioPorUnidad() +" Cantidad:"+ i.getCantidad());
-                montoPorProducto = montoPorProducto + (montoPorProducto * i.getPs().getProducto().getIva()/100);
+                double ivaProducto=(montoPorProducto * i.getPs().getProducto().getIva()/100);
+                montoPorProducto = montoPorProducto + ivaProducto;
                 monto = monto + montoPorProducto;
+                iva = iva + ivaProducto;
             }
             System.out.println("cantidad de productos: " + detalle.size());
             System.out.println("Monto: " + monto);

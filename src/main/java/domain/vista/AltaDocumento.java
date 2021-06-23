@@ -117,9 +117,15 @@ public class AltaDocumento {
                 }
 
                 if(tipoDocBox.getSelectedItem().toString() == "Factura") {
+                    int OrdenCompra = -1;
+                    try {
+                        OrdenCompra = Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split(" ")[0]));
+                    }catch (NullPointerException ex){
+                        OrdenCompra = -1;
+                    }
                     cldrProveedor.addFactura(
                             proveedor.getCuit(),false,
-                            Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split(" ")[0])),
+                            OrdenCompra,
                             detalle);
                 }
                 if(tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
@@ -127,6 +133,7 @@ public class AltaDocumento {
                 }
                 model.getDataVector().removeAllElements();
                 model.fireTableDataChanged();
+                labelTotal.setText("0");
             }
 
             private ProductoSeleccionable buscarPs(String nombre){
@@ -199,7 +206,7 @@ public class AltaDocumento {
                     ps.getProducto().getNombre() +
                     " <" + ps.getProducto().getRubro().getNombre() + "> " +
                             "Precio:" +
-                    (ps.getPrecioPorUnidad() + ((ps.getPrecioPorUnidad() * ps.getProducto().getIva())/100)));
+                    ps.getPrecioPorUnidad());
             //TO DO - No calcular el IVA aca sino en el final de la OP
         }
     }

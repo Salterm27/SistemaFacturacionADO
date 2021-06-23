@@ -150,7 +150,4 @@ public class ControllerProveedor {
         }
         return null;
     }
-
-    public void getOrdenDeCompraXNum(String s) {
-    }
 }

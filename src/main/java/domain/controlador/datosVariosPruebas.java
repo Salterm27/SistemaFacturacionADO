@@ -12,7 +12,12 @@ public class datosVariosPruebas {
     public datosVariosPruebas(){
         cldrProducto  = ControllerProducto.getInstance();
         cldrProveedor = ControllerProveedor.getInstance();
-
+        dataRubros();
+        dataProducto();
+        dataProveedor();
+        dataProductoSeleccionable();
+    }
+    private void dataRubros(){
         cldrProducto.crearRubro("Bazar");
         cldrProducto.crearRubro("Comestibles");
         cldrProducto.crearRubro("Electronica");
@@ -21,8 +26,8 @@ public class datosVariosPruebas {
         cldrProducto.crearRubro("Limpieza");
         cldrProducto.crearRubro("Mobiliario");
         cldrProducto.crearRubro("Servicios");
-
-
+    }
+    private void dataProducto(){
         cldrProducto.CrearProducto("SmartPhone Samsung","Electronica");
         cldrProducto.CrearProducto("Licuadora Phillips","Electrodomesticos");
         cldrProducto.CrearProducto("Notebook HP","Electronica");
@@ -33,7 +38,8 @@ public class datosVariosPruebas {
         cldrProducto.CrearProducto("Internet 4g 220Mbps","Servicios");
         cldrProducto.CrearProducto("Internet 5g 720Mbps","Servicios");
         cldrProducto.CrearProducto("Internet Fibra Optica 2000Mbps","Servicios");
-
+    }
+    private void dataProveedor(){
         cldrProveedor.addProveedor(161516161,"","Empresa uno S.A", "Empresa uno",
                 "dire..",0000000,"xxxx@xxxx.com",546,
                 LocalDate.of(2006,7,17),7);
@@ -58,7 +64,8 @@ public class datosVariosPruebas {
         cldrProveedor.addProveedor(747472354,"","Empresa ocho S.A", "Empresa ocho",
                 "dire..",0000000,"xxxx@xxxx.com",123,
                 LocalDate.of(2010,1,12),10);
-
+    }
+    private void dataProductoSeleccionable(){
         // empresa 1, 2 y 3
 
         ProductoSeleccionable ps;
@@ -158,6 +165,4 @@ public class datosVariosPruebas {
                 cldrProveedor.getProveedorXcuit(747472354),21);cldrProveedor.asociarProductoSeleccionable(747472354,ps);
 
     }
-
-
 }

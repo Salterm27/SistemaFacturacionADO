@@ -14,6 +14,7 @@ public class ConsultasGenerales {
     private JPanel panelPrincipal;
     private JButton CONSULTACUENTACORRIENTEButton;
     private JButton CONSULTADEFACTURASPORButton;
+    private JButton LIBROIVAButton;
 
 
     public ConsultasGenerales() {
@@ -31,6 +32,13 @@ public class ConsultasGenerales {
             public void actionPerformed(ActionEvent e) {
                 ConsultaFactura cf = new ConsultaFactura();
                 cf.start();
+            }
+        });
+        LIBROIVAButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ConsultaLibroIVA iva = new ConsultaLibroIVA();
+                iva.start();
             }
         });
     }
