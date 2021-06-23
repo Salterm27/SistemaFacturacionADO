@@ -71,7 +71,7 @@ public class MenuPrincipal {
     public void start(){
 
         frame.setContentPane( new MenuPrincipal().panelPrincipal);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setSize(800,400);

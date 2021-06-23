@@ -14,6 +14,10 @@ public class NotaDeCredito extends Documento{
         this.impuestoAplicable = impuestoAplicable;
         super.inicializarFecha();
     }
+    public void calcularMonto(){
+        super.calcularMonto();
+        this.monto = monto - monto * 2;
+    }
 
     public int getNumeroNotaCredito() {
         return numeroNotaCredito;

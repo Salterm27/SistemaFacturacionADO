@@ -63,7 +63,7 @@ public class ConsultaCuentaCorriente {
             for (NotaDeCredito nc: proveedorSeleccionado.getNotasdecredito()){
                 modelTabla.addRow(new Object[]{
                         "Nota de Credito "+nc.getNumeroDocumento(), nc.getFecha(), nc.getMonto()});
-                total =total- nc.getMonto();
+                total =total + nc.getMonto();
             }
             for (NotaDeDebito nd: proveedorSeleccionado.getNotasdedebito()){
                 modelTabla.addRow(new Object[]{

@@ -1,16 +1,18 @@
 package domain.vista;
 
+import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProveedor;
-import domain.modelo.documentos.Factura;
-import domain.modelo.documentos.NotaDeCredito;
-import domain.modelo.documentos.NotaDeDebito;
-import domain.modelo.documentos.OrdenDePago;
+import domain.modelo.documentos.*;
 import domain.modelo.proveedores.Proveedor;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.List;
 
 public class ConsultaLibroIVA {
     private JComboBox selecProveedor;
@@ -20,13 +22,32 @@ public class ConsultaLibroIVA {
     private JLabel labelIVA;
     private JLabel LabelTotal;
     private JLabel labelCantDoc;
+    private JButton APLICARButton;
+    private JPanel panelDesde;
+    private JPanel panelHasta;
+    private JLabel IVA5;
+    private JLabel IVA21;
+    private JLabel IVA2_5;
+    private JLabel IVA7;
+    private JLabel IVA27;
     private ControllerProveedor cldrProveedor;
-    private Proveedor proveedorSeleccionado;
+    JDateChooser fechaDesde;
+    DefaultTableModel modelTabla;
+    JDateChooser fechaHasta;
+    LocalDate datehasta;
+    LocalDate datedesde;
     public ConsultaLibroIVA() {
         this.cldrProveedor = ControllerProveedor.getInstance();
 
-        setProveedor();
-        DefaultTableModel modelTabla = new DefaultTableModel();
+        Calendar cld = Calendar.getInstance();
+        fechaDesde = new JDateChooser(cld.getTime());
+        fechaHasta = new JDateChooser(cld.getTime());
+        panelDesde.add(fechaDesde);panelHasta.add(fechaHasta);
+        fechaHasta.setDateFormatString("dd/MM/yyyy");
+        fechaDesde.setDateFormatString("dd/MM/yyyy");
+
+        modelTabla = new DefaultTableModel();
+        modelTabla.addColumn("CUIT");
         modelTabla.addColumn("Documento");
         modelTabla.addColumn("Fecha emision");
         modelTabla.addColumn("SubTotal");
@@ -35,62 +56,95 @@ public class ConsultaLibroIVA {
         table1.setModel(modelTabla);
 
 
-        selecProveedor.addActionListener(new ActionListener() {
+        APLICARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int cuit = Integer.valueOf(selecProveedor.getSelectedItem().toString().split("cuit:")[1]);
-                proveedorSeleccionado = cldrProveedor.getProveedorXcuit(cuit);
-                if ( proveedorSeleccionado != null){
-                    double Subtotal = 0;
-                    double totaliva = 0;
-                    int cantDocEmitidos = 0;
-                    modelTabla.getDataVector().removeAllElements();
-                    for (Factura f: proveedorSeleccionado.getFacturas()){
-                        modelTabla.addRow(new Object[]{
-                                f.getNumeroDocumento(), f.getFecha(),f.getMonto() - f.getIva(),f.getIva(),f.getMonto()});
-                        totaliva = totaliva + f.getIva();
-                        Subtotal = Subtotal + f.getMonto() - f.getIva();
-                        cantDocEmitidos++;
-                    }
-                    for (NotaDeCredito nc: proveedorSeleccionado.getNotasdecredito()){
-                        modelTabla.addRow(new Object[]{
-                                nc.getNumeroDocumento(), nc.getFecha(),nc.getMonto() - nc.getIva(),nc.getIva(),nc.getMonto()});
-                        totaliva = totaliva - nc.getIva();
-                        Subtotal = Subtotal - nc.getMonto() - nc.getIva();
-                        cantDocEmitidos++;
-                    }
-                    for (NotaDeDebito nd: proveedorSeleccionado.getNotasdedebito()){
-                        modelTabla.addRow(new Object[]{
-                                nd.getNumeroDocumento(), nd.getFecha(),nd.getMonto() - nd.getIva(),nd.getIva(),nd.getMonto()});
-                        totaliva = totaliva + nd.getIva();
-                        Subtotal = Subtotal + nd.getMonto() - nd.getIva();
-                        cantDocEmitidos++;
-                    }
-                    for (OrdenDePago op: proveedorSeleccionado.getOrdenesdepago()){
-                        modelTabla.addRow(new Object[]{
-                                op.getNumeroDocumento(), op.getFecha(),op.getMonto() - op.getIva(),op.getIva(),op.getMonto()});
-                        totaliva = totaliva - op.getIva();
-                        Subtotal = Subtotal - op.getMonto() - op.getIva();
-                        cantDocEmitidos++;
-                    }
-                    labelCantDoc.setText("Total documentos: " + cantDocEmitidos);
-                    labelIVA.setText("IVA: " + totaliva);
-                    LabelTotal.setText("Total: " + (totaliva+Subtotal));
-                    labelSubTotal.setText("SubTotal: " + Subtotal);
-                }
-                modelTabla.fireTableDataChanged();
+                generarLibro();
             }
         });
     }
-    private void setProveedor(){
-        this.selecProveedor.addItem("");
-        for(Proveedor p: cldrProveedor.getProveedores() ){
-            selecProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
+
+    double Subtotal = 0;
+    double iva2 = 0;
+    double iva5 = 0;
+    double iva7 = 0;
+    double iva21 = 0;
+    double iva27 = 0;
+    double totaliva = 0;
+    int cantDocEmitidos = 0;
+
+    private void generarLibro(){
+        modelTabla.getDataVector().removeAllElements();
+        datedesde = LocalDate.ofInstant(fechaDesde.getDate().toInstant(), ZoneId.systemDefault());
+        datehasta = LocalDate.ofInstant(fechaHasta.getDate().toInstant(), ZoneId.systemDefault());
+
+        if (datedesde.isBefore(datehasta) || datedesde.isEqual(datehasta)){
+            for (Proveedor proveedorSeleccionado: cldrProveedor.getProveedores()){
+                List docs = proveedorSeleccionado.getFacturas();
+                iteracionPorDocumento(docs,proveedorSeleccionado.getCuit());
+
+                docs = proveedorSeleccionado.getNotasdecredito();
+                iteracionPorDocumento(docs,proveedorSeleccionado.getCuit());
+
+                docs = proveedorSeleccionado.getNotasdedebito();
+                iteracionPorDocumento(docs,proveedorSeleccionado.getCuit());
+            }
+            IVA2_5.setText(IVA2_5.getText() + (iva2));
+            IVA5.setText(IVA5.getText() + (iva5));
+            IVA7.setText(IVA7.getText() + (iva7));
+            IVA21.setText(IVA21.getText() + (iva21));
+            IVA27.setText(IVA27.getText() + (iva27));
+            totaliva = iva2+iva5+iva7+iva21+iva27;
+            labelCantDoc.setText("Total documentos: " + cantDocEmitidos);
+            labelIVA.setText("IVA: " + totaliva);
+            labelSubTotal.setText("SubTotal: " + Subtotal);
+            LabelTotal.setText("Total: " + (totaliva+Subtotal));
+
+        }
+        modelTabla.fireTableDataChanged();
+    }
+    private void iteracionPorDocumento(List<Documento> listDoc, int cuit){
+        for (Documento doc: listDoc){
+            if(validarFecha(doc.getFecha())){
+                modelTabla.addRow(new Object[]{
+                        cuit, doc.getNumeroDocumento(), doc.getFecha(),
+                        doc.getMonto() - doc.getIva(),doc.getIva(),
+                        doc.getMonto()});
+                for (Item item: doc.getDetalle()){
+                    if(item.getPs().getProducto().getIva() == 2){
+                        iva2 = iva2 + item.getTotalIva();
+                    }
+                    if(item.getPs().getProducto().getIva() == 5){
+                        iva5 = iva5 + item.getTotalIva();
+                    }
+                    if(item.getPs().getProducto().getIva() == 7){
+                        iva7 = iva7 + item.getTotalIva();
+                    }
+                    if(item.getPs().getProducto().getIva() == 21){
+                        iva21 = iva21 + item.getTotalIva();
+                    }
+                    if(item.getPs().getProducto().getIva() == 27){
+                        iva27 = iva27 + item.getTotalIva();
+                    }
+                }
+                Subtotal = Subtotal + doc.getMonto() - doc.getIva();
+                cantDocEmitidos++;
+            }
         }
     }
 
+    private boolean validarFecha (LocalDate d){
+        if(d.isEqual(datedesde) ||
+                d.isEqual(datehasta) ||
+                d.isAfter(datedesde)||
+                d.isBefore(datehasta)){
+            return true;
+        }
+        return false;
+    }
+
     public void start(){
-        JFrame frame = new JFrame("Consultas - factura por proveedor");
+        JFrame frame = new JFrame("Consultas - LIBRO IVA");
         frame.setContentPane( new ConsultaLibroIVA().panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(640,480);
