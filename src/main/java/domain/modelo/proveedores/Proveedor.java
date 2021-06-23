@@ -26,6 +26,7 @@ public class Proveedor {
     private List<NotaDeDebito> notasdedebito;
     private List<OrdenDePago> ordenesdepago;
     private List<OrdenDeCompra> ordenesdecompra;
+    private ExcencionesDeImpuestos excenciones;
 
     private List<ProductoSeleccionable> productosSeleccionables;
 
@@ -51,6 +52,7 @@ public class Proveedor {
         this.ordenesdecompra = new ArrayList<>();
         this.facturas = new ArrayList<Factura>();
         this.productosSeleccionables = new ArrayList<>();
+        this.excenciones = new ExcencionesDeImpuestos();
     }
 
     public List<ProductoSeleccionable> getProductosSeleccionables() {
@@ -175,5 +177,15 @@ public class Proveedor {
 
     public void addordenDeCompra(OrdenDeCompra oc) {
         this.ordenesdecompra.add(oc);
+    }
+
+    public ExcencionesDeImpuestos getExcenciones() {
+        return excenciones;
+    }
+    public void setExcencionIIBB(LocalDate expireDate) {
+        this.excenciones.setExcencionIIBB(expireDate);
+    }
+    public void setExcencionIVA(LocalDate expireDate) {
+        this.excenciones.setExcencionIVA(expireDate);
     }
 }

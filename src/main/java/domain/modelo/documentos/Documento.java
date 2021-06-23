@@ -37,13 +37,21 @@ public abstract class Documento {
         if (detalle!=null){
             for (Item i: detalle){
                 double montoPorProducto = i.getPs().getPrecioPorUnidad() * i.getCantidad();
-                double ivaProducto=(montoPorProducto * i.getPs().getProducto().getIva()/100);
-                double iibbProducto=(montoPorProducto * i.getPs().getProveedor().getPorcentajeIIBB()/100);
+                double ivaProducto=0;
+                double iibbProducto = 0;
+
+                if (! i.getPs().getProveedor().getExcenciones().esExcentoIva()) {
+                    ivaProducto = (montoPorProducto * i.getPs().getProducto().getIva() / 100);
+                    iva = iva + ivaProducto;
+                }
+
+                if (! i.getPs().getProveedor().getExcenciones().esExcentoIIBB()) {
+                    iibbProducto = (montoPorProducto * i.getPs().getProveedor().getPorcentajeIIBB() / 100);
+                    iibb = iibb + iibbProducto;
+                }
 
                 montoPorProducto = montoPorProducto + ivaProducto + iibbProducto;
                 monto = monto + montoPorProducto;
-                iva = iva + ivaProducto;
-                iibb = iibb + iibbProducto;
             }
 
             System.out.println("cantidad de productos: " + detalle.size());
