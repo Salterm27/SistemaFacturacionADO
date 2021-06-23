@@ -115,25 +115,32 @@ public class ConsultaLibroIVA {
                         p.getCuit(), doc.getNumeroDocumento(), doc.getFecha(),
                         doc.getMonto() - doc.getIva(),doc.getIva(),
                         doc.getMonto()});
-                for (Item item: doc.getDetalle()){
-                    if(item.getPs().getProducto().getIva() == 2.5){
-                        iva2_5 = iva2_5 + item.getTotalIva();
-                    }
-                    if(item.getPs().getProducto().getIva() == 5){
-                        iva5 = iva5 + item.getTotalIva();
-                    }
-                    if(item.getPs().getProducto().getIva() == 10){
-                        iva10_5 = iva10_5 + item.getTotalIva();
-                    }
-                    if(item.getPs().getProducto().getIva() == 21){
-                        iva21 = iva21 + item.getTotalIva();
-                    }
-                    if(item.getPs().getProducto().getIva() == 27){
-                        iva27 = iva27 + item.getTotalIva();
+                if (! p.getExcenciones().esExcentoIva()){
+                    for (Item item: doc.getDetalle()){
+                        if(item.getPs().getProducto().getIva() == 2.5){
+                            iva2_5 = iva2_5 + item.getTotalIva();
+                        }
+                        if(item.getPs().getProducto().getIva() == 5){
+                            iva5 = iva5 + item.getTotalIva();
+                        }
+                        if(item.getPs().getProducto().getIva() == 10){
+                            iva10_5 = iva10_5 + item.getTotalIva();
+                        }
+                        if(item.getPs().getProducto().getIva() == 21){
+                            iva21 = iva21 + item.getTotalIva();
+                        }
+                        if(item.getPs().getProducto().getIva() == 27){
+                            iva27 = iva27 + item.getTotalIva();
+                        }
                     }
                 }
-                iibb = iibb + (((doc.getMonto() - doc.getIva()) * p.getPorcentajeIIBB()) / 100);
-                Subtotal = Subtotal + doc.getMonto() - doc.getIva();
+                //double x = (((doc.getMonto() - doc.getIva()) * p.getPorcentajeIIBB()) / 100);
+                if (! p.getExcenciones().esExcentoIIBB()){
+                    iibb = iibb +  doc.getIIBB();
+                }
+
+
+                Subtotal = Subtotal + doc.getMonto() - doc.getIva() - doc.getIIBB();
                 cantDocEmitidos++;
             }
         }
