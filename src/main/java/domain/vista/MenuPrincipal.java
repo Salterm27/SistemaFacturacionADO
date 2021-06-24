@@ -16,6 +16,7 @@ public class MenuPrincipal {
     private JButton buttonDocumentos;
     private JButton creacionDeProductosButton;
     private JButton consultasGeneralesButton;
+    private JButton adminCert;
     private ControllerProducto cldrProducto;
     private ControllerProveedor cldrProveedor;
     private MenuPrincipal self;
@@ -59,6 +60,13 @@ public class MenuPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 arrancarConsultasGenerales();
+            }
+        });
+        adminCert.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    AdministracionDeCertificadosDeExcepciones adcert = new AdministracionDeCertificadosDeExcepciones();
+                    adcert.start();
             }
         });
     }

@@ -91,6 +91,9 @@ public class AltaDocumento {
         });
         buscarProveedor.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                model.getDataVector().removeAllElements();
+                model.fireTableDataChanged();
+                labelTotal.setText("0");
                 setItemsToSeach();
                 esOP();
                 esFactura();
