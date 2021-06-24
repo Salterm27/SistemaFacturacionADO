@@ -30,7 +30,6 @@ public class AltaDocumento {
     private JButton agregarItemButton;
     private JButton generarDocumentoButton;
     private JLabel labelProveedor;
-    private JButton cancelarButton;
     private JPanel panelDoc;
     private JLabel labelFecha;
     private JLabel labelTotal;

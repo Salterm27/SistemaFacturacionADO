@@ -16,7 +16,6 @@ public class CompulsaDePrecios  {
     private JComboBox comboRubro;
     private JComboBox comboProducto;
     private JButton consultarButton;
-    private JButton cancelarButton;
     private JTable table1;
     private ControllerProducto cldrProducto;
     private DefaultTableModel model;

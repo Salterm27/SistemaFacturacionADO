@@ -15,7 +15,7 @@ import java.time.ZoneId;
 import java.util.Calendar;
 
 
-public class AltaProveedor {
+public class AltaProveedor extends JFrame{
 
     private JPanel PanelDeProveedor;
     private JTextField textRazonSocial;
@@ -28,7 +28,6 @@ public class AltaProveedor {
     private JTextField textTelefono;
     private JTextField textElectronico;
     private JButton aceptarButton;
-    private JButton cancelarButton;
     private JLabel calle;
     private JLabel ciudad;
     private JLabel telefono;
@@ -38,6 +37,7 @@ public class AltaProveedor {
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private AltaProveedor self;
+    private JFrame frame;
 
     public AltaProveedor(){
         this.cldrProveedor = ControllerProveedor.getInstance();
@@ -69,13 +69,13 @@ public class AltaProveedor {
     }*/
 
     public void start(){
-        JFrame frame = new JFrame("Alta Proveedor");
-        frame.setContentPane(new AltaProveedor().PanelDeProveedor);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
+        //this.frame = new JFrame("Alta Proveedor");
+        this.setContentPane(new AltaProveedor().PanelDeProveedor);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.pack();
+        this.setVisible(true);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     private int StringtoNum(String x){
@@ -110,12 +110,7 @@ public class AltaProveedor {
             }
         });
 
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
-        });
     }
 
 

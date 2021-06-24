@@ -17,7 +17,6 @@ public class AsociacionProducto {
     private JComboBox comboTipoIVA;
     private JTextField textPrecioUnidad;
     private JButton asociarProductoButton;
-    private JButton cancelarButton;
     private JComboBox comboNombreProducto;
     private ControllerProducto cldrProducto;
     private ControllerProveedor cldrProveedor;

@@ -14,7 +14,6 @@ public class CreacionProducto {
     private JComboBox comboRubro;
     private JButton asociarPoductoYProveedorButton;
     private JButton aceptarButton;
-    private JButton cancelarButton;
     //private static ControllerProducto cldrProducto;
     private ControllerProducto cldrProducto;
 

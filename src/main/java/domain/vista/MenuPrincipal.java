@@ -81,9 +81,9 @@ public class MenuPrincipal {
         }
 
     private void arrancarAltaProveedor(){
-        AltaProveedor frame= new AltaProveedor();
+        AltaProveedor fr= new AltaProveedor();
         this.frame.setVisible(false);
-        frame.start();
+        fr.start();
 
     }
 
