@@ -34,7 +34,6 @@ public class AltaProveedor {
     private JLabel telefono;
     private JLabel correoElectronico;
     private JPanel calendarPanel;
-    private JButton ATRASButton;
     private JDateChooser fechaActividad;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;

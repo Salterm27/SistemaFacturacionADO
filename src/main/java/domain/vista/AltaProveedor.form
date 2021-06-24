@@ -274,14 +274,6 @@
           </grid>
         </constraints>
       </vspacer>
-      <component id="c290" class="javax.swing.JButton" binding="ATRASButton" default-binding="true">
-        <constraints>
-          <grid row="11" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="ATRAS"/>
-        </properties>
-      </component>
       <vspacer id="7fe45">
         <constraints>
           <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
