@@ -69,7 +69,9 @@ public class AltaDocumento {
 
         table1.setModel(model);
 
-        setItemsProveedor();
+        buscarProveedor.addItem("");
+        buscarProveedor = cldrProveedor.comboProveedor(buscarProveedor);
+
         agregarItemButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -194,12 +196,7 @@ public class AltaDocumento {
         labelFacturasAsociadas.setVisible(select);
     }
 
-    private void setItemsProveedor(){
-        buscarProveedor.addItem("");
-        for(Proveedor p: cldrProveedor.getProveedores() ){
-            buscarProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
-        }
-    }
+
 
     private void setItemsToSeach(){
         int cuit = Integer.valueOf(buscarProveedor.getSelectedItem().toString().split(" cuit:")[1]);

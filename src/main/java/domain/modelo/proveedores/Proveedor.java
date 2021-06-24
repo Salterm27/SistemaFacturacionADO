@@ -1,6 +1,7 @@
 package domain.modelo.proveedores;
 
 import domain.modelo.documentos.*;
+import domain.modelo.impuestos.ImpuestoAplicable;
 import domain.modelo.producto.ProductoSeleccionable;
 
 import java.time.LocalDate;
@@ -16,15 +17,16 @@ public class Proveedor {
     private String direccion;
     private int telefono;
     private String correoElectronico;
-    private double iibb;
+    private double porcentajeIIBB;
     private LocalDate inicioActividad;
     private int retencionImpuestos;
-
+    private ImpuestoAplicable RetencionesAplicadas;
     private List<Factura> facturas;
     private List<NotaDeCredito> notasdecredito;
     private List<NotaDeDebito> notasdedebito;
     private List<OrdenDePago> ordenesdepago;
     private List<OrdenDeCompra> ordenesdecompra;
+    private ExcencionesDeImpuestos excenciones;
 
     private List<ProductoSeleccionable> productosSeleccionables;
 
@@ -40,16 +42,17 @@ public class Proveedor {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.iibb = nroIIBB;
+        this.porcentajeIIBB = nroIIBB;
         this.inicioActividad = inicioActividad;
         this.retencionImpuestos = retencionImpuestos;
-
+        this.RetencionesAplicadas = new ImpuestoAplicable();
         this.notasdecredito = new ArrayList<>();
         this.notasdedebito = new ArrayList<>();
         this.ordenesdepago = new ArrayList<>();
         this.ordenesdecompra = new ArrayList<>();
         this.facturas = new ArrayList<Factura>();
         this.productosSeleccionables = new ArrayList<>();
+        this.excenciones = new ExcencionesDeImpuestos();
     }
 
     public List<ProductoSeleccionable> getProductosSeleccionables() {
@@ -96,8 +99,12 @@ public class Proveedor {
         return correoElectronico;
     }
 
-    public double getNroIIBB() {
-        return iibb;
+    public double getPorcentajeIIBB() {
+        return porcentajeIIBB;
+    }
+
+    public ImpuestoAplicable getRetencionesAplicadas() {
+        return RetencionesAplicadas;
     }
 
     public LocalDate getInicioActividad() {
@@ -170,5 +177,15 @@ public class Proveedor {
 
     public void addordenDeCompra(OrdenDeCompra oc) {
         this.ordenesdecompra.add(oc);
+    }
+
+    public ExcencionesDeImpuestos getExcenciones() {
+        return excenciones;
+    }
+    public void setExcencionIIBB(LocalDate expireDate) {
+        this.excenciones.setExcencionIIBB(expireDate);
+    }
+    public void setExcencionIVA(LocalDate expireDate) {
+        this.excenciones.setExcencionIVA(expireDate);
     }
 }

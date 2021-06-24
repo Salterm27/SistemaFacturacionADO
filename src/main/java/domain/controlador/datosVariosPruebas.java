@@ -1,8 +1,11 @@
 package domain.controlador;
 
+import domain.modelo.documentos.Item;
 import domain.modelo.producto.ProductoSeleccionable;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class datosVariosPruebas {
 
@@ -39,6 +42,7 @@ public class datosVariosPruebas {
         cldrProducto.CrearProducto("Internet 5g 720Mbps","Servicios");
         cldrProducto.CrearProducto("Internet Fibra Optica 2000Mbps","Servicios");
     }
+
     private void dataProveedor(){
         cldrProveedor.addProveedor(161516161,"","Empresa uno S.A", "Empresa uno",
                 "dire..",0000000,"xxxx@xxxx.com",5,
@@ -64,6 +68,16 @@ public class datosVariosPruebas {
         cldrProveedor.addProveedor(747472354,"","Empresa ocho S.A", "Empresa ocho",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2010,1,12),10);
+
+
+        //proveedor 1 no paga iva ni iibb
+        cldrProveedor.getProveedorXcuit(161516161).getExcenciones().setExcencionIVA(LocalDate.of(2022,01,01));
+        cldrProveedor.getProveedorXcuit(161516161).getExcenciones().setExcencionIIBB(LocalDate.of(2022,01,01));
+        //proveedor 2 no paga iva
+        cldrProveedor.getProveedorXcuit(786578557).getExcenciones().setExcencionIVA(LocalDate.of(2022,01,01));
+        //proveedor 3 no paga IIBB
+        cldrProveedor.getProveedorXcuit(785786444).getExcenciones().setExcencionIIBB(LocalDate.of(2022,01,01));
+
     }
     private void dataProductoSeleccionable(){
         // empresa 1, 2 y 3

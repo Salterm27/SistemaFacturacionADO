@@ -11,7 +11,6 @@ public class Factura extends Documento{
 
     private OrdenDeCompra ordenDeCompra;
     private Boolean aprobacion;
-    private ImpuestoAplicable impuestoAplicable;
     private OrdenDePago ordenDePago;
 
     public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, List<Item> detalle ){

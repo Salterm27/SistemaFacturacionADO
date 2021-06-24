@@ -30,7 +30,9 @@ public class ConsultaCuentaCorriente {
     private DefaultTableModel modelTabla;
     public ConsultaCuentaCorriente(){
         this.cldrProveedor = ControllerProveedor.getInstance();
-        setProveedor();
+
+        selecProveedor.addItem("");
+        selecProveedor = cldrProveedor.comboProveedor(selecProveedor);
 
         modelTabla = new DefaultTableModel();
         modelTabla.addColumn("Documento");
@@ -79,12 +81,7 @@ public class ConsultaCuentaCorriente {
             this.EstadoDeCuenta.setText("Estado de cuenta: " +  total);
         }
     }
-    private void setProveedor(){
-        this.selecProveedor.addItem("");
-        for(Proveedor p: cldrProveedor.getProveedores() ){
-            selecProveedor.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
-        }
-    }
+
     public void start(){
         JFrame frame = new JFrame("Consultas - Cuenta Corriente");
         frame.setContentPane( new ConsultaCuentaCorriente().panel);
