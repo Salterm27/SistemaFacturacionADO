@@ -45,7 +45,7 @@ public class AsociacionProducto {
 
                 cldrProveedor.asociarProductoSeleccionable(cuit, ps);
 
-                JOptionPane.showMessageDialog(null,"Se asocio el Producto: " + comboNombreProducto.getSelectedItem().toString() + "al Proveedor "
+                JOptionPane.showMessageDialog(null,"Se asocio el Producto: " + comboNombreProducto.getSelectedItem().toString() + " al Proveedor "
                 + comboProveedores.getSelectedItem().toString());
             }
         });

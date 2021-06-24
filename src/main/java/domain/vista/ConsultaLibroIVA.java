@@ -148,12 +148,14 @@ public class ConsultaLibroIVA {
     }
 
     public void start(){
-        JFrame frame = new JFrame("Consultas - LIBRO IVA");
+        JFrame frame = new JFrame("Consultas - Libro IVA");
         frame.setContentPane( new ConsultaLibroIVA().panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(640,480);
+
+        //frame.setSize(640,480);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
 }

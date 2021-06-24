@@ -47,10 +47,11 @@ public class ConsultasGenerales {
         JFrame frame = new JFrame("Consultas Generales");
         frame.setContentPane( new ConsultasGenerales().panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setVisible(true);
         frame.pack();
+        frame.setVisible(true);
+        frame.setSize(300,400);
         frame.setLocationRelativeTo(null);
-                frame.setResizable(false);
+        frame.setResizable(false);
 
 
     }

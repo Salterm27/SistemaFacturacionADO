@@ -113,9 +113,11 @@ public class ConsultaFactura {
         JFrame frame = new JFrame("Consultas - factura por proveedor");
         frame.setContentPane( new ConsultaFactura().panel1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(640,480);
+        //frame.setSize(640,480);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
     }
 
 }

@@ -134,6 +134,8 @@ public class AltaDocumento {
                 model.getDataVector().removeAllElements();
                 model.fireTableDataChanged();
                 labelTotal.setText("0");
+
+                JOptionPane.showMessageDialog(null,"Se genero un Documento de tipo: " +" " + tipoDocBox.getSelectedItem().toString() );
             }
 
             private ProductoSeleccionable buscarPs(String nombre){
@@ -145,6 +147,9 @@ public class AltaDocumento {
                 }
                 return null;
             }
+
+
+
         });
     }
     private void esFactura() {

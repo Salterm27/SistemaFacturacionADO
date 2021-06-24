@@ -89,8 +89,9 @@ public class ConsultaCuentaCorriente {
         JFrame frame = new JFrame("Consultas - Cuenta Corriente");
         frame.setContentPane( new ConsultaCuentaCorriente().panel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(640,480);
+        //frame.setSize(640,480);
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 }
