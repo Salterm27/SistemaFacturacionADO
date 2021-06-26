@@ -16,9 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class AltaDocumento {
@@ -139,10 +137,14 @@ public class AltaDocumento {
                     } catch (NullPointerException ex) {
                         OrdenCompra = -1;
                     }
+                    // TODO aca hay que validar que la factura tenga orden de compra
+                    // TODO validacion Orden de Comrpra vs Factura.
                     cldrProveedor.addFactura(
                             proveedor.getCuit(), false,
                             OrdenCompra,
                             detalle);
+                    proveedor.addDeudaCorriente(Double.valueOf(labelTotal.getText()));
+                    docWasOk = true;
                 }
                 if (tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
                     if (proveedor.getLimiteDeuda() >
@@ -209,6 +211,7 @@ public class AltaDocumento {
             if (proveedor != null) {
                 for (Factura f : proveedor.getFacturas()) {
                     facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + " $" + f.getMonto());
+                    proveedor.substractDeudaCorriente(f.getMonto());
                 }
             }
         }
