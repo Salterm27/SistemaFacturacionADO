@@ -90,7 +90,7 @@ public class AdministracionDeCertificadosDeExcepciones {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(800,400);
+        frame.setSize(900,600);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 

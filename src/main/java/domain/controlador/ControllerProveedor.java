@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class ControllerProveedor {
     List <Proveedor> proveedores ;
-    int documentCounter = 1;
+    int documentCounter = 0;
 
     private static final ControllerProveedor instance = new ControllerProveedor();
     public static ControllerProveedor getInstance(){return instance;}

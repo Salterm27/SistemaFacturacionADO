@@ -39,6 +39,7 @@ public class AltaDocumento {
     private JComboBox facturasAsociadas;
     private JLabel labelFacturasAsociadas;
     private JLabel fechaHoy;
+    private JCheckBox aprobacionCheckBox;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
@@ -88,6 +89,17 @@ public class AltaDocumento {
                 labelTotal.setText(Double.toString(Double.parseDouble(labelTotal.getText()) + valorTotal));
             }
         });
+        aprobacionCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(aprobacionCheckBox.isSelected()){
+                    generarDocumentoButton.setEnabled((true));
+                }
+                else{
+                    generarDocumentoButton.setEnabled((false));
+                }
+            }
+        });
         buscarProveedor.addActionListener (new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.getDataVector().removeAllElements();
@@ -112,49 +124,73 @@ public class AltaDocumento {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Item> detalle = new ArrayList<>();
-
-                for(int i = 0; i<model.getRowCount(); i++){
-                    ProductoSeleccionable ps = buscarPs(model.getValueAt(i,0).toString());
-                    int cant = Integer.valueOf(model.getValueAt(i,2).toString());
-                    Item item = new Item(ps,cant);
+                boolean docWasOk = false;
+                for (int i = 0; i < model.getRowCount(); i++) {
+                    ProductoSeleccionable ps = buscarPs(model.getValueAt(i, 0).toString());
+                    int cant = Integer.valueOf(model.getValueAt(i, 2).toString());
+                    Item item = new Item(ps, cant);
                     detalle.add(item);
                 }
 
-                if(tipoDocBox.getSelectedItem().toString() == "Factura") {
+                if (tipoDocBox.getSelectedItem().toString() == "Factura") {
                     int OrdenCompra = -1;
                     try {
                         OrdenCompra = Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split(" ")[0]));
-                    }catch (NullPointerException ex){
+                    } catch (NullPointerException ex) {
                         OrdenCompra = -1;
                     }
                     cldrProveedor.addFactura(
-                            proveedor.getCuit(),false,
+                            proveedor.getCuit(), false,
                             OrdenCompra,
                             detalle);
                 }
-                if(tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
-                    cldrProveedor.addOrdenDeCompra(proveedor.getCuit(), detalle);
-                }
-                model.getDataVector().removeAllElements();
-                model.fireTableDataChanged();
-                labelTotal.setText("0");
+                if (tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
+                    if (proveedor.getLimiteDeuda() >
+                            Double.valueOf(labelTotal.getText()) + proveedor.getdeudaCorriente() || aprobacionCheckBox.isSelected()) {
+                        //validacion OK Orden de compra
+                        System.out.print("genero orden");
+                        cldrProveedor.addOrdenDeCompra(proveedor.getCuit(), detalle);
+                        docWasOk = true;
+                    } else {
+                        //Validacion NOK orden de Compra
+                        System.out.print("no genero orden");
+                        aprobacionCheckBox.setVisible((true));
+                        generarDocumentoButton.setEnabled((false));
+                    }
+                    model.getDataVector().removeAllElements();
+                    model.fireTableDataChanged();
+                    labelTotal.setText("0");
 
-                JOptionPane.showMessageDialog(null,"Se genero un Documento de tipo: " +" " + tipoDocBox.getSelectedItem().toString() );
+
+
+
+                }
+
+                if (docWasOk){
+                    JOptionPane.showMessageDialog(null, "Se genero un Documento de tipo: " + " " + tipoDocBox.getSelectedItem().toString());
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "No se puede generar un Documento");
+
+                }
+
+
             }
 
-            private ProductoSeleccionable buscarPs(String nombre){
-                nombre = nombre.split(" <")[0];
-                for (ProductoSeleccionable ps:proveedor.getProductosSeleccionables()){
-                        if( ps.getProducto().getNombre().equals(nombre)){
+                private ProductoSeleccionable buscarPs (String nombre){
+                    nombre = nombre.split(" <")[0];
+                    for (ProductoSeleccionable ps : proveedor.getProductosSeleccionables()) {
+                        if (ps.getProducto().getNombre().equals(nombre)) {
                             return ps;
                         }
+                    }
+                    return null;
                 }
-                return null;
-            }
+            });
 
 
 
-        });
+
     }
     private void esFactura() {
         if(tipoDocBox.getSelectedItem().toString() == "Factura"){
@@ -215,3 +251,4 @@ public class AltaDocumento {
         }
     }
 }
+

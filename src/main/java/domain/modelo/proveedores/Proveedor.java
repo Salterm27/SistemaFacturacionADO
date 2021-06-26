@@ -27,6 +27,8 @@ public class Proveedor {
     private List<OrdenDePago> ordenesdepago;
     private List<OrdenDeCompra> ordenesdecompra;
     private ExcencionesDeImpuestos excenciones;
+    private double limiteDeuda;
+    private double deudaCorriente;
 
     private List<ProductoSeleccionable> productosSeleccionables;
 
@@ -53,6 +55,32 @@ public class Proveedor {
         this.facturas = new ArrayList<Factura>();
         this.productosSeleccionables = new ArrayList<>();
         this.excenciones = new ExcencionesDeImpuestos();
+        this.limiteDeuda = -1;
+        this.deudaCorriente = 0;
+
+    }
+
+    public double getdeudaCorriente() {
+        return deudaCorriente;
+    }
+
+    public void addDeudaCorriente(double nuevaDeuda) {
+        this.deudaCorriente +=nuevaDeuda;
+    }
+    public void substractDeudaCorriente(double nuevaDeuda) {
+        this.deudaCorriente -= nuevaDeuda;
+    }
+
+    public double getLimiteDeuda() {
+        return limiteDeuda;
+    }
+
+    public void setLimiteDeuda(double limiteDeuda) {
+        this.limiteDeuda = limiteDeuda;
+    }
+
+    public void clearLimiteDeuda(){
+        setLimiteDeuda(-1);
     }
 
     public List<ProductoSeleccionable> getProductosSeleccionables() {
