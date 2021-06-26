@@ -46,7 +46,7 @@ public class AltaDocumento {
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
-
+        aprobacionCheckBox.setVisible(false);
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
 
