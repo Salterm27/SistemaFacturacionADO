@@ -13,7 +13,7 @@ public class Factura extends Documento{
     private Boolean aprobacion;
     private OrdenDePago ordenDePago;
 
-    public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompr, List<Item> detalle ){
+    public Factura(int nroFactura, Boolean aprobacion, OrdenDeCompra ordenDeCompra, List<Item> detalle ){
         super.numeroDocumento = nroFactura;
         this.ordenDeCompra = ordenDeCompra;
         this.aprobacion = aprobacion;

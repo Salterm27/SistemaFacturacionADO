@@ -49,7 +49,9 @@ public class ControllerProveedor {
                              String nombreFantasia, String direccion, int telefono,
                              String correoElectronico, double nroIIBB, LocalDate inicioActividad,
                              int retencionImpuestos){
-        Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial, nombreFantasia,  direccion,  telefono, correoElectronico,  nroIIBB,  inicioActividad,  retencionImpuestos);
+        Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial,
+                nombreFantasia,  direccion,  telefono, correoElectronico,
+                nroIIBB,  inicioActividad,  retencionImpuestos);
         proveedores.add (p);
         mostrarProveedores();
     }
@@ -161,6 +163,24 @@ public class ControllerProveedor {
         for(Factura f: proveedor.getFacturas()){
             if(f.getNumeroDocumento() == id){
                 detalle = f.getDetalle();
+            }
+        }
+        for(Item item: detalle){
+            model.addRow(new Object[]{
+                    item.getPs().getProducto().getNombre(),
+                    item.getPs().getPrecioPorUnidad(),
+                    item.getCantidad(),
+                    item.getCantidad() * item.getPs().getPrecioPorUnidad()
+            });
+        }
+        return model;
+    }
+
+    public DefaultTableModel RellenarDetalleOrdenDeCompra_aFactura(Proveedor proveedor, int id, DefaultTableModel model) {
+        List<Item> detalle = null;
+        for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
+            if(oc.getNumeroDocumento() == id){
+                detalle = oc.getDetalle();
             }
         }
         for(Item item: detalle){

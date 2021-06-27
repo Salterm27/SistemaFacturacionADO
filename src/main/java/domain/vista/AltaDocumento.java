@@ -43,7 +43,6 @@ public class AltaDocumento {
     private Proveedor proveedor;
     private DefaultTableModel model;
     private List<Integer> FAsociadasAOP;
-
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
@@ -131,30 +130,35 @@ public class AltaDocumento {
                     int OrdenCompra = -1;
                     if(ordenesdecompra.getSelectedItem().toString()!=""){
                         try {
-                            OrdenCompra = Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split(" ")[0]));
+                            OrdenCompra = Integer.valueOf((ordenesdecompra.getSelectedItem().toString().split("-")[0]));
                         } catch (NullPointerException ex) {
                             OrdenCompra = -1;
                         }
                     }
-                    // TODO aca hay que validar que la factura tenga orden de compra
-                    // TODO validacion Orden de Comrpra vs Factura.
-                    cldrProveedor.addFactura(
-                            proveedor.getCuit(), false,
-                            OrdenCompra,
-                            detalle);
-                    proveedor.addDeudaCorriente(Double.valueOf(labelTotal.getText()));
-                    docWasOk = true;
+                    if ( OrdenCompra == -1 && !aprobacionCheckBox.isSelected()){
+                        docWasOk = false;
+                        aprobacionCheckBox.setVisible(true);
+                    }
+                    else{
+                        cldrProveedor.addFactura(
+                                proveedor.getCuit(), false,
+                                OrdenCompra,
+                                detalle);
+                        proveedor.addDeudaCorriente(Double.valueOf(labelTotal.getText()));
+                        aprobacionCheckBox.setSelected(false);
+                        aprobacionCheckBox.setVisible(false);
+                        docWasOk = true;
+                    }
+
                 }
                 if (tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
                     if (proveedor.getLimiteDeuda() >
                             Double.valueOf(labelTotal.getText()) + proveedor.getdeudaCorriente() || aprobacionCheckBox.isSelected()) {
                         //validacion OK Orden de compra
-                        System.out.print("genero orden");
                         cldrProveedor.addOrdenDeCompra(proveedor.getCuit(), detalle);
                         docWasOk = true;
                     } else {
                         //Validacion NOK orden de Compra
-                        System.out.print("no genero orden");
                         aprobacionCheckBox.setVisible((true));
                         generarDocumentoButton.setEnabled((false));
 
@@ -172,6 +176,7 @@ public class AltaDocumento {
                     model.fireTableDataChanged();
                     labelTotal.setText("0");
                     aprobacionCheckBox.setSelected(false);
+                    aprobacionCheckBox.setVisible(false);
                     JOptionPane.showMessageDialog(null, "Se genero un Documento de tipo: " + " " + tipoDocBox.getSelectedItem().toString());
                     docWasOk = false;
                 }
@@ -209,7 +214,25 @@ public class AltaDocumento {
                 }
 
                 for(Integer i: FAsociadasAOP){
-                    System.out.println(i);
+                    System.out.println("Asociado a documento:" + i);
+                }
+            }
+        });
+        ordenesdecompra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // RellenarDetalleOrdenDeCompra_aFactura
+                try{
+                    String OCAsc = ordenesdecompra.getSelectedItem().toString() ;
+                    if ( OCAsc.length() > 2){
+                        table1.setModel(cldrProveedor.RellenarDetalleOrdenDeCompra_aFactura(
+                                proveedor,
+                                Integer.valueOf(OCAsc.split("-")[0]),
+                                model));
+                        recalcularTotalDesdeModelo();
+                    }
+                }catch (NullPointerException n){
+
                 }
             }
         });
@@ -228,7 +251,7 @@ public class AltaDocumento {
                 ordenesdecompra.removeAllItems();
                 ordenesdecompra.addItem("");
                 for(OrdenDeCompra oc: proveedor.getOrdenesdecompra()){
-                    ordenesdecompra.addItem(oc.getNumeroDocumento() + " " + oc.getFecha().toString() +" $"+ oc.getMonto() );
+                    ordenesdecompra.addItem(oc.getNumeroDocumento() + "-" + oc.getFecha().toString() +" $"+ oc.getMonto() );
                 }
             }
         }
@@ -263,9 +286,13 @@ public class AltaDocumento {
         labelOCasociada.setVisible(select);
     }
     private void mostrarFacturasAsociadas(boolean select){
-        facturasAsociadas.removeAllItems();
-        facturasAsociadas.setVisible(select);
-        labelFacturasAsociadas.setVisible(select);
+        try{
+            facturasAsociadas.removeAllItems();
+            facturasAsociadas.setVisible(select);
+            labelFacturasAsociadas.setVisible(select);
+        }catch (NullPointerException n){
+
+        }
     }
 
 
