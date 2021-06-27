@@ -24,6 +24,7 @@ public class main {
         ControllerProducto cldrProducto  = ControllerProducto.getInstance();
         ControllerProveedor cldrProveedor = ControllerProveedor.getInstance();
         datosVariosPruebas datos = new datosVariosPruebas();
+
         /*System.out.println("caso de prueba 1: se prueba crear un proveedor y añadirlo. Posteriormente se imprime por pantalla");
         cldrProveedor.addProveedor(12345678,  "resp_iva",  "Sebastian S.A",
                 "sebas",  "Lima 774",  1156549788,
