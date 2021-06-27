@@ -56,9 +56,14 @@ public class ControllerProveedor {
         mostrarProveedores();
     }
 
-    public void addOrdenDePago(int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas){
+    public void addOrdenDePago(
+            int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas,
+            LocalDate fechaEmision, LocalDate fechaVencimiento, String firmante, Double importe){
         OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite, facturasAsociadas);
         op.calcularMonto();
+        if(firmante!=null){
+            op.setCheque(addCheque( fechaEmision,  fechaVencimiento,  firmante,  importe));
+        }
         for(Proveedor p: proveedores){
             if(p.getCuit() == cuit){
                 p.addOrdenDePago(op);
@@ -192,5 +197,9 @@ public class ControllerProveedor {
             });
         }
         return model;
+    }
+
+    public Cheque addCheque(LocalDate fechaEmision, LocalDate fechaVencimiento, String firmante, Double importe){
+        return new Cheque( fechaEmision,  fechaVencimiento,  firmante,  importe);
     }
 }

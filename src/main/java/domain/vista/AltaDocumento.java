@@ -1,5 +1,6 @@
 package domain.vista;
 
+import com.toedter.calendar.JDateChooser;
 import domain.controlador.ControllerProducto;
 import domain.controlador.ControllerProveedor;
 import domain.modelo.documentos.Factura;
@@ -15,7 +16,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -38,17 +41,40 @@ public class AltaDocumento {
     private JLabel labelFacturasAsociadas;
     private JLabel fechaHoy;
     private JCheckBox aprobacionCheckBox;
+    private JPanel crearCheque;
+    private JPanel fechaEmisionCheque;
+    private JPanel fechaVigenciaCheque;
+    private JTextField firmaCheque;
+    private JTextField montoCheque;
+    private JCheckBox pagoConChequeCheckBox;
+    private JButton autocompletarConTotalButton;
     private ControllerProveedor cldrProveedor;
     private ControllerProducto cldrProducto;
     private Proveedor proveedor;
     private DefaultTableModel model;
     private List<Integer> FAsociadasAOP;
+
+    JDateChooser fechaEmision;
+    JDateChooser fechaVigencia;
+    LocalDate datefechaVigencia;
+    LocalDate datefechaEmision;
+
     public AltaDocumento(){
         this.cldrProducto = ControllerProducto.getInstance();
         this.cldrProveedor = ControllerProveedor.getInstance();
         aprobacionCheckBox.setVisible(false);
         mostrarOrdenesDeCompraAsociadas(false);
         mostrarFacturasAsociadas(false);
+        pagoConChequeCheckBox.setVisible(false);
+        Calendar cld = Calendar.getInstance();
+        fechaEmision = new JDateChooser(cld.getTime());
+        fechaVigencia = new JDateChooser(cld.getTime());
+        fechaEmisionCheque.add(fechaEmision);fechaVigenciaCheque.add(fechaVigencia);
+        fechaVigencia.setDateFormatString("dd/MM/yyyy");
+        fechaEmision.setDateFormatString("dd/MM/yyyy");
+
+        crearCheque.setVisible(false);
+
 
         fechaHoy.setText("Fecha: "+ LocalDate.now().toString());
         tipoDocBox.addItem("");
@@ -109,6 +135,8 @@ public class AltaDocumento {
             public void actionPerformed(ActionEvent e) {
                 mostrarFacturasAsociadas(false);
                 mostrarOrdenesDeCompraAsociadas(false);
+                pagoConChequeCheckBox.setVisible(false);
+                crearCheque.setVisible(false);
                 esFactura();
                 esOP();
             }
@@ -161,13 +189,29 @@ public class AltaDocumento {
                         //Validacion NOK orden de Compra
                         aprobacionCheckBox.setVisible((true));
                         generarDocumentoButton.setEnabled((false));
+                        pagoConChequeCheckBox.setVisible(false);
+                        crearCheque.setVisible(false);
 
                     }
 
                 }
 
                 if (tipoDocBox.getSelectedItem().toString() == "Orden de pago") {
-                    cldrProveedor.addOrdenDePago(proveedor.getCuit(), Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP );
+
+                    if(pagoConChequeCheckBox.isSelected()){
+                        datefechaVigencia = LocalDate.ofInstant(fechaVigencia.getDate().toInstant(), ZoneId.systemDefault());
+                        datefechaEmision = LocalDate.ofInstant(fechaEmision.getDate().toInstant(), ZoneId.systemDefault());
+                        cldrProveedor.addOrdenDePago(
+                                proveedor.getCuit(), Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP,
+                                datefechaEmision,  datefechaVigencia,  firmaCheque.getText(),  Double.parseDouble(montoCheque.getText())
+                        );
+                    }
+                    else{
+                        cldrProveedor.addOrdenDePago(
+                                proveedor.getCuit(), Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP,
+                                null,  null,  null, null
+                        );
+                    }
                     docWasOk = true;
                 }
 
@@ -198,8 +242,6 @@ public class AltaDocumento {
                     return null;
                 }
             });
-
-
         facturasAsociadas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -236,6 +278,24 @@ public class AltaDocumento {
                 }
             }
         });
+        crearProveedorButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                arrancarAltaProveedor();
+            }
+        });
+        pagoConChequeCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                crearCheque.setVisible(pagoConChequeCheckBox.isSelected());
+            }
+        });
+        autocompletarConTotalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                montoCheque.setText(labelTotal.getText());
+            }
+        });
     }
     private void recalcularTotalDesdeModelo(){
         double total = 0;
@@ -258,6 +318,7 @@ public class AltaDocumento {
     }
     private void esOP(){
         if (tipoDocBox.getSelectedItem().toString() == "Orden de pago") {
+            pagoConChequeCheckBox.setVisible(true);
             FAsociadasAOP = new ArrayList();
             mostrarFacturasAsociadas(true);
             if (proveedor != null) {
@@ -295,7 +356,10 @@ public class AltaDocumento {
         }
     }
 
-
+    private void arrancarAltaProveedor(){
+        AltaProveedor fr= new AltaProveedor();
+        fr.start();
+    }
 
     private void setItemsToSeach(){
         int cuit = Integer.valueOf(buscarProveedor.getSelectedItem().toString().split(" cuit:")[1]);
