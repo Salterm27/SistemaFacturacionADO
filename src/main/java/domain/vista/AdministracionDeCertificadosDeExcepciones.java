@@ -13,12 +13,12 @@ import java.util.Calendar;
 
 public class AdministracionDeCertificadosDeExcepciones {
     private JButton guardarButton;
-    private JButton CERTIFICADOIIBBButton;
-    private JButton CERTIFICADOIVAButton;
     private JPanel panelFECHAIIBB;
     private JPanel panelFECHAIVA;
-    private JPanel panel;
+    private JPanel panelPrincipal;
     private JComboBox selectProveedor;
+    private JButton certificadoIIBBButton;
+    private JButton certificadoIVAButton;
     private JDateChooser fechaIVA;
     private JDateChooser fechaIIBB;
     private JFrame frame;
@@ -38,7 +38,7 @@ public class AdministracionDeCertificadosDeExcepciones {
         fechaIIBB.setEnabled(false);
         fechaIVA.setEnabled(false);
 
-        CERTIFICADOIVAButton.addActionListener(new ActionListener() {
+        certificadoIVAButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(fechaIVA.isEnabled()){
@@ -49,7 +49,7 @@ public class AdministracionDeCertificadosDeExcepciones {
                 }
             }
         });
-        CERTIFICADOIIBBButton.addActionListener(new ActionListener() {
+        certificadoIIBBButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(fechaIIBB.isEnabled()){
@@ -79,21 +79,29 @@ public class AdministracionDeCertificadosDeExcepciones {
                     if(fechaIIBB.isEnabled()){
                         proveedorSeleccionado.setExcencionIIBB(dateIIBB);
                     }
+                    JOptionPane.showMessageDialog(null,"Se registraron los certificados");
+
                 }
+
+
             }
         });
     }
 
     public void start(){
         frame = new JFrame("ADMINISTRAR CERTIFICADOS");
-        frame.setContentPane( new AdministracionDeCertificadosDeExcepciones().panel);
+        frame.setContentPane( new AdministracionDeCertificadosDeExcepciones().panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(900,600);
-        frame.setLocationRelativeTo(null);
+        //frame.setSize(900,600);
         frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+
 
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
