@@ -1,13 +1,15 @@
 package domain.modelo.documentos;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class OrdenDePago extends Documento{
-    private float totalACancelar;
-    private float totalRetenciones;
+    private double totalACancelar;
+    private double totalRetenciones;
     private LocalDate fechaLimite;
-
-    public OrdenDePago( float totalACancelar, float totalRetenciones, LocalDate fechaLimite){
+    private List<Integer> facturasAsociadas;
+    public OrdenDePago( double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas ){
+            this.facturasAsociadas = facturasAsociadas;
             this.totalRetenciones = totalRetenciones;
             this.totalACancelar = totalACancelar;
             super.inicializarFecha();
@@ -22,11 +24,11 @@ public class OrdenDePago extends Documento{
         this.fechaLimite = fechaLimite;
     }
 
-    public float getTotalACancelar() {
+    public double getTotalACancelar() {
         return totalACancelar;
     }
 
-    public float getTotalRetenciones() {
+    public double getTotalRetenciones() {
         return totalRetenciones;
     }
 }

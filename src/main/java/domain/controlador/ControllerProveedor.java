@@ -5,6 +5,7 @@ import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,18 +54,12 @@ public class ControllerProveedor {
         mostrarProveedores();
     }
 
-    public void addOrdenDePago(int cuit, int numDoc,float totalACancelar, float totalRetenciones, LocalDate fechaLimite){
-        OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite);
+    public void addOrdenDePago(int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas){
+        OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite, facturasAsociadas);
         op.calcularMonto();
         for(Proveedor p: proveedores){
             if(p.getCuit() == cuit){
                 p.addOrdenDePago(op);
-                for(Factura f: p.getFacturas()){
-                    if(f.getNumeroDocumento() == numDoc){
-                        f.setOrdenDePago(op);
-                        System.out.println("se asocio op a factura: " + f.getNumeroDocumento() + " con proveedor " + p.getNombreFantasia());
-                    }
-                }
             }
         }
     }
@@ -158,5 +153,24 @@ public class ControllerProveedor {
             x.addItem(p.getNombreFantasia() + ", cuit:" +p.getCuit());
         }
         return x;
+    }
+
+    public DefaultTableModel RellenarDetalleFactura_aOrdenDePago(Proveedor proveedor, int id, DefaultTableModel model) {
+        List<Item> detalle = null;
+
+        for(Factura f: proveedor.getFacturas()){
+            if(f.getNumeroDocumento() == id){
+                detalle = f.getDetalle();
+            }
+        }
+        for(Item item: detalle){
+            model.addRow(new Object[]{
+                    item.getPs().getProducto().getNombre(),
+                    item.getPs().getPrecioPorUnidad(),
+                    item.getCantidad(),
+                    item.getCantidad() * item.getPs().getPrecioPorUnidad()
+            });
+        }
+        return model;
     }
 }
