@@ -138,7 +138,11 @@ public class AltaDocumento {
                 pagoConChequeCheckBox.setVisible(false);
                 crearCheque.setVisible(false);
                 esFactura();
+
+                FAsociadasAOP = new ArrayList();
                 esOP();
+                esNCoND();
+
             }
 
         });
@@ -146,11 +150,15 @@ public class AltaDocumento {
             @Override
             public void actionPerformed(ActionEvent e) {
                 List<Item> detalle = new ArrayList<>();
-                boolean docWasOk = false;
+                boolean docWasOk = false;// VERIFICACION PARA DOCUMENTO OK
+
+                //RECORRE CADA FILA DE LA TABLA, BUSCA EL PRODUCTO SELECCIONABLE SEGUN EL NOMBRE
+                //Y GENERA UN ITEM QUE SE AGREGA AL DETALLE.
                 for (int i = 0; i < model.getRowCount(); i++) {
                     ProductoSeleccionable ps = buscarPs(model.getValueAt(i, 0).toString());
                     int cant = Integer.valueOf(model.getValueAt(i, 2).toString());
                     Item item = new Item(ps, cant);
+                    //SE AGREGA CADA ITEM RECUPERADO, AL DETALLE GENERAL QUE SE USARA EN LA GENERACION DE DOCUMENTOS.
                     detalle.add(item);
                 }
 
@@ -163,10 +171,12 @@ public class AltaDocumento {
                             OrdenCompra = -1;
                         }
                     }
+
                     if ( OrdenCompra == -1 && !aprobacionCheckBox.isSelected()){
                         docWasOk = false;
                         aprobacionCheckBox.setVisible(true);
                     }
+
                     else{
                         cldrProveedor.addFactura(
                                 proveedor.getCuit(), false,
@@ -179,6 +189,39 @@ public class AltaDocumento {
                     }
 
                 }
+
+                if (tipoDocBox.getSelectedItem().toString() == "Nota de Credito") {
+                    int fcsAsociadas = -1;
+
+                    if(facturasAsociadas.getSelectedItem().toString()!=""){
+                        try {
+                            fcsAsociadas = Integer.valueOf((facturasAsociadas.getSelectedItem().toString().split("-")[0]));
+                        } catch (NullPointerException ex) {
+                            fcsAsociadas = -1;
+                        }
+                    }
+
+                    cldrProveedor.addNotadeCredito(fcsAsociadas,proveedor.getCuit(),detalle);
+                    docWasOk = true;
+
+                }
+
+                if (tipoDocBox.getSelectedItem().toString() == "Nota de Debito") {
+                    int fcsAsociadas = -1;
+
+                    if(facturasAsociadas.getSelectedItem().toString()!=""){
+                        try {
+                            fcsAsociadas = Integer.valueOf((facturasAsociadas.getSelectedItem().toString().split("-")[0]));
+                        } catch (NullPointerException ex) {
+                            fcsAsociadas = -1;
+                        }
+                    }
+
+                    cldrProveedor.addNotadeDebito(fcsAsociadas,proveedor.getCuit(),detalle);
+                    docWasOk = true;
+
+                }
+
                 if (tipoDocBox.getSelectedItem().toString() == "Orden de compra") {
                     if (proveedor.getLimiteDeuda() >
                             Double.valueOf(labelTotal.getText()) + proveedor.getdeudaCorriente() || aprobacionCheckBox.isSelected()) {
@@ -316,10 +359,28 @@ public class AltaDocumento {
             }
         }
     }
+
+    private void esNCoND(){
+        if (tipoDocBox.getSelectedItem().toString() == "Nota de Credito"
+                || tipoDocBox.getSelectedItem().toString() == "Nota de Debito"){
+
+            mostrarFacturasAsociadas(true);
+            if (proveedor != null) {
+                facturasAsociadas.removeAllItems();
+                facturasAsociadas.addItem("");
+                for (Factura f : proveedor.getFacturas()) {
+                    facturasAsociadas.addItem(f.getNumeroDocumento() + "-" + f.getFecha() + " $" + f.getMonto());
+                    proveedor.substractDeudaCorriente(f.getMonto());
+                }
+            }
+        }
+
+    }
+
     private void esOP(){
         if (tipoDocBox.getSelectedItem().toString() == "Orden de pago") {
             pagoConChequeCheckBox.setVisible(true);
-            FAsociadasAOP = new ArrayList();
+
             mostrarFacturasAsociadas(true);
             if (proveedor != null) {
                 facturasAsociadas.removeAllItems();

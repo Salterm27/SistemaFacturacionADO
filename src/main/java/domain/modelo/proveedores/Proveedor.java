@@ -67,6 +67,7 @@ public class Proveedor {
     public void addDeudaCorriente(double nuevaDeuda) {
         this.deudaCorriente +=nuevaDeuda;
     }
+
     public void substractDeudaCorriente(double nuevaDeuda) {
         this.deudaCorriente -= nuevaDeuda;
     }
@@ -210,10 +211,20 @@ public class Proveedor {
     public ExcencionesDeImpuestos getExcenciones() {
         return excenciones;
     }
+
     public void setExcencionIIBB(LocalDate expireDate) {
         this.excenciones.setExcencionIIBB(expireDate);
     }
+
     public void setExcencionIVA(LocalDate expireDate) {
         this.excenciones.setExcencionIVA(expireDate);
+    }
+
+    public void addNotadeCredito(NotaDeCredito notaDeCredito) {
+        notasdecredito.add(notaDeCredito);
+    }
+
+    public void addNotadeDebito(NotaDeDebito notaDeDebito) {
+        notasdedebito.add(notaDeDebito);
     }
 }

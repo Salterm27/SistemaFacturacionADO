@@ -38,15 +38,17 @@ public abstract class Documento {
         impuestoAplicable = new ImpuestoAplicable();
         if (detalle!=null){
             for (Item i: detalle){
+                //Recupero el producto y lo multiplico por el precio
                 double montoPorProducto = i.getPs().getPrecioPorUnidad() * i.getCantidad();
                 double ivaProducto=0;
                 double iibbProducto = 0;
 
+                //VALIDACION CERTIFICADOS DE EXCEPCION IVA Y CALCULO
                 if (! i.getPs().getProveedor().getExcenciones().esExcentoIva()) {
                     ivaProducto = (montoPorProducto * i.getPs().getProducto().getIva() / 100);
                     iva = iva + ivaProducto;
                 }
-
+                //VALIDACION CERTIFICADOS DE EXCEPCION IIBB Y CALCULO
                 if (! i.getPs().getProveedor().getExcenciones().esExcentoIIBB()) {
                     iibbProducto = (montoPorProducto * i.getPs().getProveedor().getPorcentajeIIBB() / 100);
                     iibb = iibb + iibbProducto;

@@ -1,6 +1,7 @@
 package domain.controlador;
 
 import domain.modelo.documentos.*;
+import domain.modelo.impuestos.ImpuestoAplicable;
 import domain.modelo.producto.ProductoSeleccionable;
 import domain.modelo.proveedores.Proveedor;
 
@@ -39,31 +40,56 @@ public class ControllerProveedor {
     public void addFactura(int cuit, Boolean aprobacion, int idordenDeCompra, List detalle ){
         Proveedor p = this.getProveedorXcuit(cuit);
         OrdenDeCompra ordenDeCompra = null;
-        for (OrdenDeCompra oc: p.getOrdenesdecompra()){ if(oc.getNumeroDocumento()==idordenDeCompra){ ordenDeCompra = oc; }}
+        for (OrdenDeCompra oc: p.getOrdenesdecompra()){
+            if(oc.getNumeroDocumento()==idordenDeCompra){
+                ordenDeCompra = oc;
+            }
+        }
         Factura a = new Factura(++documentCounter,  aprobacion,  ordenDeCompra, detalle);
         a.calcularMonto();
         p.addFactura(a);
+    }
+
+    public void addNotadeCredito(int nroFactura, int cuit,List detalle){
+        Proveedor p = this.getProveedorXcuit(cuit);
+        NotaDeCredito notaDeCredito = new NotaDeCredito(++documentCounter, nroFactura, p.getRetencionesAplicadas(), detalle);
+        notaDeCredito.calcularMonto();
+        p.addNotadeCredito(notaDeCredito);
+
+    }
+
+    public void addNotadeDebito( int nroFactura, int cuit,List detalle){
+        Proveedor p = this.getProveedorXcuit(cuit);
+        NotaDeDebito notaDeDebito = new NotaDeDebito(++documentCounter, nroFactura, p.getRetencionesAplicadas(), detalle);
+        notaDeDebito.calcularMonto();
+        p.addNotadeDebito(notaDeDebito);
+
     }
 
     public void addProveedor(int cuit,String responsabilidadIVA, String razonSocial,
                              String nombreFantasia, String direccion, int telefono,
                              String correoElectronico, double nroIIBB, LocalDate inicioActividad,
                              int retencionImpuestos){
+
         Proveedor p = new Proveedor( cuit,  responsabilidadIVA,  razonSocial,
                 nombreFantasia,  direccion,  telefono, correoElectronico,
                 nroIIBB,  inicioActividad,  retencionImpuestos);
+
         proveedores.add (p);
         mostrarProveedores();
     }
 
-    public void addOrdenDePago(
-            int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas,
+    public void addOrdenDePago(int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas,
             LocalDate fechaEmision, LocalDate fechaVencimiento, String firmante, Double importe){
+
         OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite, facturasAsociadas);
         op.calcularMonto();
+
+        //RELACIONA CHEQUE CON OP
         if(firmante!=null){
             op.setCheque(addCheque( fechaEmision,  fechaVencimiento,  firmante,  importe));
         }
+        //RELACIONO OP A PROVEEDOR
         for(Proveedor p: proveedores){
             if(p.getCuit() == cuit){
                 p.addOrdenDePago(op);
@@ -74,22 +100,31 @@ public class ControllerProveedor {
     public void addOrdenDeCompra(int cuit, List<Item>detalle){
         OrdenDeCompra oc = new OrdenDeCompra(++documentCounter,detalle);
         oc.calcularMonto();
-        for(Proveedor p: proveedores){ if(p.getCuit() == cuit){p.addordenDeCompra(oc);} }
+        for(Proveedor p: proveedores){
+            if(p.getCuit() == cuit){
+                p.addordenDeCompra(oc);
+            }
+        }
     }
 
 
-    public void imprimirfacturas( int cuit ){
+    /*public void imprimirfacturas( int cuit ){
         Proveedor p = getProveedorXcuit(cuit);
         List<Factura> facturas =  p.getFacturas();
+
         for (Factura f: facturas){
             System.out.println(f.getNumeroDocumento() + " " + f.getFecha());
+
             if (f.getDetalle() != null) {
                 for (Item i : f.getDetalle()) {
                     System.out.println();
                 }
             }
         }
-    }
+    }// ESTE METODO NO LO USAMOS MAS, SE USABA EN EL MAIN PARA IMPRIMIR*/
+
+
+    //IMPRIMO PROVEEDORES POR PANTALLA
     public void mostrarProveedores(){
         for (Proveedor p: proveedores) {
             System.out.println(p.getCuit() + " " + p.getRazonSocial());
