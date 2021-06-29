@@ -15,7 +15,6 @@ public abstract class Documento {
     protected double monto;
     protected LocalDate fecha;
     protected List <Item> detalle;
-
     protected ImpuestoAplicable impuestoAplicable;
 
     public double getIva() { return impuestoAplicable.getIva(); }

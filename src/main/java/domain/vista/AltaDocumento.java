@@ -72,10 +72,7 @@ public class AltaDocumento {
         fechaEmisionCheque.add(fechaEmision);fechaVigenciaCheque.add(fechaVigencia);
         fechaVigencia.setDateFormatString("dd/MM/yyyy");
         fechaEmision.setDateFormatString("dd/MM/yyyy");
-
         crearCheque.setVisible(false);
-
-
         fechaHoy.setText("Fecha: "+ LocalDate.now().toString());
         tipoDocBox.addItem("");
         tipoDocBox.addItem("Factura");
@@ -92,7 +89,6 @@ public class AltaDocumento {
         model.addColumn("Total");
 
         table1.setModel(model);
-
         buscarProveedor.addItem("");
         buscarProveedor = cldrProveedor.comboProveedor(buscarProveedor);
 
@@ -244,14 +240,18 @@ public class AltaDocumento {
                     if(pagoConChequeCheckBox.isSelected()){
                         datefechaVigencia = LocalDate.ofInstant(fechaVigencia.getDate().toInstant(), ZoneId.systemDefault());
                         datefechaEmision = LocalDate.ofInstant(fechaEmision.getDate().toInstant(), ZoneId.systemDefault());
+                        List FAsociadasclone = new ArrayList();
+                        for(Integer i : FAsociadasAOP){
+                            FAsociadasclone.add(i);
+                        }
                         cldrProveedor.addOrdenDePago(
-                                proveedor.getCuit(), Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP,
+                                proveedor.getCuit(), detalle, Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasclone,
                                 datefechaEmision,  datefechaVigencia,  firmaCheque.getText(),  Double.parseDouble(montoCheque.getText())
                         );
                     }
                     else{
                         cldrProveedor.addOrdenDePago(
-                                proveedor.getCuit(), Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP,
+                                proveedor.getCuit(), detalle, Double.valueOf(labelTotal.getText()), 0 ,LocalDate.now(), FAsociadasAOP,
                                 null,  null,  null, null
                         );
                     }
@@ -264,6 +264,7 @@ public class AltaDocumento {
                     labelTotal.setText("0");
                     aprobacionCheckBox.setSelected(false);
                     aprobacionCheckBox.setVisible(false);
+                    FAsociadasAOP.clear();
                     JOptionPane.showMessageDialog(null, "Se genero un Documento de tipo: " + " " + tipoDocBox.getSelectedItem().toString());
                     docWasOk = false;
                 }

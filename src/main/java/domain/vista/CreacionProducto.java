@@ -44,6 +44,11 @@ public class CreacionProducto {
         });
     }
 
+    public void crearp(){
+        String x=  "tele";
+        String r = "cocina";
+        cldrProducto.CrearProducto(x,r);
+    }
 
     public void start(){
         JFrame frame = new JFrame("Creacion de Producto");

@@ -79,22 +79,40 @@ public class ControllerProveedor {
         mostrarProveedores();
     }
 
-    public void addOrdenDePago(int cuit, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas,
+    public void addOrdenDePago(int cuit, List<Item> detalle, double totalACancelar, double totalRetenciones, LocalDate fechaLimite, List<Integer> facturasAsociadas,
             LocalDate fechaEmision, LocalDate fechaVencimiento, String firmante, Double importe){
 
-        OrdenDePago op = new OrdenDePago(totalACancelar,totalRetenciones,fechaLimite, facturasAsociadas);
+        Proveedor proveedor = null;
+        for(Proveedor p: proveedores){
+            if(p.getCuit() == cuit){
+                proveedor = p;
+            }
+        }
+
+        if(proveedor.getExcenciones().esExcentoIIBB() && proveedor.getExcenciones().esExcentoIva()){
+            totalRetenciones = 0;
+        }
+        else{
+            for(Item i: detalle){
+                if(!proveedor.getExcenciones().esExcentoIva()){
+                    totalRetenciones = totalRetenciones + i.getTotalIva();
+                }
+                if (!proveedor.getExcenciones().esExcentoIIBB()){
+                    totalRetenciones = totalRetenciones +
+                            ((i.getPs().getPrecioPorUnidad() * proveedor.getPorcentajeIIBB()) /100);
+                }
+            }
+        }
+
+        OrdenDePago op = new OrdenDePago(++documentCounter, detalle, totalACancelar,totalRetenciones,fechaLimite, facturasAsociadas);
         op.calcularMonto();
 
         //RELACIONA CHEQUE CON OP
         if(firmante!=null){
             op.setCheque(addCheque( fechaEmision,  fechaVencimiento,  firmante,  importe));
         }
-        //RELACIONO OP A PROVEEDOR
-        for(Proveedor p: proveedores){
-            if(p.getCuit() == cuit){
-                p.addOrdenDePago(op);
-            }
-        }
+
+        proveedor.addOrdenDePago(op);
     }
 
     public void addOrdenDeCompra(int cuit, List<Item>detalle){
