@@ -57,7 +57,7 @@ public class ConsultasGenerales {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(300,400);
+        frame.setSize(600,400);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
 
