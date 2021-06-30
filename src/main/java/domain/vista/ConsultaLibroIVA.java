@@ -56,6 +56,7 @@ public class ConsultaLibroIVA {
         modelTabla.addColumn("Fecha emision");
         modelTabla.addColumn("SubTotal");
         modelTabla.addColumn("IVA");
+        modelTabla.addColumn("IIBB");
         modelTabla.addColumn("Total");
         table1.setModel(modelTabla);
 
@@ -103,7 +104,7 @@ public class ConsultaLibroIVA {
             labelCantDoc.setText("Total documentos: " + cantDocEmitidos);
             labelIVA.setText("IVA: " + totaliva);
             labelSubTotal.setText("SubTotal: " + Subtotal);
-            LabelTotal.setText("Total: " + (totaliva+Subtotal));
+            LabelTotal.setText("Total: " + (totaliva+Subtotal + iibb));
             IIBB.setText(IIBB.getText() + iibb);
         }
         modelTabla.fireTableDataChanged();
@@ -113,8 +114,8 @@ public class ConsultaLibroIVA {
             if(validarFecha(doc.getFecha())){
                 modelTabla.addRow(new Object[]{
                         p.getCuit(), doc.getNumeroDocumento(), doc.getFecha(),
-                        doc.getMonto() - doc.getIva(),doc.getIva(),
-                        doc.getMonto()});
+                        doc.getMonto() - doc.getIva() - doc.getIIBB(),doc.getIva(),
+                        doc.getIIBB(), doc.getMonto()});
                 if (! p.getExcenciones().esExcentoIva()){
                     for (Item item: doc.getDetalle()){
                         if(item.getPs().getProducto().getIva() == 2.5){
