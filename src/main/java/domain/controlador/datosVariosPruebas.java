@@ -31,10 +31,8 @@ public class datosVariosPruebas {
         cldrProducto.crearRubro("Servicios");
     }
     private void dataProducto(){
-        cldrProducto.CrearProducto("SmartPhone Samsung","Electronica");
-        cldrProducto.CrearProducto("Licuadora Phillips","Electrodomesticos");
-        cldrProducto.CrearProducto("Notebook HP","Electronica");
-        cldrProducto.CrearProducto("Smart TV","Electronica");
+        cldrProducto.CrearProducto("Televisor Samsung","Electronica");
+        cldrProducto.CrearProducto("Licuadora Phillips","Electronica");
         /*cldrProducto.CrearProducto("Pack 7 platos de vidrio","Bazar");
         cldrProducto.CrearProducto("Pack 3 tazas de porcelana","Bazar");
         cldrProducto.CrearProducto("Pack 6 Juegos de cubiertos","Bazar");
@@ -44,13 +42,13 @@ public class datosVariosPruebas {
     }
 
     private void dataProveedor(){
-        cldrProveedor.addProveedor(161516161,"","FRAVEGA S.A", "FRAVEGA",
+        cldrProveedor.addProveedor(11111111,"","FRAVEGA S.A", "FRAVEGA",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2006,7,17),7);
-        cldrProveedor.addProveedor(786578557,"","OPEN 25 S.A", "OPEN 25",
+        cldrProveedor.addProveedor(22222222,"","OPEN 25 S.A", "OPEN 25",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2005,8,15),8);
-        cldrProveedor.addProveedor(785786444,"","FARMACITY S.A", "FARMACITY",
+        cldrProveedor.addProveedor(33333333,"","FARMACITY S.A", "FARMACITY",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2007,4,30),9);
         /*cldrProveedor.addProveedor(782656533,"","Empresa cuatro S.A", "Empresa cuatro",
@@ -85,44 +83,15 @@ public class datosVariosPruebas {
         ProductoSeleccionable ps;
 
        ps = cldrProducto.CrearProductoSeleccionable(10000, "1",
-                cldrProducto.getProducto("SmartPhone Samsung"),
-                cldrProveedor.getProveedorXcuit(161516161),21);cldrProveedor.asociarProductoSeleccionable(161516161,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(15000, "1",
-                cldrProducto.getProducto("SmartPhone Samsung"),
-                cldrProveedor.getProveedorXcuit(786578557),21);cldrProveedor.asociarProductoSeleccionable(786578557,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(20000, "1",
-                cldrProducto.getProducto("SmartPhone Samsung"),
-                cldrProveedor.getProveedorXcuit(785786444),21);cldrProveedor.asociarProductoSeleccionable(785786444,ps);
-
-        ps = cldrProducto.CrearProductoSeleccionable(7400, "1",
+                cldrProducto.getProducto("Televisor Samsung"),
+                cldrProveedor.getProveedorXcuit(11111111),21);cldrProveedor.asociarProductoSeleccionable(11111111,ps);
+       ps = cldrProducto.CrearProductoSeleccionable(15000, "1",
                 cldrProducto.getProducto("Licuadora Phillips"),
-                cldrProveedor.getProveedorXcuit(161516161),21); cldrProveedor.asociarProductoSeleccionable(161516161,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(8951, "1",
-                cldrProducto.getProducto("Licuadora Phillips"),
-                cldrProveedor.getProveedorXcuit(786578557),21); cldrProveedor.asociarProductoSeleccionable(786578557,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(2123, "1",
-                cldrProducto.getProducto("Licuadora Phillips"),
-                cldrProveedor.getProveedorXcuit(785786444),21); cldrProveedor.asociarProductoSeleccionable(785786444,ps);
+                cldrProveedor.getProveedorXcuit(11111111),21);cldrProveedor.asociarProductoSeleccionable(11111111,ps);
 
-        ps = cldrProducto.CrearProductoSeleccionable(67400, "1",
-                cldrProducto.getProducto("Notebook HP"),
-                cldrProveedor.getProveedorXcuit(161516161),21);cldrProveedor.asociarProductoSeleccionable(161516161,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(68951, "1",
-                cldrProducto.getProducto("Notebook HP"),
-                cldrProveedor.getProveedorXcuit(786578557),21); cldrProveedor.asociarProductoSeleccionable(786578557,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(52123, "1",
-                cldrProducto.getProducto("Notebook HP"),
-                cldrProveedor.getProveedorXcuit(785786444),21);cldrProveedor.asociarProductoSeleccionable(785786444,ps);
-
-        ps = cldrProducto.CrearProductoSeleccionable(54544, "1",
-                cldrProducto.getProducto("Smart TV"),
-                cldrProveedor.getProveedorXcuit(161516161),21);cldrProveedor.asociarProductoSeleccionable(161516161,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(50231, "1",
-                cldrProducto.getProducto("Smart TV"),
-                cldrProveedor.getProveedorXcuit(786578557),21); cldrProveedor.asociarProductoSeleccionable(786578557,ps);
-        ps = cldrProducto.CrearProductoSeleccionable(56985, "1",
-                cldrProducto.getProducto("Smart TV"),
-                cldrProveedor.getProveedorXcuit(785786444),21);cldrProveedor.asociarProductoSeleccionable(785786444,ps);
+       ps = cldrProducto.CrearProductoSeleccionable(16000, "1",
+                cldrProducto.getProducto("Licuadora Phillips"),
+                cldrProveedor.getProveedorXcuit(33333333),21);cldrProveedor.asociarProductoSeleccionable(33333333,ps);
 
         /*// empresa 4,5,6
 
