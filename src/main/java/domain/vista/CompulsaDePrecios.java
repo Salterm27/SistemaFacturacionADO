@@ -29,9 +29,13 @@ public class CompulsaDePrecios  {
         table1.setModel(model);
 
         comboRubro.addItem("");
+
+        //SE CARGAR LOS RUBROS
         for(Rubro r:cldrProducto.getRubros()){
             comboRubro.addItem(r.getNombre());
         }
+
+        //DEPENDIENDO RUBRO SELECCIONADO SE CARGAN LOS PRODUCTOS
         comboRubro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,12 +50,14 @@ public class CompulsaDePrecios  {
             }
         });
 
+        //Por cada producto seleccionable,
         consultarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.getDataVector().removeAllElements();
                 for(ProductoSeleccionable ps:cldrProducto.getProductoSeleccionables()){
                     if(ps.getProducto().getNombre()==comboProducto.getSelectedItem().toString()){
+                        //agrego a la tabla los proveedores
                         model.addRow(new Object[]{
                                 ps.getProveedor().getNombreFantasia(),
                                 ps.getPrecioPorUnidad()
