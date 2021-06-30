@@ -35,25 +35,25 @@ public class datosVariosPruebas {
         cldrProducto.CrearProducto("Licuadora Phillips","Electrodomesticos");
         cldrProducto.CrearProducto("Notebook HP","Electronica");
         cldrProducto.CrearProducto("Smart TV","Electronica");
-        cldrProducto.CrearProducto("Pack 7 platos de vidrio","Bazar");
+        /*cldrProducto.CrearProducto("Pack 7 platos de vidrio","Bazar");
         cldrProducto.CrearProducto("Pack 3 tazas de porcelana","Bazar");
         cldrProducto.CrearProducto("Pack 6 Juegos de cubiertos","Bazar");
         cldrProducto.CrearProducto("Internet 4g 220Mbps","Servicios");
         cldrProducto.CrearProducto("Internet 5g 720Mbps","Servicios");
-        cldrProducto.CrearProducto("Internet Fibra Optica 2000Mbps","Servicios");
+        cldrProducto.CrearProducto("Internet Fibra Optica 2000Mbps","Servicios");*/
     }
 
     private void dataProveedor(){
-        cldrProveedor.addProveedor(161516161,"","Empresa uno S.A", "Empresa uno",
+        cldrProveedor.addProveedor(161516161,"","FRAVEGA S.A", "FRAVEGA",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2006,7,17),7);
-        cldrProveedor.addProveedor(786578557,"","Empresa dos S.A", "Empresa dos",
+        cldrProveedor.addProveedor(786578557,"","OPEN 25 S.A", "OPEN 25",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2005,8,15),8);
-        cldrProveedor.addProveedor(785786444,"","Empresa tres S.A", "Empresa tres",
+        cldrProveedor.addProveedor(785786444,"","FARMACITY S.A", "FARMACITY",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2007,4,30),9);
-        cldrProveedor.addProveedor(782656533,"","Empresa cuatro S.A", "Empresa cuatro",
+        /*cldrProveedor.addProveedor(782656533,"","Empresa cuatro S.A", "Empresa cuatro",
                 "dire..",0000000,"xxxx@xxxx.com",5,
                 LocalDate.of(2020,6,16),10);
         cldrProveedor.addProveedor(872972611,"","Empresa cinco S.A", "Empresa cinco",
@@ -67,16 +67,16 @@ public class datosVariosPruebas {
                 LocalDate.of(2011,4,25),15);
         cldrProveedor.addProveedor(747472354,"","Empresa ocho S.A", "Empresa ocho",
                 "dire..",0000000,"xxxx@xxxx.com",5,
-                LocalDate.of(2010,1,12),10);
+                LocalDate.of(2010,1,12),10);*/
 
 
         //proveedor 1 no paga iva ni iibb
-        cldrProveedor.getProveedorXcuit(161516161).getExcenciones().setExcencionIVA(LocalDate.of(2022,01,01));
+        /*cldrProveedor.getProveedorXcuit(161516161).getExcenciones().setExcencionIVA(LocalDate.of(2022,01,01));
         cldrProveedor.getProveedorXcuit(161516161).getExcenciones().setExcencionIIBB(LocalDate.of(2022,01,01));
         //proveedor 2 no paga iva
         cldrProveedor.getProveedorXcuit(786578557).getExcenciones().setExcencionIVA(LocalDate.of(2022,01,01));
         //proveedor 3 no paga IIBB
-        cldrProveedor.getProveedorXcuit(785786444).getExcenciones().setExcencionIIBB(LocalDate.of(2022,01,01));
+        cldrProveedor.getProveedorXcuit(785786444).getExcenciones().setExcencionIIBB(LocalDate.of(2022,01,01));*/
 
     }
     private void dataProductoSeleccionable(){
@@ -84,7 +84,7 @@ public class datosVariosPruebas {
 
         ProductoSeleccionable ps;
 
-        ps = cldrProducto.CrearProductoSeleccionable(10000, "1",
+       /* ps = cldrProducto.CrearProductoSeleccionable(10000, "1",
                 cldrProducto.getProducto("SmartPhone Samsung"),
                 cldrProveedor.getProveedorXcuit(161516161),21);cldrProveedor.asociarProductoSeleccionable(161516161,ps);
         ps = cldrProducto.CrearProductoSeleccionable(15000, "1",
@@ -176,7 +176,7 @@ public class datosVariosPruebas {
                 cldrProveedor.getProveedorXcuit(887845533),21);cldrProveedor.asociarProductoSeleccionable(887845533,ps);
         ps =  cldrProducto.CrearProductoSeleccionable(1200, "1",
                 cldrProducto.getProducto("Internet Fibra Optica 2000Mbps"),
-                cldrProveedor.getProveedorXcuit(747472354),21);cldrProveedor.asociarProductoSeleccionable(747472354,ps);
+                cldrProveedor.getProveedorXcuit(747472354),21);cldrProveedor.asociarProductoSeleccionable(747472354,ps);*/
 
     }
 }
