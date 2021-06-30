@@ -55,7 +55,7 @@ public class Proveedor {
         this.facturas = new ArrayList<Factura>();
         this.productosSeleccionables = new ArrayList<>();
         this.excenciones = new ExcencionesDeImpuestos();
-        this.limiteDeuda = -1;
+        this.limiteDeuda = 5000;
         this.deudaCorriente = 0;
 
     }
