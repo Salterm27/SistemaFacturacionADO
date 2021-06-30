@@ -84,7 +84,7 @@ public class datosVariosPruebas {
 
         ProductoSeleccionable ps;
 
-       /* ps = cldrProducto.CrearProductoSeleccionable(10000, "1",
+       ps = cldrProducto.CrearProductoSeleccionable(10000, "1",
                 cldrProducto.getProducto("SmartPhone Samsung"),
                 cldrProveedor.getProveedorXcuit(161516161),21);cldrProveedor.asociarProductoSeleccionable(161516161,ps);
         ps = cldrProducto.CrearProductoSeleccionable(15000, "1",
@@ -124,7 +124,7 @@ public class datosVariosPruebas {
                 cldrProducto.getProducto("Smart TV"),
                 cldrProveedor.getProveedorXcuit(785786444),21);cldrProveedor.asociarProductoSeleccionable(785786444,ps);
 
-        // empresa 4,5,6
+        /*// empresa 4,5,6
 
         ps = cldrProducto.CrearProductoSeleccionable(6510, "1",
                 cldrProducto.getProducto("Pack 7 platos de vidrio"),
