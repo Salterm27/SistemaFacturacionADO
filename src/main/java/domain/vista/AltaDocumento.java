@@ -83,7 +83,7 @@ public class AltaDocumento {
         model.addColumn("Nombre");
         model.addColumn("Precio");
         model.addColumn("Cantidad");
-        model.addColumn("Total");
+        model.addColumn("Sub-Total");
 
         table1.setModel(model);
         buscarProveedor.addItem("");

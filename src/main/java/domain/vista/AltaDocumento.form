@@ -73,7 +73,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="Total"/>
+              <text value="Sub Total"/>
             </properties>
           </component>
           <vspacer id="4e18a">
