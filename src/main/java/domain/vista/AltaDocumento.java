@@ -346,6 +346,7 @@ public class AltaDocumento {
                 {
                     model.removeRow(table1.getSelectedRow());
                     model.fireTableDataChanged();
+                    recalcularTotalDesdeModelo();
                 }
             }
         });
@@ -357,6 +358,7 @@ public class AltaDocumento {
         }
         labelTotal.setText(String.valueOf(total));
     }
+
     private void esFactura() {
         if(tipoDocBox.getSelectedItem().toString() == "Factura"){
             mostrarOrdenesDeCompraAsociadas(true);
@@ -417,6 +419,7 @@ public class AltaDocumento {
         ordenesdecompra.setVisible(select);
         labelOCasociada.setVisible(select);
     }
+
     private void mostrarFacturasAsociadas(boolean select){
         try{
             facturasAsociadas.removeAllItems();
